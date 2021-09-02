@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type":"module",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kurler3/AniHub.git"
+  },
+  "author": "Miguel And Sam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kurler3/AniHub/issues"
+  },
+  "homepage": "https://github.com/Kurler3/AniHub#readme"
+}
