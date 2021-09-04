@@ -1,6 +1,116 @@
 .navbar {
-    padding: 0;
-    background-color: yellow;
-    
-    
+    vertical-align: top;
+    display: flex;
+    margin: 0;
+    height: 15vh;
+    border-bottom: 5px solid var(--golden-orange);
+    font-family: var(--pt-sans);
+
+    &-title {
+        font-family: var(--noto-sans-jp);
+        padding: 1em;
+        width: 30%;
+        color: white;
+        background: var(--blackish-background);
+        font-size: 1.7rem;
+        text-align: center;
+
+        &-span {
+            font-weight: bold;
+            color: var(--golden-orange);
+        }
+    }
+
+    &-link {
+        margin-top: 1em;
+        padding: 0.5em 2em;
+        display: flex;
+        width: 10%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: var(--default-transition);
+        cursor: pointer;
+
+        &:hover {
+            color: var(--golden-orange);
+        }
+    }
+
+    &-form-container {
+        display: flex;
+        padding: 0.7em;
+        width: 30%;
+        justify-content: center;
+        align-items: center;
+
+        .search-input {
+            border: 1px solid lightgrey;
+            border-right: none;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            height: 40%;
+            width:20vw;
+            padding: 1em;
+        }
+
+        .search-btn {
+            height: 45%;
+            width: 10%;
+            border: 1px solid lightgrey;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+    }
+
+    &-profile-container {
+        padding: 1em;
+        width: 20%;
+        margin-right: 3em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor:pointer;
+        transition: var(--default-transition);
+
+        &:hover {
+            background-color: var(--light-grey);
+        }
+
+        .profile-name-container{
+            padding: 1em;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            .profile-name {
+                padding-right: 0.3em;
+
+                &-span {
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .profile-avatar-container {
+            background-size: cover;
+            height: 50px;
+            width: 50px;
+
+            .profile-avatar-image {
+                max-width: 100%;
+                max-height: 100%;
+                display: block; /* remove extra space below image */
+            }
+        }
+    }
+
+    .down-arrow-icon {
+        margin-top: 0.3em;
+        font-size: 15px;
+    }
+
+    .active-tab {
+        color: var(--golden-orange);
+    }
 }

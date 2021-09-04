@@ -1,11 +1,16 @@
 import './scss_styles/App.scss';
-import Navbar from './components/Navbar/Navbar';
+import Navbar from './components/Navbar';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Homepage from './components/Homepage';
 
 function App() {
   return (
-    <div>
+    <Router>
       <Navbar />
-    </div>
+      <Switch>
+        <Route exact path="/" component={Homepage}/>
+      </Switch>
+    </Router>
   );
 }
 

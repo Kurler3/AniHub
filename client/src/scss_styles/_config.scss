@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -6,5 +9,15 @@
 
     // Global Variables
 
+    // Colors
+    --golden-orange: #FFBC1E;
+    --blackish-background: #282828;
+    --light-grey: #E9E9E9;
     
+    // Transitions
+    --default-transition: 0.1s all ease-in-out;
+
+    // Fonts
+    --noto-sans-jp: 'Noto Sans JP', sans-serif;
+    --pt-sans: 'PT Sans', sans-serif;
 }
