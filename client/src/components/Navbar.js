@@ -14,7 +14,7 @@ const Navbar = () => {
 
     const [currentActiveTab, setCurrentActiveTab] = useState(TABS.Anime);
 
-    const [searchInput, setSearchInput] = useState(null);
+    const [searchInput, setSearchInput] = useState('');
 
     const onSubmit = (e) => {
         e.preventDefault();

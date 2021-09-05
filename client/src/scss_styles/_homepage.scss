@@ -1,0 +1,33 @@
+.homepage-container {
+    font-family: var(--pt-sans);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+
+    .anime-filters-container {
+        width: 70%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .anime-filter {
+            padding: 0.7em 2em;
+            transition: var(--default-transition);
+            cursor: pointer;
+            font-size: 0.9rem;
+
+            &:hover {
+                color: var(--golden-orange);
+                border-bottom: 3px solid var(--golden-orange);
+            }
+        }
+
+        .separator {
+            font-size: 1.3rem;
+            color: lightgrey;
+        }
+
+        .selected-filter {
+            color:var(--golden-orange);
+        }
+    }
+}

@@ -1,0 +1,1 @@
+export const ANIME_SEASON_FILTERS = ['Airing', 'Spring', 'Summer', 'Fall', 'Winter'];
