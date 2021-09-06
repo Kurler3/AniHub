@@ -1,15 +1,27 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import FrontAnime from './FrontAnime';
+import Loader from "react-loader-spinner";
 
 const FrontAnimes = () => {
 
     const animes = useSelector((state) => state.frontAnimes);
 
-    console.log(animes);
 
     return (
-        <div>
-            ANIMES
+        animes.length===0 ? <Loader
+        type="Puff"
+        color="#00BFFF"
+        height={100}
+        width={100}
+        timeout={3000} 
+        /> : 
+        <div className="front-anime-container">
+            {
+                animes[0].map((anime, index) => 
+                    <FrontAnime key={index} anime={anime}/>
+                )
+            }
         </div>
     )
 }
