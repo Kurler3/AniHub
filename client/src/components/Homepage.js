@@ -1,7 +1,8 @@
 import React, {useState,useEffect} from 'react';
 import {useDispatch} from 'react-redux'
-import { getAnime } from '../actions/frontAnimeActions';
+import { getTopAnime, getSeasonAnime } from '../actions/frontAnimeActions';
 import {ANIME_SEASON_FILTERS} from '../utils/constants';
+import FrontAnimes from './FrontAnimes';
 
 
 const Homepage = () => {
@@ -11,13 +12,16 @@ const Homepage = () => {
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(getAnime('airing'));
-    }, []);
+        dispatch(getTopAnime());
+    }, [dispatch]);
 
     const onFilterClick = (e) => {
-        setCurrentFilterSelected(e.target.textContent);
+        const filter = e.target.textContent;
+        
+        setCurrentFilterSelected(filter);
 
-        dispatch(getAnime(e.target.textContent.toLowerCase()));
+        if(filter==='Airing') return dispatch(getTopAnime());
+        else return dispatch(getSeasonAnime(filter.toLowerCase()));
     }
 
     return (
@@ -34,7 +38,7 @@ const Homepage = () => {
                 <p className={`anime-filter ${currentFilterSelected===ANIME_SEASON_FILTERS[4] ? 'selected-filter':''}`} onClick={onFilterClick}>Winter</p>
             </div>
 
-            
+            <FrontAnimes />
         </div>
     )
 }
