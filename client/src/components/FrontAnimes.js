@@ -7,7 +7,6 @@ const FrontAnimes = () => {
 
     const animes = useSelector((state) => state.frontAnimes);
 
-
     return (
         animes.length===0 ? <Loader
         type="Puff"
@@ -16,7 +15,7 @@ const FrontAnimes = () => {
         width={100}
         timeout={3000} 
         /> : 
-        <div className="front-anime-container">
+        <div className="front-animes-container">
             {
                 animes[0].map((anime, index) => 
                     <FrontAnime key={index} anime={anime}/>

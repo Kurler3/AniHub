@@ -3,10 +3,10 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    // justify-content: center;
-    align-items: center;
+    justify-content: space-between;
     
     .anime-filters-container {
+        margin: 0 auto;
         width: 70%;
         display: flex;
         justify-content: space-around;

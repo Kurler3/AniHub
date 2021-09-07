@@ -95,3 +95,43 @@
     font-size: 15px; }
   .navbar .active-tab {
     color: var(--golden-orange); }
+
+.homepage-container {
+  font-family: var(--pt-sans);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+  .homepage-container .anime-filters-container {
+    margin: 0 auto;
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; }
+    .homepage-container .anime-filters-container .anime-filter {
+      padding: 0.7em 2em;
+      transition: var(--default-transition);
+      cursor: pointer;
+      font-size: 0.9rem; }
+      .homepage-container .anime-filters-container .anime-filter:hover {
+        color: var(--golden-orange);
+        border-bottom: 3px solid var(--golden-orange); }
+    .homepage-container .anime-filters-container .separator {
+      font-size: 1.3rem;
+      color: lightgrey; }
+    .homepage-container .anime-filters-container .selected-filter {
+      color: var(--golden-orange); }
+
+.front-animes-container {
+  margin: 0 auto;
+  margin-top: 2em;
+  padding: 1em;
+  display: grid;
+  grid-gap: 40px;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center; }
+
+.front-anime-container {
+  width: 170px;
+  height: 250px;
+  background-color: red; }

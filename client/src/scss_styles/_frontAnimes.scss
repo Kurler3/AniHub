@@ -1,3 +1,10 @@
-.front-anime-container {
-    background-color: red;
+.front-animes-container {
+    margin: 0 auto;
+    margin-top: 2em;
+    padding: 1em;
+
+    display: grid;
+    grid-gap: 40px;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
 }
