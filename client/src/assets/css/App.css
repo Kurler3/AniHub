@@ -133,5 +133,56 @@
 
 .front-anime-container {
   width: 170px;
-  height: 250px;
-  background-color: red; }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: var(--default-transition);
+  text-decoration: none;
+  color: black; }
+  .front-anime-container:hover {
+    transform: scale(1.1);
+    margin-right: 6%;
+    /* fallback for ancient browsers that don't support calc() */
+    margin-right: calc(5% + 10px);
+    margin-left: 5%; }
+  .front-anime-container .anime-image-container {
+    height: 250px;
+    width: 100%;
+    padding: 0.5em; }
+    .front-anime-container .anime-image-container img {
+      height: 100%;
+      width: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 1.1rem; }
+  .front-anime-container .anime-title {
+    height: 40px;
+    overflow: hidden;
+    font-size: 0.9rem;
+    padding: 0 0.5em;
+    max-lines: 1;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    align-items: center; }
+  .front-anime-container .anime-stars-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 0 0.3em; }
+  .front-anime-container .anime-members-container {
+    background: var(--light-grey);
+    text-align: center;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0.3em;
+    border-bottom: 2rem; }
+    .front-anime-container .anime-members-container .members-number {
+      font-weight: bold; }
+    .front-anime-container .anime-members-container .members-title {
+      font-size: 0.8rem;
+      color: lightgray; }

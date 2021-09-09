@@ -1,8 +1,76 @@
 .front-anime-container {
     // margin-top: 1em;
     width: 170px;
-    height: 250px;
-    background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: var(--default-transition);
+    text-decoration: none;
+    color: black;
 
 
+    &:hover {
+        transform: scale(1.1);
+        margin-right: 6%; /* fallback for ancient browsers that don't support calc() */
+        margin-right: calc(5% + 10px);
+        margin-left: 5%;
+    }
+
+    .anime-image-container {
+        height: 250px;
+        width: 100%;
+        padding: 0.5em;
+
+        img {
+            height: 100%;
+            width: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 1.1rem;
+        }
+    }
+    
+    .anime-title {
+        height: 40px;
+        overflow: hidden;
+        font-size: 0.9rem;
+        padding: 0 0.5em;
+        max-lines: 1;
+        text-align: center;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        //justify-content: center;
+    }
+
+    .anime-stars-container {
+        display: flex;
+        width: 100%;
+        //justify-content: center;
+        align-items: center;
+        padding: 0 0.3em;
+    }
+
+    .anime-members-container {
+        background: var(--light-grey);
+        text-align: center;
+        //width: 100%;
+        height: 10vh;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0.3em;
+        border-bottom: 2rem;
+
+        .members-number {
+            font-weight: bold;
+        }
+        
+        .members-title {
+            font-size: 0.8rem;
+            color: lightgray;
+        }
+    }
 }

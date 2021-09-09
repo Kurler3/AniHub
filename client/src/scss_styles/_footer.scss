@@ -1,0 +1,39 @@
+.footer-container {
+    margin-top: 2em;
+    height: 30vh;
+    display: flex;
+    justify-content: space-between;
+    background: var(--blackish-background);
+    font-family: var(--noto-sans-jp);
+
+    .left-container, .right-container {
+        padding: 2em 5em;
+    }
+
+    .left-container {
+        display: flex;
+        width: 40%;
+        justify-content: space-between;
+        align-items: center;
+
+        &-title {
+            font-size: 1.8rem;
+            color: lightgray;
+            font-weight: 100;
+
+            &-span {
+                font-weight: bold;
+            }
+        }
+
+        &-tab {
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: lightgray;
+        }
+    }
+
+    .right-container {
+        
+    }
+}
