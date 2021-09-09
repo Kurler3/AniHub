@@ -17,6 +17,7 @@
         align-items: center;
 
         &-title {
+            cursor:pointer;
             font-size: 1.8rem;
             color: lightgray;
             font-weight: 100;
@@ -34,6 +35,22 @@
     }
 
     .right-container {
-        
+        display: flex;
+        // justify-content: space-between;
+        align-items: center;
+        width: 30%;
+
+        &-media-tab {
+            cursor: pointer;
+            font-size: 1.6rem;
+            color: var(--light-grey);
+            padding:0.7em;
+            transition: 0.1s all ease-in-out;
+
+            &:hover {
+                background: lightblue;
+                color: var(--blackish-background);
+            }
+        }
     }
 }

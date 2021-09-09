@@ -186,3 +186,42 @@
     .front-anime-container .anime-members-container .members-title {
       font-size: 0.8rem;
       color: lightgray; }
+
+.footer-container {
+  margin-top: 2em;
+  height: 30vh;
+  display: flex;
+  justify-content: space-between;
+  background: var(--blackish-background);
+  font-family: var(--noto-sans-jp); }
+  .footer-container .left-container, .footer-container .right-container {
+    padding: 2em 5em; }
+  .footer-container .left-container {
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+    align-items: center; }
+    .footer-container .left-container-title {
+      cursor: pointer;
+      font-size: 1.8rem;
+      color: lightgray;
+      font-weight: 100; }
+      .footer-container .left-container-title-span {
+        font-weight: bold; }
+    .footer-container .left-container-tab {
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: lightgray; }
+  .footer-container .right-container {
+    display: flex;
+    align-items: center;
+    width: 30%; }
+    .footer-container .right-container-media-tab {
+      cursor: pointer;
+      font-size: 1.6rem;
+      color: var(--light-grey);
+      padding: 0.7em;
+      transition: 0.1s all ease-in-out; }
+      .footer-container .right-container-media-tab:hover {
+        background: lightblue;
+        color: var(--blackish-background); }
