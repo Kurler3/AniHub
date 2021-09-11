@@ -1,1 +1,2 @@
-export const GET_ANIME = 'GET_ANIME';
+export const GET_TOP_ANIME = 'GET_ANIME';
+export const GET_SEASON_ANIME = 'GET_SEASON_ANIME';

@@ -123,13 +123,44 @@
       color: var(--golden-orange); }
 
 .front-animes-container {
-  margin: 0 auto;
-  margin-top: 2em;
-  padding: 1em;
-  display: grid;
-  grid-gap: 40px;
-  grid-template-columns: repeat(4, 1fr);
-  justify-content: center; }
+  display: flex;
+  flex-direction: column; }
+  .front-animes-container .animes {
+    margin: 0 auto;
+    margin-top: 2em;
+    padding: 1em;
+    display: grid;
+    grid-gap: 40px;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center; }
+  .front-animes-container .container {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin-top: 2em; }
+  .front-animes-container .page {
+    padding: 10px;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    margin-right: 10px;
+    cursor: pointer; }
+  .front-animes-container .disabled {
+    cursor: not-allowed; }
+  .front-animes-container .active {
+    border: 2px solid #000;
+    font-weight: bold; }
+  .front-animes-container .previous {
+    padding: 10px;
+    border-radius: 6px;
+    margin-right: 10px;
+    cursor: pointer; }
+  .front-animes-container .break {
+    padding: 10px; }
+  .front-animes-container .next {
+    padding: 10px;
+    border-radius: 6px;
+    margin-right: 10px;
+    cursor: pointer; }
 
 .front-anime-container {
   width: 170px;

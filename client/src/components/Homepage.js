@@ -20,6 +20,7 @@ const Homepage = () => {
         
         setCurrentFilterSelected(filter);
 
+        console.log(filter)
         if(filter==='Airing') return dispatch(getTopAnime());
         else return dispatch(getSeasonAnime(filter.toLowerCase()));
     }
