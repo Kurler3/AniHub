@@ -113,4 +113,24 @@
     .active-tab {
         color: var(--golden-orange);
     }
+
+    &-login-signup-container {
+        display: flex;
+        align-items: center;
+
+        .auth-btn {
+            font-weight: bold;
+            font-size: 0.8rem;
+            padding: 0.8em;
+            background: var(--golden-orange);
+            border: 1.5px solid lightgray;
+            cursor: pointer;
+            transition:var(--default-transition);
+
+            &:hover {
+                // background: var(--golden-orange);
+                border-color: black;
+            }
+        }
+    }
 }

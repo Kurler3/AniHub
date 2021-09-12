@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faSearch } from '@fortawesome/free-solid-svg-icons';
-
-import exampleAvatar from './../example_profile_avatar.jpg';
+import {Link} from 'react-router-dom';
 
 const TABS = {
     Anime: 'Anime',
@@ -29,24 +28,24 @@ const Navbar = () => {
     return (
         <div className='navbar'>
             
-            <div className="navbar-title">
+            <Link to="/" className="navbar-title" style={{textDecoration:'none'}}>
                 Ani<span className="navbar-title-span">Hub</span>
-            </div>
+            </Link>
             
-            <div className={`navbar-link navbar-anime-container ${currentActiveTab===TABS.Anime ? 'active-tab' : ''}`} onClick={()=>{setCurrentActiveTab(TABS.Anime)}}>
+            <Link to="/" style={{textDecoration:'none'}} className={`navbar-link navbar-anime-container ${currentActiveTab===TABS.Anime ? 'active-tab' : ''}`} onClick={()=>{setCurrentActiveTab(TABS.Anime)}}>
                 <p>Anime</p>
                 <FontAwesomeIcon className="down-arrow-icon" icon={faAngleDown}/>
-            </div>
+            </Link>
 
-            <div className={`navbar-link navbar-anime-container ${currentActiveTab===TABS.Media ? 'active-tab' : ''}`} onClick={()=>{setCurrentActiveTab(TABS.Media)}}>
+            <Link to="/" style={{textDecoration:'none'}} className={`navbar-link navbar-anime-container ${currentActiveTab===TABS.Media ? 'active-tab' : ''}`} onClick={()=>{setCurrentActiveTab(TABS.Media)}}>
                 <p>Media</p>
                 <FontAwesomeIcon className="down-arrow-icon" icon={faAngleDown}/>
-            </div>
+            </Link>
 
-            <div className={`navbar-link navbar-anime-container ${currentActiveTab===TABS.MyList ? 'active-tab' : ''}`} onClick={()=>{setCurrentActiveTab(TABS.MyList)}}>
+            <Link to="/" style={{textDecoration:'none'}} className={`navbar-link navbar-anime-container ${currentActiveTab===TABS.MyList ? 'active-tab' : ''}`} onClick={()=>{setCurrentActiveTab(TABS.MyList)}}>
                 <p>My List</p>
                 <FontAwesomeIcon className="down-arrow-icon" icon={faAngleDown}/>
-            </div>
+            </Link>
 
             <form onSubmit={onSubmit} className="navbar-form-container">
                 <input onChange={onSearchInputChange} type="text" name="search" className="search-input" placeholder="Search for your favorite anime" value={searchInput}/>
@@ -55,6 +54,15 @@ const Navbar = () => {
                 </button>
             </form>
 
+            <div className="navbar-login-signup-container">
+                <Link to="/auth" style={{textDecoration:'none'}}>
+                    <button className="auth-btn">
+                        Login/Signup 
+                    </button>
+                </Link>
+            </div>
+
+            {/*             
             <div className="navbar-profile-container" onClick={onProfileClick}>
                 <div className="profile-name-container">
                     <p className="profile-name">Hello, <span className="profile-name-span">Sam</span></p>
@@ -63,7 +71,7 @@ const Navbar = () => {
                 <div className="profile-avatar-container">
                     <img className="profile-avatar-image" src={exampleAvatar} alt="profile_avatar" />
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

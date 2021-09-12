@@ -42,8 +42,6 @@ const FrontAnimes = () => {
         setCurrentPageAnime(animes[0].slice((currentPage*10) - 10, (currentPage*10) + 1));
 	};
 
-    //if(animes.length!==0) calculateNumPages(animes.length);
-
     return (
         animes.length===0 ? <Loader
         type="Puff"
