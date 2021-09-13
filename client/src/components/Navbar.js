@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faSearch } from '@fortawesome/free-solid-svg-icons';
 import {Link} from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
+import exampleAvatar from '../example_profile_avatar.jpg'
 
 const TABS = {
     Anime: 'Anime',
@@ -10,6 +12,12 @@ const TABS = {
 }
 
 const Navbar = () => {
+
+    // Converts from json to js object if there is a user logged in
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+    const history = useHistory();
+    const location = useLocation();
 
     const [currentActiveTab, setCurrentActiveTab] = useState(TABS.Anime);
 
@@ -24,6 +32,12 @@ const Navbar = () => {
     const onProfileClick = () => {
         
     }
+
+    // Navbar will react everytime user moves from /auth to /, for example
+    useEffect(() => {
+        setUser(JSON.parse(localStorage.getItem('profile')));
+    },
+    [location]);
 
     return (
         <div className='navbar'>
@@ -54,24 +68,29 @@ const Navbar = () => {
                 </button>
             </form>
 
-            <div className="navbar-login-signup-container">
-                <Link to="/auth" style={{textDecoration:'none'}}>
-                    <button className="auth-btn">
-                        Login/Signup 
-                    </button>
-                </Link>
-            </div>
-
-            {/*             
-            <div className="navbar-profile-container" onClick={onProfileClick}>
-                <div className="profile-name-container">
-                    <p className="profile-name">Hello, <span className="profile-name-span">Sam</span></p>
-                    <FontAwesomeIcon className="down-arrow-icon" icon={faAngleDown}/>
+            {
+                user===null ? 
+                
+                <div className="navbar-login-signup-container">
+                    <Link to="/auth" style={{textDecoration:'none'}}>
+                        <button className="auth-btn">
+                            Login/Signup 
+                        </button>
+                    </Link>
+                </div> 
+            
+            : 
+            
+                <div className="navbar-profile-container" onClick={onProfileClick}>
+                    <div className="profile-name-container">
+                        <p className="profile-name">Hello, <span className="profile-name-span">{`${user.result.first_name}`}</span></p>
+                        <FontAwesomeIcon className="down-arrow-icon" icon={faAngleDown}/>
+                    </div>
+                    <div className="profile-avatar-container">
+                        <img className="profile-avatar-image" src={exampleAvatar} alt="profile_avatar" />
+                    </div>
                 </div>
-                <div className="profile-avatar-container">
-                    <img className="profile-avatar-image" src={exampleAvatar} alt="profile_avatar" />
-                </div>
-            </div> */}
+            }
         </div>
     )
 }

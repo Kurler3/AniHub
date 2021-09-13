@@ -2,4 +2,4 @@
 export const JIKAN_URL = 'https://api.jikan.moe/v3';
 
 // Will be changed when deployed
-export const BACK_API = 'https://localhost:5000';
+export const BACK_API = 'http://localhost:5000';

@@ -5,6 +5,7 @@ const authReducer = (state = {authData:null}, action) => {
         case AUTH:
             // Save in the local storage, because once we 
             // refresh the page, the browser is still gonna know that the user is logged in
+            // Saves user and token
             localStorage.setItem('profile', JSON.stringify({...action?.data}));
 
             return {...state, authData: action?.data};

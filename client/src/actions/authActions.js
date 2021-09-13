@@ -14,7 +14,7 @@ export const signIn = (formData, history) => async (dispatch) => {
         // Dispatch to reducer
         dispatch({type:AUTH, data});
     } catch (error) {
-        
+        console.log(error);
     }
 }
 
@@ -30,6 +30,6 @@ export const signUp = (formData, history) => async (dispatch) => {
         // Dispatch to reducer
         dispatch({type:AUTH, data});
     } catch (error) {
-        
+        console.log(error);
     }
 }

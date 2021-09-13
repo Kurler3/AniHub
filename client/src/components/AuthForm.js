@@ -37,11 +37,11 @@ const AuthForm = () => {
     const onInputChange = (e) => setInputData({...inputData, [e.target.name]:e.target.value});
 
     const onGoogleSuccess = (res) => {
-        console.log(response);
+        console.log(res);
     }
 
     const onGoogleFailure = (err) => {
-        console.log(response);
+        console.log(err);
     }
 
     return (

@@ -26,8 +26,9 @@ const UserSchema = mongoose.Schema({
         added_at: {
             type:Date,
             default: Date.now()
+            }
         }
-    }],
+    ],
     currently_watching: [{
             id: {
                 type:String,
