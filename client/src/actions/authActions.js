@@ -1,4 +1,4 @@
-import * as api from "../api/authApi"
+import * as api from "../api/";
 import { AUTH } from "../utils/action_constants";
 
 // Deconstruct the object to just email and password

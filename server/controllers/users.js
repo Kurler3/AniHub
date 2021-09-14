@@ -9,22 +9,25 @@ export const signIn = async (req, res) => {
 
     try {
         // Check if exists user with this email on the database
-        const userDatabase = await User.findOne({email: email});
+        const existingUser = await User.findOne({email: email});
 
-        if(!userDatabase) return res.status(400).json({message: 'User with this email not found in the database.'}); 
+        if(!existingUser) return res.status(400).json({message: 'User with this email not found in the database.'}); 
 
         // Check if the password inputted matches the password in the database
-        const passwordsMatch = await bcryptjs.compare(password, userDatabase.password);
+        const passwordsMatch = await bcryptjs.compare(password, existingUser.password);
 
         if(!passwordsMatch) return res.status(400).json({message: "Invalid credentials."});
 
         // Create the JWT token
         const token = jwt.sign({email:existingUser.email, id:existingUser._id}, 'test', {expiresIn:'1h'});
 
+        // Set req headers
+
         // return the data with res.json
         res.status(200).json({result: existingUser, token});    
 
     } catch (error) {
+        console.log(error);
         res.status(500).json({message:'Something went wrong with the server... :('});        
     }
 
@@ -32,8 +35,6 @@ export const signIn = async (req, res) => {
 
 export const signUp = async (req, res) => {
     const {firstName, lastName, email, password, confirmPassword} = req.body;
-
-    console.log('Signup controller');
 
     try {
         

@@ -1,4 +1,4 @@
-import * as api from "../api/frontAnimeApi"
+import * as api from "../api/";
 import { GET_TOP_ANIME, GET_SEASON_ANIME } from "../utils/action_constants";
 
 export const getTopAnime = () => async (dispatch) => {

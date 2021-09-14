@@ -27,7 +27,7 @@ const AuthForm = () => {
 
         // If its signup then dispatch signup action
         // else dispatch login action
-        !isSignUp ? dispatch(signIn(inputData), history) : dispatch(signUp(inputData), history);
+        !isSignUp ? dispatch(signIn(inputData, history)) : dispatch(signUp(inputData, history));
     }
 
     const onPasswordVisibleChange = () => {
