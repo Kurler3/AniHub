@@ -22,13 +22,12 @@ const UserSchema = mongoose.Schema({
         default: Date.now()
     },
     saved_animes: [{
-        id: String,
-        added_at: {
+        id:String,
+        added_at:{
             type:Date,
             default: Date.now()
-            }
         }
-    ],
+    }],
     currently_watching: [{
             id: {
                 type:String,

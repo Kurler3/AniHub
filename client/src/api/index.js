@@ -2,13 +2,14 @@ import axios from 'axios';
 import { BACK_API } from "../utils/apis";
 import {JIKAN_URL} from '../utils/apis';
 
-const API = axios.create({ baseURL: 'https://localhost:5000.com' });
+// Back End API
+const API = axios.create({ baseURL: 'http://localhost:5000' });
 
 // Middleware cannot work without this
 // This is a function that will happen before every single request
 API.interceptors.request.use((req) => {
     if(localStorage.getItem('profile')) {
-        req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`;
+        req.headers.Authorization = `${JSON.parse(localStorage.getItem('profile')).token}`;
     }
 
     // Have to return the request.
@@ -23,6 +24,14 @@ export const getSeasonAnime = (season) => axios.get(`${JIKAN_URL}/season/${new D
 export const getAnime = (id) => axios.get(`${JIKAN_URL}/anime/${id}`);
 
 // Auth 
-export const signIn = (formData) => axios.post(`${BACK_API}/user/signIn`, formData);
+export const signIn = (formData) => API.post('/user/signIn', formData);
 
-export const signUp = (formData) => axios.post(`${BACK_API}/user/signUp`, formData);
+export const signUp = (formData) => API.post('/user/signUp', formData);
+
+// Back Anime Requests
+
+export const addAnimeToList = (anime) => API.put('/anime/add', anime);
+
+    // {
+    //     headers: {Authorization: `${JSON.parse(localStorage.getItem('profile')).token}`}
+    // }

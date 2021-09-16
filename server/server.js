@@ -7,6 +7,7 @@ import dotenv from 'dotenv';
 
 // Routes
 import userRoutes from './routes/users.js';
+import animeRoutes from './routes/animes.js';
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.get('/', (req, res) => {
 
 // Using routes
 app.use('/user', userRoutes);
+app.use('/anime', animeRoutes);
 
 
 // The port
