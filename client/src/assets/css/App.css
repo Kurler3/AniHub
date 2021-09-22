@@ -362,19 +362,26 @@
       font-size: 1.2rem; }
     .anime-page-container .left-container .poster {
       margin-top: 1em; }
-    .anime-page-container .left-container .add-list-btn {
+    .anime-page-container .left-container .add-list-btn, .anime-page-container .left-container .disabled-add-btn, .anime-page-container .left-container .remove-btn {
       padding: 1em;
       width: 50%;
       margin: 0 auto;
       margin-top: 1em;
-      cursor: pointer;
       color: white;
-      background: var(--blue);
       border: none;
       border-radius: 0.5rem;
-      transition: var(--default-transition); }
+      transition: var(--default-transition);
+      background: var(--blue); }
+    .anime-page-container .left-container .add-list-btn {
+      cursor: pointer; }
       .anime-page-container .left-container .add-list-btn:hover {
         background: var(--dark-blue); }
+    .anime-page-container .left-container .disabled-add-btn {
+      opacity: 0.5; }
+    .anime-page-container .left-container .remove-btn {
+      font-weight: bold;
+      color: black;
+      background: red; }
   .anime-page-container .right-container {
     display: flex;
     flex-direction: column;

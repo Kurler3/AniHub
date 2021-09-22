@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { BACK_API } from "../utils/apis";
+import { BACK_URL } from "../utils/apis";
 import {JIKAN_URL} from '../utils/apis';
 
 // Back End API
-const API = axios.create({ baseURL: 'http://localhost:5000' });
+const API = axios.create({ baseURL: BACK_URL });
 
 // Middleware cannot work without this
 // This is a function that will happen before every single request
@@ -30,8 +30,6 @@ export const signUp = (formData) => API.post('/user/signUp', formData);
 
 // Back Anime Requests
 
-export const addAnimeToList = (anime) => API.put('/anime/add', anime);
+export const getAnimeList = () => API.get('/anime');
 
-    // {
-    //     headers: {Authorization: `${JSON.parse(localStorage.getItem('profile')).token}`}
-    // }
+export const addAnimeToList = (anime) => API.put('/anime/add', anime);

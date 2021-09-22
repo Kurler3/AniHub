@@ -19,7 +19,7 @@ export const signIn = async (req, res) => {
         if(!passwordsMatch) return res.status(400).json({message: "Invalid credentials."});
 
         // Create the JWT token
-        const token = jwt.sign({email:existingUser.email, id:existingUser._id}, 'test', {expiresIn:'1h'});
+        const token = jwt.sign({email:existingUser.email, id:existingUser._id, saved_animes:existingUser.saved_animes}, 'test', {expiresIn:'1h'});
 
         // Set req headers
 
@@ -61,7 +61,7 @@ export const signUp = async (req, res) => {
             done_watching:[],
         });
 
-        const token = jwt.sign({email:newUser.email, id:newUser._id}, 'test', {expiresIn:'1h'});
+        const token = jwt.sign({email:newUser.email, id:newUser._id,saved_animes:existingUser.saved_animes}, 'test', {expiresIn:'1h'});
 
         res.status(200).json({result:newUser, token:token});
 

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { useParams } from 'react-router';
+import { useParams, useLocation } from 'react-router';
 import * as api from '../api/';
 import ReactLoading from 'react-loading';
 import {addAnimeToList} from '../actions/backAnimeActions';
@@ -7,8 +7,10 @@ import {useDispatch} from 'react-redux';
 
 const AnimePage = () => {
 
+    const location = useLocation();
     const params = useParams();
     const dispatch = useDispatch();
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
     const animeId = params.id;
 
@@ -23,10 +25,28 @@ const AnimePage = () => {
 
     useEffect(() => {
         if(anime===null) fetchAnimeData();
-        
-    });
+
+        setUser(JSON.parse(localStorage.getItem('profile')));
+
+    }, [location, anime]);
 
     const onAddListBtnClick = () => dispatch(addAnimeToList(anime));
+
+    const isAnimeInUsersFavList = () => {
+        // If user is null then just return true.
+        if(user===null) return true;
+        
+        let animeExistsInList;
+
+        user.result.saved_animes.forEach((savedAnime) => {
+            if(savedAnime.id === anime.mal_id.toString()){
+                animeExistsInList = true;
+                return;
+            }
+        });
+
+        return animeExistsInList;
+    }
 
     return (
 
@@ -35,7 +55,14 @@ const AnimePage = () => {
             <div className="left-container">
                 <h1 className="title">{anime.title}</h1>
                 <img className="poster" src={anime.image_url} alt="Anime Poster" />
-                <button onClick={onAddListBtnClick} className="add-list-btn">Add to List</button>
+
+                <button disabled={user===null || isAnimeInUsersFavList()} onClick={onAddListBtnClick} 
+                className={`${user===null || isAnimeInUsersFavList() ? 'disabled-add-btn' : 'add-list-btn'}`}
+                >Add to List</button>
+                
+                {user!==null ? <button className="remove-btn">
+                    Remove                    
+                </button> : ''}
             </div>
             <div className="right-container">
                 <div className="top-part">

@@ -1,14 +1,11 @@
-import { ADD_BACK_ANIME } from "../utils/action_constants";
+import { ADD_BACK_ANIME, GET_ANIME_LIST } from "../utils/action_constants";
 
 const backAnimeReducer = (state=[], action) => {
     switch(action.type){
+        case GET_ANIME_LIST:
+            return action.payload.data;
         case ADD_BACK_ANIME:
             // Action payload is going to be added anime
-
-            const newState = [...state, action.payload];
-
-            console.log(newState);
-
             return [...state, action.payload];
         default:
             return state;

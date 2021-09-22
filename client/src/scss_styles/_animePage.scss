@@ -24,21 +24,36 @@
             margin-top: 1em;
         }
 
-        .add-list-btn {
+        .add-list-btn, .disabled-add-btn, .remove-btn {
             padding: 1em;
             width: 50%;
             margin: 0 auto;
             margin-top: 1em;
-            cursor:pointer;
             color: white;
-            background: var(--blue);
             border: none;
             border-radius: 0.5rem;
             transition: var(--default-transition);
+            background: var(--blue);
+        }
+
+        .add-list-btn {
+            cursor:pointer;
 
             &:hover {
                 background: var(--dark-blue);
             }
+        }
+
+        .disabled-add-btn {
+            opacity: 0.5;
+            
+        }
+
+        .remove-btn {
+            cursor:pointer;
+            font-weight: bold;
+            color: black;
+            background: red;
         }
     }
 

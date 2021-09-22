@@ -6,6 +6,7 @@ import {useLocation, useHistory } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import exampleAvatar from '../example_profile_avatar.jpg'
 import { LOGOUT } from '../utils/action_constants';
+import { getAnimeList } from '../actions/backAnimeActions';
 
 const TABS = {
     Anime: 'Anime',
@@ -50,8 +51,11 @@ const Navbar = () => {
     // Navbar will react everytime user moves from /auth to /, for example
     useEffect(() => {
         setUser(JSON.parse(localStorage.getItem('profile')));
+
+        // if the user is logged in, fetch their favorite animes list
+        if(JSON.parse(localStorage.getItem('profile'))!==null) dispatch(getAnimeList());
     },
-    [location]);
+    [location, dispatch]);
 
     return (
         <div className='navbar'>
