@@ -11,4 +11,5 @@ export const LOGOUT = "LOGOUT";
 // Back End Anime
 
 export const GET_ANIME_LIST = "GET_ANIME_LIST";
+export const REMOVE_ANIME_FROM_LIST = "REMOVE_ANIME_FROM_LIST";
 export const ADD_BACK_ANIME = "ADD_BACK_ANIME";

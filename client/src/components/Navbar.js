@@ -74,7 +74,7 @@ const Navbar = () => {
                 <FontAwesomeIcon className="down-arrow-icon" icon={faAngleDown}/>
             </Link>
 
-            <Link to="/" style={{textDecoration:'none'}} className={`navbar-link navbar-anime-container ${currentActiveTab===TABS.MyList ? 'active-tab' : ''}`} onClick={()=>{setCurrentActiveTab(TABS.MyList)}}>
+            <Link to="/list" style={{textDecoration:'none'}} className={`navbar-link navbar-anime-container ${currentActiveTab===TABS.MyList ? 'active-tab' : ''}`} onClick={()=>{setCurrentActiveTab(TABS.MyList)}}>
                 <p>My List</p>
                 <FontAwesomeIcon className="down-arrow-icon" icon={faAngleDown}/>
             </Link>

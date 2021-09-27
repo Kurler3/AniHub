@@ -32,4 +32,6 @@ export const signUp = (formData) => API.post('/user/signUp', formData);
 
 export const getAnimeList = () => API.get('/anime');
 
+export const removeAnimeFromList = (anime) => API.put('/anime/remove', anime); 
+
 export const addAnimeToList = (anime) => API.put('/anime/add', anime);

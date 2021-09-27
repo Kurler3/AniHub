@@ -26,20 +26,12 @@ const UserSchema = mongoose.Schema({
         added_at:{
             type:Date,
             default: Date.now()
+        },
+        current_episode: {
+            type:Number,
+            default:1
         }
-    }],
-    currently_watching: [{
-            id: {
-                type:String,
-                required:true
-            },
-            current_episode: {
-                type:String,
-                default:"1"
-            }
-        }
-    ],
-    done_watching: [String]
+    }]
 });
 
 const User = mongoose.model('User', UserSchema);

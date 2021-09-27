@@ -1,16 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import { useParams, useLocation } from 'react-router';
+import { useParams, useLocation} from 'react-router';
 import * as api from '../api/';
 import ReactLoading from 'react-loading';
-import {addAnimeToList} from '../actions/backAnimeActions';
-import {useDispatch} from 'react-redux';
+import {addAnimeToList, removeAnimeFromList} from '../actions/backAnimeActions';
+import {useDispatch, useSelector} from 'react-redux';
 
 const AnimePage = () => {
 
     const location = useLocation();
     const params = useParams();
     const dispatch = useDispatch();
+    
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const savedAnimeList = useSelector(state => state.backAnimes);
 
     const animeId = params.id;
 
@@ -28,12 +30,15 @@ const AnimePage = () => {
 
         setUser(JSON.parse(localStorage.getItem('profile')));
 
-    }, [location, anime]);
+    }, [location, anime, savedAnimeList]);
 
     const onAddListBtnClick = () => dispatch(addAnimeToList(anime));
 
+    const onRemoveBtnClick = () => dispatch(removeAnimeFromList(anime));
+
     const isAnimeInUsersFavList = () => {
-        // If user is null then just return true.
+        // If user is null then just return true,
+        // so that the add button will be disabled
         if(user===null) return true;
         
         let animeExistsInList;
@@ -60,7 +65,7 @@ const AnimePage = () => {
                 className={`${user===null || isAnimeInUsersFavList() ? 'disabled-add-btn' : 'add-list-btn'}`}
                 >Add to List</button>
                 
-                {user!==null ? <button className="remove-btn">
+                {user!==null ? <button disabled={!isAnimeInUsersFavList()} onClick={onRemoveBtnClick} className={`${isAnimeInUsersFavList() ? 'active-remove-btn ' : 'disabled-remove-btn'}`}>
                     Remove                    
                 </button> : ''}
             </div>

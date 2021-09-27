@@ -24,7 +24,7 @@
             margin-top: 1em;
         }
 
-        .add-list-btn, .disabled-add-btn, .remove-btn {
+        .add-list-btn, .disabled-add-btn, .active-remove-btn, .disabled-remove-btn {
             padding: 1em;
             width: 50%;
             margin: 0 auto;
@@ -49,11 +49,17 @@
             
         }
 
-        .remove-btn {
-            cursor:pointer;
-            font-weight: bold;
+        .active-remove-btn, .disabled-remove-btn {
             color: black;
+        }
+
+        .active-remove-btn {
+            cursor: pointer;
+            font-weight: bold;
             background: red;
+        }
+        .disabled-remove-btn {
+            background: #EF6A5C;
         }
     }
 

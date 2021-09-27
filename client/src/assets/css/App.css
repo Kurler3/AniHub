@@ -40,7 +40,8 @@
     justify-content: center;
     align-items: center;
     transition: var(--default-transition);
-    cursor: pointer; }
+    cursor: pointer;
+    color: black; }
     .navbar-link:hover {
       color: var(--golden-orange); }
   .navbar-form-container {
@@ -362,7 +363,7 @@
       font-size: 1.2rem; }
     .anime-page-container .left-container .poster {
       margin-top: 1em; }
-    .anime-page-container .left-container .add-list-btn, .anime-page-container .left-container .disabled-add-btn, .anime-page-container .left-container .remove-btn {
+    .anime-page-container .left-container .add-list-btn, .anime-page-container .left-container .disabled-add-btn, .anime-page-container .left-container .active-remove-btn, .anime-page-container .left-container .disabled-remove-btn {
       padding: 1em;
       width: 50%;
       margin: 0 auto;
@@ -378,10 +379,14 @@
         background: var(--dark-blue); }
     .anime-page-container .left-container .disabled-add-btn {
       opacity: 0.5; }
-    .anime-page-container .left-container .remove-btn {
+    .anime-page-container .left-container .active-remove-btn, .anime-page-container .left-container .disabled-remove-btn {
+      color: black; }
+    .anime-page-container .left-container .active-remove-btn {
+      cursor: pointer;
       font-weight: bold;
-      color: black;
       background: red; }
+    .anime-page-container .left-container .disabled-remove-btn {
+      background: #EF6A5C; }
   .anime-page-container .right-container {
     display: flex;
     flex-direction: column;

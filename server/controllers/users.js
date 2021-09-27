@@ -37,7 +37,6 @@ export const signUp = async (req, res) => {
     const {firstName, lastName, email, password, confirmPassword} = req.body;
 
     try {
-        
         // Check if there exists an user with this email already
         const existingUser = await User.findOne({email:email});
 
@@ -49,7 +48,7 @@ export const signUp = async (req, res) => {
         // Encrypt the password
 
         const encryptedPassword = await bcryptjs.hash(password, 7);
-
+        
         // Save to user to database
         const newUser = await User.create({
             first_name:firstName,
@@ -57,15 +56,14 @@ export const signUp = async (req, res) => {
             email:email,
             password:encryptedPassword,
             saved_animes:[],
-            currently_watching:[],
-            done_watching:[],
         });
 
-        const token = jwt.sign({email:newUser.email, id:newUser._id,saved_animes:existingUser.saved_animes}, 'test', {expiresIn:'1h'});
+        const token = jwt.sign({email:newUser.email, id:newUser._id,saved_animes:[]}, 'test', {expiresIn:'1h'});
 
         res.status(200).json({result:newUser, token:token});
 
     } catch (error) {
+        console.log(error);
         res.status(500).json({message:"Something went wrong with the server... :("});
     }
 }

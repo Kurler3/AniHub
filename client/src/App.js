@@ -6,6 +6,7 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import AnimePage from './components/AnimePage';
 import Footer from './components/Footer';
 import AuthForm from './components/AuthForm';
+import MyList from './components/MyList';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/" component={Homepage}/>
         <Route exact path="/auth" component={AuthForm}/>
         <Route exact path="/anime/:id" component={AnimePage} />
+        <Route exact path="/list" component={MyList} />
       </Switch>
       <Footer/>
     </Router>
