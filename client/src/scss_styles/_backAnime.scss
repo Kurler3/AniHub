@@ -1,0 +1,30 @@
+.back-anime-container {
+    display: flex;
+    flex-direction: row;
+    height: 30vh;
+    width: 45%;
+    background-color: lightblue;
+    // font-family: var(--noto-sans-jp);
+    font-family: var(--pt-sans);
+
+    .poster {
+        height: 30vh;
+        width: 20vh;
+    }
+
+    .middle-container {
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .added-at {
+
+        }
+    }
+}

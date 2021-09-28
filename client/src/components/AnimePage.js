@@ -22,6 +22,9 @@ const AnimePage = () => {
 
     const fetchAnimeData = async () => {
         const animeInfo = await api.getAnime(animeId); 
+
+        console.log(animeInfo.data);
+
         setAnime(animeInfo.data);
     }
 
@@ -59,8 +62,9 @@ const AnimePage = () => {
         <div className="anime-page-container">
             <div className="left-container">
                 <h1 className="title">{anime.title}</h1>
-                <img className="poster" src={anime.image_url} alt="Anime Poster" />
-
+                <a href={anime.url} target="_blank">
+                    <img className="poster" src={anime.image_url} alt="Anime Poster" />
+                </a>
                 <button disabled={user===null || isAnimeInUsersFavList()} onClick={onAddListBtnClick} 
                 className={`${user===null || isAnimeInUsersFavList() ? 'disabled-add-btn' : 'add-list-btn'}`}
                 >Add to List</button>

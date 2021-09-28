@@ -451,3 +451,27 @@
       .anime-page-container .right-container .synopsis-container .synopsis {
         padding-top: 0.5em;
         font-size: 0.7rem; }
+
+.my-anime-list-container {
+  min-height: 55vh;
+  margin: 0 auto;
+  width: 80%; }
+  .my-anime-list-container .list-container {
+    padding: 1em; }
+  .my-anime-list-container .empty-list-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    height: 55vh; }
+
+.back-anime-container {
+  height: 200vh;
+  background-color: red; }
+  .back-anime-container .poster {
+    height: 30vh;
+    width: 30vh; }
+  .back-anime-container .middle-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; }

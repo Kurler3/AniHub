@@ -15,7 +15,6 @@ const backAnimeReducer = (state=[], action) => {
 
             localStorage.setItem('profile', JSON.stringify(user));
 
-            // Action payload is going to be added anime
             return user.result.saved_animes;
         case REMOVE_ANIME_FROM_LIST:
             // Update user in localStorage
