@@ -455,9 +455,12 @@
 .my-anime-list-container {
   min-height: 55vh;
   margin: 0 auto;
-  width: 80%; }
+  width: 90%; }
   .my-anime-list-container .list-container {
-    padding: 1em; }
+    padding: 2em;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(2, 1fr); }
   .my-anime-list-container .empty-list-container {
     display: flex;
     justify-content: center;
@@ -466,12 +469,65 @@
     height: 55vh; }
 
 .back-anime-container {
-  height: 200vh;
-  background-color: red; }
+  display: flex;
+  flex-direction: row;
+  height: 25vh;
+  background-color: lightblue;
+  font-family: var(--pt-sans); }
   .back-anime-container .poster {
-    height: 30vh;
-    width: 30vh; }
+    height: 25vh;
+    width: 20vh; }
   .back-anime-container .middle-container {
+    padding: 1em;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; }
+    justify-content: space-between;
+    width: 50%; }
+    .back-anime-container .middle-container .title {
+      font-size: 1.2rem;
+      font-weight: bold; }
+    .back-anime-container .middle-container .added-at {
+      font-size: 0.8rem; }
+  .back-anime-container .current-episode-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 40%; }
+    .back-anime-container .current-episode-container .title {
+      padding: 1em; }
+    .back-anime-container .current-episode-container .episode-counter {
+      margin-top: 1em;
+      font-size: 1.2rem; }
+    .back-anime-container .current-episode-container .current-episode-controller-container {
+      padding: 0.8em 0;
+      display: flex;
+      width: 50%;
+      justify-content: space-between; }
+      .back-anime-container .current-episode-container .current-episode-controller-container .arrow-controller {
+        cursor: pointer;
+        transition: var(--default-transition);
+        padding: 0.2em 0.5em;
+        border-radius: 0.2rem; }
+        .back-anime-container .current-episode-container .current-episode-controller-container .arrow-controller:hover {
+          background: lightgrey; }
+      .back-anime-container .current-episode-container .current-episode-controller-container .disabled {
+        color: grey;
+        cursor: auto; }
+  .back-anime-container .remove-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%; }
+    .back-anime-container .remove-button-container .remove-button {
+      padding: 1em;
+      font-size: 0.8rem;
+      background: #FF5151;
+      cursor: pointer;
+      border: none;
+      color: white;
+      border-radius: 0.7rem;
+      transition: var(--default-transition); }
+      .back-anime-container .remove-button-container .remove-button:hover {
+        color: black;
+        background-color: red; }
