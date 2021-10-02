@@ -23,6 +23,8 @@ export const getSeasonAnime = (season) => axios.get(`${JIKAN_URL}/season/${new D
 
 export const getAnime = (id) => axios.get(`${JIKAN_URL}/anime/${id}`);
 
+export const searchAnime = (input) => axios.get(`${JIKAN_URL}/search/anime?q=${input}`);
+
 // Auth 
 export const signIn = (formData) => API.post('/user/signIn', formData);
 
@@ -35,3 +37,5 @@ export const getAnimeList = () => API.get('/anime');
 export const removeAnimeFromList = (anime) => API.put('/anime/remove', anime); 
 
 export const addAnimeToList = (anime) => API.put('/anime/add', anime);
+
+export const updateAnimeEpisode = (id, episode) => API.put('/anime/updateEpisode', {id, episode});

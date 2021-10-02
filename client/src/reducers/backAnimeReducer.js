@@ -1,4 +1,4 @@
-import { ADD_BACK_ANIME, GET_ANIME_LIST, REMOVE_ANIME_FROM_LIST } from "../utils/action_constants";
+import { ADD_BACK_ANIME, GET_ANIME_LIST, REMOVE_ANIME_FROM_LIST, CLEAR_LIST, UPDATE_EPISODE } from "../utils/action_constants";
 
 const backAnimeReducer = (state=[], action) => {
     
@@ -26,6 +26,15 @@ const backAnimeReducer = (state=[], action) => {
 
             // Filters out the id of the anime that was removed
             return user.result.saved_animes;
+        case UPDATE_EPISODE:
+            
+            const animeIndex = state.findIndex((anime) => anime.id===action.payload.data.id);
+
+            state[animeIndex].current_episode = action.payload.data.current_episode;
+
+            return state;
+        case CLEAR_LIST:
+            return [];
         default:
             return state;
     }

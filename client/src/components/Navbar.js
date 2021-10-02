@@ -5,8 +5,9 @@ import {Link} from 'react-router-dom';
 import {useLocation, useHistory } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import exampleAvatar from '../example_profile_avatar.jpg'
-import { LOGOUT } from '../utils/action_constants';
+import { CLEAR_LIST, LOGOUT } from '../utils/action_constants';
 import { getAnimeList } from '../actions/backAnimeActions';
+import { searchAnime } from '../actions/frontAnimeActions';
 
 const TABS = {
     Anime: 'Anime',
@@ -29,9 +30,20 @@ const Navbar = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+
+        console.log(searchInput);
+
+        // Update front animes state
+        if(searchInput.length >= 3){
+            dispatch(searchAnime(searchInput));
+        }
     }
 
-    const onSearchInputChange = (e) => setSearchInput(e.target.value);
+    const onSearchInputChange = (e) => {
+        setSearchInput(e.target.value);
+
+        console.log(e.target.value);
+    }
 
     const onProfileClick = () => {
         
@@ -40,6 +52,9 @@ const Navbar = () => {
     const onLogout = () => {
         // Just dispatch the logout action
         dispatch({type:LOGOUT});
+
+        // Clear back anime storage
+        dispatch({type:CLEAR_LIST});
 
         // Push back to homepage
         history.push('/');

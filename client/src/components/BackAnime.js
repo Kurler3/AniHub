@@ -4,8 +4,12 @@ import ReactLoading from 'react-loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import {Link} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import { removeAnimeFromList, updateAnimeEpisode } from '../actions/backAnimeActions';
 
 const BackAnime = ({id, addedAt, currentEpisode}) => {
+
+    const dispatch = useDispatch();
 
     const [anime, setAnime] = useState(null);
     const [episodeCounter, setEpisodeCounter] = useState(currentEpisode);
@@ -25,8 +29,6 @@ const BackAnime = ({id, addedAt, currentEpisode}) => {
     const fetchAnimeData = async () => {
         const animeInfo = await api.getAnime(id); 
 
-        console.log(animeInfo.data);
-
         setAnime(animeInfo.data);
 
         // If the anime has max episodes then if the current episode is
@@ -37,19 +39,31 @@ const BackAnime = ({id, addedAt, currentEpisode}) => {
 
     const onDecreaseEpisodeClick = () => {
         if(episodeCanDecrease) {
+            setEpisodeCounter(episodeCounter-1);
 
+            dispatch(updateAnimeEpisode(anime.mal_id, episodeCounter-1));
+
+            setEpisodeCanDecrease(canEpisodeCounterDecrease());
         }
     }
 
     const onIncreaseEpisodeClick = () => {
         if(episodeCanIncrease) {
-
+            // Increase internal state of current episode
+            setEpisodeCounter(episodeCounter+1);
+            // Dispatch action to back end reducer (just need to send the anime's id and currentEpisode)
+            dispatch(updateAnimeEpisode(anime.mal_id, episodeCounter+1));
+            // Action makes call to backend and updates the specific user's list entry
+            // Update internal state of can increase episode
+            setEpisodeCanIncrease(canEpisodeCounterIncrease());
         }
     }
 
-    const onRemoveAnimeClick = (e) => {
+    const onRemoveAnimeClick = () => dispatch(removeAnimeFromList(anime));
 
-    }
+    const canEpisodeCounterIncrease = () => anime.episodes !== null ? currentEpisode < anime.episodes ? true: false : true;
+
+    const canEpisodeCounterDecrease = () => episodeCounter!==1;
 
     return (
         anime !== null ? 

@@ -21,3 +21,14 @@
         height: 55vh;
     }
 }
+
+.my-list-no-user-container {
+    min-height: 55vh;
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 2rem;
+}

@@ -11,9 +11,16 @@ const Footer = () => {
                     <Link to="/" style={{textDecoration:'none'}} className="left-container-title">Ani<span className="left-container-title-span">Hub</span>
                     </Link>
                     
-                    <p className="left-container-tab">Anime</p>
-                    <p className="left-container-tab">Media</p>
+                    <Link to="/" style={{textDecoration:'none'}}>
+                        <p className="left-container-tab">Anime</p>
+                    </Link>
+                    <Link to="/" style={{textDecoration:'none'}}>
+                        <p className="left-container-tab">Media</p>
+                    </Link>
+                    <Link to="/list" style={{textDecoration:'none'}}>
                     <p className="left-container-tab">MyList</p>
+                    </Link>
+                    
             </div>
 
             <div className="right-container">

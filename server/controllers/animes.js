@@ -78,3 +78,25 @@ export const removeAnime = async (req, res) => {
     }
 }
 
+export const updateAnimeEpisode = async (req, res) => {
+    const {id, episode} = req.body;
+
+    if(!req.userId) return res.status(400).json({message:"No User logged in."});
+
+    try {
+        const existingUser = await User.findById(req.userId);
+
+        const animeIndex = existingUser.saved_animes.findIndex((anime) => anime.id===id.toString());
+
+        existingUser.saved_animes[animeIndex].current_episode = episode;
+
+        // Find anime by id in the users saved_anime list
+        const updatedUser = await User.findOneAndUpdate({_id: existingUser._id}, { saved_animes:existingUser.saved_animes},{new:true});
+
+        // return the updated saved anime
+        res.status(200).json({data:existingUser.saved_animes[animeIndex]});
+    } catch (error) {
+        res.status(500).json({message:"Server error..."});   
+    }
+}
+
