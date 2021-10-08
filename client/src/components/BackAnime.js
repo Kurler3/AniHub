@@ -24,7 +24,7 @@ const BackAnime = ({id, addedAt, currentEpisode}) => {
 
     useEffect(() => {
         if(anime===null) fetchAnimeData();
-    }, []);
+    }, [episodeCanDecrease, episodeCanIncrease]);
 
     const fetchAnimeData = async () => {
         const animeInfo = await api.getAnime(id); 
@@ -43,7 +43,7 @@ const BackAnime = ({id, addedAt, currentEpisode}) => {
 
             dispatch(updateAnimeEpisode(anime.mal_id, episodeCounter-1));
 
-            setEpisodeCanDecrease(canEpisodeCounterDecrease());
+            setEpisodeCanDecrease(canEpisodeCounterDecrease(episodeCounter-1));
         }
     }
 
@@ -55,15 +55,16 @@ const BackAnime = ({id, addedAt, currentEpisode}) => {
             dispatch(updateAnimeEpisode(anime.mal_id, episodeCounter+1));
             // Action makes call to backend and updates the specific user's list entry
             // Update internal state of can increase episode
-            setEpisodeCanIncrease(canEpisodeCounterIncrease());
+            setEpisodeCanIncrease(canEpisodeCounterIncrease(episodeCounter+1));
+            setEpisodeCanDecrease(canEpisodeCounterDecrease(episodeCounter+1));
         }
     }
 
     const onRemoveAnimeClick = () => dispatch(removeAnimeFromList(anime));
 
-    const canEpisodeCounterIncrease = () => anime.episodes !== null ? currentEpisode < anime.episodes ? true: false : true;
+    const canEpisodeCounterIncrease = (counter) => anime.episodes !== null ? counter < anime.episodes ? true: false : true;
 
-    const canEpisodeCounterDecrease = () => episodeCounter!==1;
+    const canEpisodeCounterDecrease = (counter) => counter>1;
 
     return (
         anime !== null ? 

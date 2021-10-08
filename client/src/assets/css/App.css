@@ -88,12 +88,25 @@
     .navbar-profile-container .profile-avatar-container {
       background-size: cover;
       height: 50px;
-      width: 50px; }
-      .navbar-profile-container .profile-avatar-container .profile-avatar-image {
+      width: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .navbar-profile-container .profile-avatar-container .profile-avatar-image, .navbar-profile-container .profile-avatar-container .profile-avatar-no-image {
         max-width: 100%;
         max-height: 100%;
         display: block;
-        /* remove extra space below image */ }
+        /* remove extra space below image */
+        border-radius: 0.4rem; }
+      .navbar-profile-container .profile-avatar-container .profile-avatar-no-image {
+        font-size: 1rem;
+        font-weight: bold;
+        background-color: var(--golden-orange);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
   .navbar .logout-btn {
     padding: 0 1em;
     height: 50%;
@@ -132,7 +145,8 @@
   display: flex;
   padding-bottom: 1em;
   flex-direction: column;
-  justify-content: space-between; }
+  justify-content: space-between;
+  background-color: #F6F6F6; }
   .homepage-container .anime-filters-container {
     margin: 0 auto;
     width: 70%;
@@ -311,6 +325,16 @@
       width: 90%;
       border-radius: 0.5rem;
       border: 1px solid black; }
+    .auth-form-container .auth-form .confirm-pass-input {
+      width: 100%;
+      margin-top: 0; }
+    .auth-form-container .auth-form .auth-confirm-pass-container {
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0.5em 0;
+      height: 13vh; }
     .auth-form-container .auth-form .auth-password-input {
       display: flex;
       width: 90%;
@@ -345,6 +369,33 @@
       text-decoration: underline; }
   .auth-form-container .google-auth-btn {
     margin-top: 1em; }
+  .auth-form-container .invalid-input-container {
+    position: absolute;
+    bottom: 25vh;
+    background: #171717;
+    padding: 0.3em 0;
+    color: white;
+    width: 35vw;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 0.3rem;
+    transition: var(--default-transition); }
+    .auth-form-container .invalid-input-container .text-container {
+      padding: 1em;
+      font-weight: bold; }
+    .auth-form-container .invalid-input-container .close-btn {
+      padding: 1em 2em;
+      margin-right: 1em;
+      background: #1139FF;
+      border: none;
+      border-radius: 0.3rem;
+      color: white;
+      cursor: pointer;
+      transition: var(--default-transition); }
+      .auth-form-container .invalid-input-container .close-btn .btn-icon {
+        font-size: 1.3rem; }
+      .auth-form-container .invalid-input-container .close-btn:hover {
+        background-color: #0A28BF; }
 
 .anime-page-container {
   display: flex;
@@ -482,10 +533,12 @@
   display: flex;
   flex-direction: row;
   height: 25vh;
-  background-color: lightblue;
-  font-family: var(--pt-sans); }
+  background-color: #6699FF;
+  font-family: var(--pt-sans);
+  border: 2px solid var(--golden-orange);
+  border-radius: 0.2rem; }
   .back-anime-container .poster {
-    height: 25vh;
+    height: 24.5vh;
     width: 20vh; }
   .back-anime-container .middle-container {
     padding: 1em;

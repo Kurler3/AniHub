@@ -4,7 +4,7 @@ import { faAngleDown, faSearch } from '@fortawesome/free-solid-svg-icons';
 import {Link} from 'react-router-dom';
 import {useLocation, useHistory } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
-import exampleAvatar from '../example_profile_avatar.jpg'
+import exampleAvatar from '../example_profile_avatar.jpg';
 import { CLEAR_LIST, LOGOUT } from '../utils/action_constants';
 import { getAnimeList } from '../actions/backAnimeActions';
 import { searchAnime } from '../actions/frontAnimeActions';
@@ -31,22 +31,22 @@ const Navbar = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        console.log(searchInput);
+        //console.log(searchInput);
 
         // Update front animes state
         if(searchInput.length >= 3){
             dispatch(searchAnime(searchInput));
+
+            // Set current page to homepage
+            history.push('/');
         }
     }
 
-    const onSearchInputChange = (e) => {
-        setSearchInput(e.target.value);
-
-        console.log(e.target.value);
-    }
+    const onSearchInputChange = (e) => setSearchInput(e.target.value)
+    
 
     const onProfileClick = () => {
-        
+
     }
 
     const onLogout = () => {
@@ -84,7 +84,7 @@ const Navbar = () => {
                 <FontAwesomeIcon className="down-arrow-icon" icon={faAngleDown}/>
             </Link>
 
-            <Link to="/" style={{textDecoration:'none'}} className={`navbar-link navbar-anime-container ${currentActiveTab===TABS.Media ? 'active-tab' : ''}`} onClick={()=>{setCurrentActiveTab(TABS.Media)}}>
+            <Link to="/media" style={{textDecoration:'none'}} className={`navbar-link navbar-anime-container ${currentActiveTab===TABS.Media ? 'active-tab' : ''}`} onClick={()=>{setCurrentActiveTab(TABS.Media)}}>
                 <p>Media</p>
                 <FontAwesomeIcon className="down-arrow-icon" icon={faAngleDown}/>
             </Link>
@@ -114,15 +114,16 @@ const Navbar = () => {
             
             : 
                 
-                    <div className="navbar-profile-container" onClick={onProfileClick}>
+                    <Link to={`/profile/${user.result._id}`} className="navbar-profile-container" style={{textDecoration:'none', color:'black'}}>
                         <div className="profile-name-container">
                             <p className="profile-name">Hello, <span className="profile-name-span">{`${user.result.first_name}`}</span></p>
                             <FontAwesomeIcon className="down-arrow-icon" icon={faAngleDown}/>
                         </div>
                         <div className="profile-avatar-container">
-                            <img className="profile-avatar-image" src={exampleAvatar} alt="profile_avatar" />
+                            {/* <img className="profile-avatar-image" src={exampleAvatar} alt="profile_avatar" /> */}
+                            {user.result.avatar_img.length > 0 ? <img className="profile-avatar-image" src={user.result.avatar_img} alt="profile_avatar"/> : <p className="profile-avatar-no-image">{user.result.first_name[0]}</p>}
                         </div>
-                    </div>
+                    </Link>
             }
 
             {

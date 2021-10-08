@@ -34,8 +34,8 @@ export const signIn = async (req, res) => {
 }
 
 export const signUp = async (req, res) => {
-    const {firstName, lastName, email, password, confirmPassword} = req.body;
-
+    const {firstName, lastName, email, password, confirmPassword, avatar_img} = req.body;
+    
     try {
         // Check if there exists an user with this email already
         const existingUser = await User.findOne({email:email});
@@ -56,6 +56,7 @@ export const signUp = async (req, res) => {
             email:email,
             password:encryptedPassword,
             saved_animes:[],
+            avatar_img: avatar_img,
         });
 
         const token = jwt.sign({email:newUser.email, id:newUser._id,saved_animes:[]}, 'test', {expiresIn:'1h'});

@@ -7,6 +7,8 @@ import AnimePage from './components/AnimePage';
 import Footer from './components/Footer';
 import AuthForm from './components/AuthForm';
 import MyList from './components/MyList';
+import Media from './components/Media';
+import Profile from './components/Profile';
 
 function App() {
   return (
@@ -16,7 +18,9 @@ function App() {
         <Route exact path="/" component={Homepage}/>
         <Route exact path="/auth" component={AuthForm}/>
         <Route exact path="/anime/:id" component={AnimePage} />
+        <Route exact path="/media" component={Media} />
         <Route exact path="/list" component={MyList} />
+        <Route exact path="/profile/:id" component={Profile} />
       </Switch>
       <Footer/>
     </Router>

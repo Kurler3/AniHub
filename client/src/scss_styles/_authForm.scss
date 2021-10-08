@@ -30,8 +30,20 @@
             width: 90%;
             border-radius: 0.5rem;
             border: 1px solid black;
-
         }
+
+        .confirm-pass-input {
+            width: 100%;
+            margin-top: 0;
+        }
+        .auth-confirm-pass-container {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0.5em 0;
+            height: 13vh;
+        }        
 
         .auth-password-input {
             display: flex;
@@ -83,5 +95,43 @@
 
     .google-auth-btn {
         margin-top: 1em;
+    }
+
+    .invalid-input-container {
+        position: absolute;
+        bottom: 25vh;
+        background: #171717;
+        padding: 0.3em 0;
+        color: white;
+        width: 35vw;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 0.3rem;
+        transition: var(--default-transition);
+
+        .text-container {
+            padding: 1em;
+            font-weight: bold;
+        }
+
+        .close-btn {
+            padding: 1em 2em;
+            margin-right: 1em;
+            background: #1139FF;
+            border: none;
+            border-radius: 0.3rem;
+            color: white;
+            cursor: pointer;
+            transition: var(--default-transition);
+
+            .btn-icon {
+                font-size: 1.3rem;
+            }
+
+            &:hover {
+                background-color: #0A28BF;
+            }
+
+        }
     }
 }

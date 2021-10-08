@@ -9,15 +9,11 @@ const FrontAnimes = () => {
     const calculateNumPages = (arrayLength) => {
         // Given an array length, set the num of pages for
         // 25 animes each page
-
         let numPages;
         let remain;
-
         
         numPages = arrayLength / 10;
         remain = arrayLength % 10;     
-
-        
 
         if(remain!==0) return numPages +1;
         return numPages;

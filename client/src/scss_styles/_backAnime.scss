@@ -3,13 +3,15 @@
     flex-direction: row;
     height: 25vh;
     //width: 45%;
-    background-color: lightblue;
+    //background-color: lightblue;
+    background-color: #6699FF;
     // font-family: var(--noto-sans-jp);
     font-family: var(--pt-sans);
-    //border: 1px solid blue;
+    border: 2px solid var(--golden-orange);
+    border-radius: 0.2rem;
 
     .poster {
-        height: 25vh;
+        height: 24.5vh;
         width: 20vh;
     }
 

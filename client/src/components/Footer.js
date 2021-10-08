@@ -14,7 +14,7 @@ const Footer = () => {
                     <Link to="/" style={{textDecoration:'none'}}>
                         <p className="left-container-tab">Anime</p>
                     </Link>
-                    <Link to="/" style={{textDecoration:'none'}}>
+                    <Link to="/media" style={{textDecoration:'none'}}>
                         <p className="left-container-tab">Media</p>
                     </Link>
                     <Link to="/list" style={{textDecoration:'none'}}>

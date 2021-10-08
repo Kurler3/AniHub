@@ -5,12 +5,9 @@ const frontAnimeReducer = (state=[], action) => {
         case GET_TOP_ANIME:
             if(state.length===0) return [...state,action.payload];
             return [action.payload];
-        case GET_SEASON_ANIME, SEARCH_ANIME:
-            
-            // let animes = [];
-
-            // action.payload.length > 25 ? animes = action.payload.slice(0, 26) : animes = action.payload;
-
+        case GET_SEASON_ANIME:
+            return [action.payload];
+        case SEARCH_ANIME:
             return [action.payload];
         default:
             return state;
