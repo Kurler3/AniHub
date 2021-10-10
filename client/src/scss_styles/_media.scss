@@ -1,3 +1,14 @@
 .media-container {
     min-height: 55vh;
+    margin: 0 auto;
+    padding: 2em 9em;
+    background: #0A0A0A;
+
+    .left-container {
+        width: 62%;
+    }
+
+    .right-container {
+        width: 30%;
+    }
 }

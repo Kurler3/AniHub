@@ -1,0 +1,70 @@
+.media-post-input-container {
+    display: flex;
+    width: 100%;
+    padding: 0.8em;
+    background: #212121;
+    align-items: center;
+    border-radius: 0.3rem;
+    border: 0.1px solid white;
+    max-height: 60px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    .user-avatar {
+        background-size: cover;
+        height: 30px;
+        width: 30px;
+        border-radius: 0.5rem;
+    }
+
+    .avatar-text-container {
+        height: 35px;
+        width: 35px;
+        background-color: var(--golden-orange);
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        border-radius:0.5rem;
+
+        .text {
+            font-size: 1.1rem;
+            align-self:center;
+            font-weight: bold;
+
+        }
+    }
+
+    .post-content-input {
+        margin-left: 0.5em;
+        width: 80%;
+        padding: 0.8em 1.3em;
+        background: #373737;
+        border: none;
+        border-radius: 0.3rem;
+
+        &:hover {
+            background: #212121;
+            border: 0.02rem solid white;
+        }
+    }
+
+    .icon-container {
+        padding: 0.4em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--default-transition);
+        border-radius: 0.2rem;
+        margin-left: 0.8em;
+
+        .icon {
+            font-size: 1.3rem;
+            color: grey;
+        }
+
+        &:hover {
+            background-color: lightgray;
+        }
+    }
+    
+}
