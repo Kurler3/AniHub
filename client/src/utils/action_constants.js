@@ -16,3 +16,7 @@ export const REMOVE_ANIME_FROM_LIST = "REMOVE_ANIME_FROM_LIST";
 export const ADD_BACK_ANIME = "ADD_BACK_ANIME";
 export const CLEAR_LIST = "CLEAR_LIST";
 export const UPDATE_EPISODE = "UPDATE_EPISODE";
+
+// Media 
+
+export const GET_MEDIA_HOME_POSTS = "GET_MEDIA_HOME_POSTS";

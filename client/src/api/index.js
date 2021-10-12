@@ -39,3 +39,7 @@ export const removeAnimeFromList = (anime) => API.put('/anime/remove', anime);
 export const addAnimeToList = (anime) => API.put('/anime/add', anime);
 
 export const updateAnimeEpisode = (id, episode) => API.put('/anime/updateEpisode', {id, episode});
+
+// Media
+
+export const getMediaHomePosts = (filter) => API.get('/media/posts', filter);

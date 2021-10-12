@@ -9,6 +9,9 @@
   --light-grey: #E9E9E9;
   --blue: #15AFED;
   --dark-blue: #0063CF;
+  --media-grey: #212121;
+  --media-light-grey:#373737;
+  --media-hover-grey:#292929;
   --default-transition: 0.1s all ease-in-out;
   --noto-sans-jp: 'Noto Sans JP', sans-serif;
   --pt-sans: 'PT Sans', sans-serif; }
@@ -598,19 +601,61 @@
 
 .media-container {
   min-height: 55vh;
+  display: flex;
+  justify-content: space-between;
   margin: 0 auto;
   padding: 2em 9em;
-  background: #0A0A0A; }
+  background: #0A0A0A;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
   .media-container .left-container {
     width: 62%; }
   .media-container .right-container {
-    width: 30%; }
+    width: 35%; }
+    .media-container .right-container .create-post-community-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 0.3rem;
+      border: 0.1px solid white;
+      padding: 1em;
+      background: var(--media-grey);
+      color: white;
+      height: 35vh; }
+      .media-container .right-container .create-post-community-container .title {
+        font-weight: bold;
+        font-size: 1.1rem; }
+      .media-container .right-container .create-post-community-container .intro {
+        font-size: 0.9rem; }
+      .media-container .right-container .create-post-community-container .create-post-btn {
+        padding: 0.5em 1em;
+        border-radius: 1rem;
+        font-weight: bold;
+        width: 100%;
+        border: none;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: var(--default-transition); }
+        .media-container .right-container .create-post-community-container .create-post-btn:hover {
+          background-color: #D8D8D8; }
+      .media-container .right-container .create-post-community-container .create-community-btn {
+        width: 100%;
+        padding: 0.5em 1em;
+        border-radius: 1rem;
+        font-weight: bold;
+        border: 1px solid white;
+        background: var(--media-grey);
+        color: white;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: var(--default-transition); }
+        .media-container .right-container .create-post-community-container .create-community-btn:hover {
+          background: #3F3E3E; }
 
 .media-post-input-container {
   display: flex;
   width: 100%;
   padding: 0.8em;
-  background: #212121;
+  background: var(--media-grey);
   align-items: center;
   border-radius: 0.3rem;
   border: 0.1px solid white;
@@ -635,13 +680,13 @@
       font-weight: bold; }
   .media-post-input-container .post-content-input {
     margin-left: 0.5em;
-    width: 80%;
+    width: 100%;
     padding: 0.8em 1.3em;
-    background: #373737;
+    background: var(--media-light-grey);
     border: none;
     border-radius: 0.3rem; }
     .media-post-input-container .post-content-input:hover {
-      background: #212121;
+      background: var(--media-hover-grey);
       border: 0.02rem solid white; }
   .media-post-input-container .icon-container {
     padding: 0.4em;
@@ -659,4 +704,46 @@
       background-color: lightgray; }
 
 .posts-list-container {
+  width: 100%;
+  margin-top: 1em;
   color: white; }
+  .posts-list-container .posts-container {
+    padding: 1em;
+    margin-top: 1em;
+    border-radius: 0.3rem;
+    border: 0.1px solid white; }
+
+.filters-container {
+  border-radius: 0.3rem;
+  border: 0.1px solid white;
+  display: flex;
+  padding: 1em;
+  justify-content: space-around;
+  background: var(--media-grey);
+  color: grey; }
+  .filters-container .filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    padding: 1em 0.5em;
+    transition: var(--default-transition);
+    cursor: pointer;
+    border-radius: 1rem; }
+    .filters-container .filter-container:hover {
+      background: var(--media-light-grey); }
+    .filters-container .filter-container .icon {
+      font-size: 1rem; }
+    .filters-container .filter-container .text {
+      font-size: 1rem;
+      font-weight: bold;
+      margin-left: 0.5em; }
+  .filters-container .selected-filter {
+    background: #2F2F2F;
+    color: #C0C0C0; }
+
+.create-post-container {
+  min-height: 55vh; }
+
+.create-community-container {
+  min-height: 55vh; }

@@ -35,7 +35,8 @@ const UserSchema = mongoose.Schema({
             type:Number,
             default:1
         }
-    }]
+    }],
+    communities_subscribed: [String],
 });
 
 const User = mongoose.model('User', UserSchema);

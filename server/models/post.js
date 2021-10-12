@@ -45,6 +45,10 @@ const PostSchema = mongoose.Schema({
         type:String,
         required:true,
     },
+    community_id: {
+        type:String,
+        required:true,
+    },
     upvoted_by:[
         {
             type:String,
@@ -61,6 +65,12 @@ const PostSchema = mongoose.Schema({
             type:String
         }
     ],
+    viewed_by_length:{
+        type:Number
+    },
+    total_votes: {
+        type:Number
+    },
     comments:[
         {
             type:CommentSchema,

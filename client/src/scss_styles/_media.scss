@@ -1,14 +1,70 @@
 .media-container {
     min-height: 55vh;
+    display: flex;
+    justify-content: space-between;
     margin: 0 auto;
     padding: 2em 9em;
     background: #0A0A0A;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     .left-container {
         width: 62%;
     }
 
     .right-container {
-        width: 30%;
+        width: 35%;
+
+        .create-post-community-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 0.3rem;
+            border: 0.1px solid white;
+            padding: 1em;
+            background: var(--media-grey);
+            color: white;
+            height: 35vh;
+
+            .title {
+                font-weight: bold;
+                font-size:1.1rem;
+            }
+
+            .intro {
+                font-size: 0.9rem;
+            }
+
+            .create-post-btn {
+                padding: 0.5em 1em;
+                border-radius: 1rem;
+                font-weight: bold;
+                width: 100%;
+                border: none;
+                font-size: 0.9rem;
+                cursor: pointer;
+                transition: var(--default-transition);
+
+                &:hover {
+                    background-color: #D8D8D8;
+                }
+            }
+
+            .create-community-btn {
+                width: 100%;
+                padding: 0.5em 1em;
+                border-radius: 1rem;
+                font-weight: bold;
+                border: 1px solid white;
+                background: var(--media-grey);
+                color: white;
+                font-size: 0.9rem;
+                cursor: pointer;
+                transition: var(--default-transition);
+
+                &:hover {
+                    background:#3F3E3E;
+                }
+            }
+        }
     }
 }

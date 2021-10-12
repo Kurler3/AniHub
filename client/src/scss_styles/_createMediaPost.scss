@@ -2,7 +2,7 @@
     display: flex;
     width: 100%;
     padding: 0.8em;
-    background: #212121;
+    background: var(--media-grey);
     align-items: center;
     border-radius: 0.3rem;
     border: 0.1px solid white;
@@ -35,14 +35,14 @@
 
     .post-content-input {
         margin-left: 0.5em;
-        width: 80%;
+        width: 100%;
         padding: 0.8em 1.3em;
-        background: #373737;
+        background: var(--media-light-grey);
         border: none;
         border-radius: 0.3rem;
 
         &:hover {
-            background: #212121;
+            background: var(--media-hover-grey);
             border: 0.02rem solid white;
         }
     }
