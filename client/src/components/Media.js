@@ -3,12 +3,16 @@ import CreateMediaPost from './subcomponents/CreateMediaPost';
 import { useLocation } from 'react-router-dom';
 import PostList from './PostList';
 import {Link} from 'react-router-dom';
+import CreateCommunityPopUp from './subcomponents/CreateCommunityPopUp';
 
 const Media = () => {
 
     const location = useLocation();
 
+    const [createCommunityVisible, setCreateCommunityVisible] = useState(false);
+
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
 
     // Everytime location is changed look for a user login
     useEffect(() => {
@@ -17,7 +21,7 @@ const Media = () => {
     [location]);
 
     return (
-        <div className="media-container">
+        <div className='media-container'>
             <div className="left-container">
                 
                 {// If there's an user logged in then he can create posts 
@@ -35,13 +39,16 @@ const Media = () => {
                             Create Post
                         </button>
                     </Link>
-                    <Link to="/media/submit/community" style={{textDecoration:'none', width:'100%'}}>
-                        <button className="create-community-btn">
+                    
+                    <button onClick={() => setCreateCommunityVisible(true)} className="create-community-btn">
                         Create Community
-                        </button>
-                    </Link>
+                    </button>
                 </div>
             </div>
+
+            {createCommunityVisible && 
+                <CreateCommunityPopUp setCreateCommunityVisible={setCreateCommunityVisible}/>
+            }
         </div>
     )
 }

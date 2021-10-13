@@ -10,7 +10,6 @@ import MyList from './components/MyList';
 import Media from './components/Media';
 import Profile from './components/Profile';
 import CreatePost from './components/CreatePost';
-import CreateCommunity from './components/CreateCommunity';
 
 function App() {
   return (
@@ -24,7 +23,6 @@ function App() {
         <Route exact path="/list" component={MyList} />
         <Route exact path="/profile/:id" component={Profile} />
         <Route exact path="/media/submit/post" component={CreatePost} />
-        <Route exact path="/media/submit/community" component={CreateCommunity} />
       </Switch>
       <Footer/>
     </Router>
