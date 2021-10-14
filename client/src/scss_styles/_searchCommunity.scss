@@ -1,0 +1,35 @@
+.search-community {
+    background: var(--media-grey);
+    padding: 1em;
+    color: white;
+    border-radius: 0.3rem;
+    border: 0.1px solid white;
+    display: flex;
+    align-items: center;
+    height: 10vh;
+    
+    .search-input {
+        padding: 0.4em;
+        width: 90%;
+        background: var(--media-light-grey);
+        border: none;
+        border-radius: 0.3rem;
+        color: white;
+        max-lines: 1;
+
+        &:hover {
+            background: var(--media-hover-grey);
+            border: 0.02rem solid white;
+        }
+    }
+
+    .icon {
+        margin-left: 0.5em;
+        cursor:pointer;
+    }
+
+    .list-container {
+        display: flex;
+        flex-direction: column;
+    }
+}

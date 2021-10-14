@@ -20,6 +20,36 @@
         border: solid 1px grey;
         border-radius: 0.3rem;
 
+        .invalid-data-container {
+            position: absolute;
+            padding: 0.5em 1em;
+            margin-top: 1em;
+            background-color: #FF1C1C;
+            border-radius: 0.5rem;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            .message {
+                font-size: 1rem;
+                font-weight: bold;
+            }
+
+            .close-btn {
+                padding: 0.5em 2em;
+                background: var(--media-light-grey);
+                border: solid 1px white;
+                color: white;
+                border-radius: 1rem;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: var(--media-grey);
+                }
+            }
+        }
+
         .title-container {
             padding: 0.8em;
             display: flex;
@@ -44,7 +74,7 @@
             padding: 0.8em;
             display: flex;
             flex-direction: column;
-            // border-bottom: solid 1px grey;
+            border-bottom: solid 1px grey;
             color: white;
             height: 25vh;
             justify-content: space-between;
@@ -79,7 +109,53 @@
             }
         }
 
-        
+        .description-input-section {
+            padding: 0.8em;
+            display: flex;
+            flex-direction: column;
+            border-bottom: solid 1px grey;
+            color: white;
+
+            .title {
+                font-size: 1.1rem;
+            }
+
+            .description-input {
+                margin-top: 1em;
+                width: 90%;
+                padding: 0.5em;
+                background: var(--media-grey);
+                border: solid 1px grey;
+                border-radius: 0.2rem;
+                color: white;
+                overflow-wrap: break-word;
+                resize: none;
+            }
+
+            .char-counter {
+                margin-top: 1em;
+                font-size: 0.8rem;
+                color: grey;
+            }
+        }
+
+        .avatar-img-section {
+            padding: 0.8em;
+            display: flex;
+            flex-direction: column;
+            //justify-content: center;
+            //align-items: center;
+            border-bottom: solid 1px grey;
+            color: white;
+            height: 13vh;
+            justify-content: space-between;
+
+            .title {
+                font-size: 0.9rem;
+            }
+
+            
+        }
 
         .btns-container {
             display: flex;

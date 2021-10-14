@@ -20,3 +20,8 @@ export const UPDATE_EPISODE = "UPDATE_EPISODE";
 // Media 
 
 export const GET_MEDIA_HOME_POSTS = "GET_MEDIA_HOME_POSTS";
+
+// Community
+
+export const CREATE_COMMUNITY = "CREATE_COMMUNITY";
+export const SEARCH_COMMUNITIES = "SEARCH_COMMUNITIES";

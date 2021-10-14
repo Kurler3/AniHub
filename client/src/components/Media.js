@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import PostList from './PostList';
 import {Link} from 'react-router-dom';
 import CreateCommunityPopUp from './subcomponents/CreateCommunityPopUp';
+import SearchCommunity from './subcomponents/SearchCommunity';
 
 const Media = () => {
 
@@ -31,6 +32,9 @@ const Media = () => {
                 <PostList />
             </div>
             <div className="right-container">
+                
+                <SearchCommunity />
+
                 <div className="create-post-community-container">
                     <p className="title">Hello{user!==null ? `, ${user.result.first_name}` : ''}!</p>
                     <p className="intro">Your personal AniHub page. Here you'll find the newest posts from your favorite communities!</p>

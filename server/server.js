@@ -9,6 +9,7 @@ import dotenv from 'dotenv';
 import userRoutes from './routes/users.js';
 import animeRoutes from './routes/animes.js';
 import mediaRoutes from './routes/media.js';
+import communityRoutes from './routes/community.js';
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.get('/', (req, res) => {
 app.use('/user', userRoutes);
 app.use('/anime', animeRoutes);
 app.use('/media', mediaRoutes);
+app.use('/community', communityRoutes);
 
 
 // The port
