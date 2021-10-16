@@ -1,28 +1,60 @@
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import {useSelector} from 'react-redux';
+import React, {useState, useEffect} from 'react';
+import { useLocation, useHistory } from 'react-router';
+import {Link} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import {searchCommunities} from '../../actions/communityActions';
+import { searchCommunity } from '../../actions/communityActions';
 
 const SearchCommunity = () => {
 
+    const location = useLocation();
+    const history = useHistory();
     const dispatch = useDispatch();
 
-    const communities = useSelector(state => state.community.searchList);
+    // Converts from json to js object if there is a user logged in
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
-    const onInputChange = (e) => dispatch(searchCommunities(e.target.value));
+    const [filteredCommunities, setFilteredCommunities] = useState([]);
+
+    const onInputChange = (e) => {
+
+        if(e.target.value !== '')
+            setFilteredCommunities(user.result.communities_subscribed.filter((communityName) => communityName.startsWith(e.target.value)));
+        else setFilteredCommunities([]); 
+    }
+    
+    const onInputClick = (e) => {
+        if(user === null) {
+            // redirect to search community page
+        }
+    }
+
+    const onCommunitySearchTabClick = (communityName) => { 
+        dispatch(searchCommunity(communityName));
+        // Navigate to community page
+        history.push(`media/r/${communityName}`);
+    }
+    useEffect(() => {
+        setUser(JSON.parse(localStorage.getItem('profile')));
+    },
+    [location]);
 
     return (
         <div className="search-community">
-            <input onChange={onInputChange} type="text" placeholder="Search a community" className="search-input" />
-            <FontAwesomeIcon className="icon" icon={faSearch} />
+            <div className="input-container">
+                <input onClick={onInputClick} onChange={onInputChange} type="text" placeholder="Search a community" className="search-input" />
+                <FontAwesomeIcon className="icon" icon={faSearch} />
+            </div>
 
-            { communities.length > 0 ? 
+            { filteredCommunities.length > 0 ? 
                 <div className="list-container">
                     {
-                        communities.map(community => 
-                            <div key={community._id}>{community.title}</div>
+                        filteredCommunities.map(communityName => 
+                            <div
+                            onClick={() => onCommunitySearchTabClick(communityName)}
+                            className="community-search-tab" key={communityName}>{communityName}
+                            </div>
                         )
                     }
                 </div>

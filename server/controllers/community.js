@@ -1,4 +1,5 @@
 import Community from '../models/community.js';
+import User from '../models/user.js';
 
 export const createCommunity = async (req, res) => {
     const {title, description, avatar_img} = req.body;
@@ -25,8 +26,13 @@ export const createCommunity = async (req, res) => {
             discord_link:'',
         });
 
+        // Update user's subscribed communities list in database
+        const currentUser = await User.findById(req.userId);
 
-        // console.log(newCommunity);
+        const updatedUser = await User.updateOne(
+            {_id:req.userId},
+            {communities_subscribed:[...currentUser.communities_subscribed, newCommunity.title]}
+        );
 
         // Send the whole object 
         res.status(200).json({data:newCommunity});
@@ -47,5 +53,18 @@ export const searchCommunities = async (req, res) => {
 
     } catch (error) {
         res.status(500).json({message:"Server error..."});   
+    }
+}
+
+export const searchCommunity = async (req, res) => {
+    const communityName = req.body;
+    
+    try {
+        
+        
+
+
+    } catch (error) {
+        res.status(500).json({message:"Server error..."});
     }
 }

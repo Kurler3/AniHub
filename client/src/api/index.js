@@ -49,3 +49,5 @@ export const getMediaHomePosts = (filter) => API.get('/media/posts', filter);
 export const createCommunity = (inputData) => API.post('/community/create', inputData);
 
 export const searchCommunities = (text) => API.get('/community/searchList', text);
+
+export const searchCommunity = (communityName) => API.get('/community/searchSingle', communityName);

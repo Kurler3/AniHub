@@ -39,7 +39,6 @@ const CreateCommunityPopUp = ({setCreateCommunityVisible}) => {
 
     const onSubmitData = () => {
         if(inputData['title'].length > 0 && inputData['description'].length > 0 && inputData['avatar_img'].length > 0) {
-
             // Dispatch action with this data
             dispatch(createCommunity(inputData, history));
         }
