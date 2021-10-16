@@ -62,7 +62,7 @@ const AnimePage = () => {
         <div className="anime-page-container">
             <div className="left-container">
                 <h1 className="title">{anime.title}</h1>
-                <a href={anime.url} target="_blank">
+                <a href={anime.url} target="_blank" rel="noreferrer">
                     <img className="poster" src={anime.image_url} alt="Anime Poster" />
                 </a>
                 <button disabled={user===null || isAnimeInUsersFavList()} onClick={onAddListBtnClick} 
@@ -96,7 +96,7 @@ const AnimePage = () => {
                         </div>
                     </div>
                     <div className="trailer-container">
-                        <iframe style={{border:'none', height:"100%"}} src={anime.trailer_url}></iframe>
+                        <iframe title="trailer" style={{border:'none', height:"100%"}} src={anime.trailer_url}></iframe>
                     </div>
                 </div>
 

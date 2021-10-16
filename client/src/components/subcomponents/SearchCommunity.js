@@ -2,7 +2,6 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, {useState, useEffect} from 'react';
 import { useLocation, useHistory } from 'react-router';
-import {Link} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { searchCommunity } from '../../actions/communityActions';
 
@@ -24,16 +23,15 @@ const SearchCommunity = () => {
         else setFilteredCommunities([]); 
     }
     
-    const onInputClick = (e) => {
+    const onInputClick = () => {
         if(user === null) {
             // redirect to search community page
         }
     }
 
     const onCommunitySearchTabClick = (communityName) => { 
-        dispatch(searchCommunity(communityName));
-        // Navigate to community page
-        history.push(`media/r/${communityName}`);
+        history.push(`/media/r/${communityName}`);
+        // dispatch(searchCommunity(communityName, history));
     }
     useEffect(() => {
         setUser(JSON.parse(localStorage.getItem('profile')));

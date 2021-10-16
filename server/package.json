@@ -5,8 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon server.js",
-    "build": "cd ../client && npm run build"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",

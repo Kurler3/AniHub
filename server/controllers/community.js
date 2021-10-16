@@ -50,7 +50,7 @@ export const searchCommunities = async (req, res) => {
         
 
         // Send the communities array
-
+        
     } catch (error) {
         res.status(500).json({message:"Server error..."});   
     }
@@ -60,10 +60,9 @@ export const searchCommunity = async (req, res) => {
     const communityName = req.body;
     
     try {
-        
-        
+        const communitySearched = await Community.findOne({title:communityName});
 
-
+        res.status(200).json({data:communitySearched});
     } catch (error) {
         res.status(500).json({message:"Server error..."});
     }

@@ -4,7 +4,6 @@ import { faAngleDown, faSearch } from '@fortawesome/free-solid-svg-icons';
 import {Link} from 'react-router-dom';
 import {useLocation, useHistory } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
-import exampleAvatar from '../example_profile_avatar.jpg';
 import { CLEAR_LIST, LOGOUT } from '../utils/action_constants';
 import { getAnimeList } from '../actions/backAnimeActions';
 import { searchAnime } from '../actions/frontAnimeActions';
@@ -45,9 +44,9 @@ const Navbar = () => {
     const onSearchInputChange = (e) => setSearchInput(e.target.value)
     
 
-    const onProfileClick = () => {
+    // const onProfileClick = () => {
 
-    }
+    // }
 
     const onLogout = () => {
         // Just dispatch the logout action
