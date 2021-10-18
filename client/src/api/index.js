@@ -48,6 +48,12 @@ export const getMediaHomePosts = (filter) => API.get('/media/posts', filter);
 
 export const createCommunity = (inputData) => API.post('/community/create', inputData);
 
+// Change to POST request because GET requests shouldn't have a body
 export const searchCommunities = (text) => API.get('/community/searchList', text);
 
 export const searchCommunity = (communityName) => API.post('/community/searchSingle', {communityName});
+
+export const getAllCommunities = () => API.get('/community/all');
+
+
+

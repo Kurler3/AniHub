@@ -67,3 +67,14 @@ export const searchCommunity = async (req, res) => {
         res.status(500).json({message:"Server error..."});
     }
 }
+
+export const getAllCommunities = async (req, res) => {
+    try {
+        
+        const communities = await Community.find();
+
+        res.status(200).json({data:communities});
+    } catch (error) {
+        res.status(500).json({message:"Server error..."});
+    }
+}

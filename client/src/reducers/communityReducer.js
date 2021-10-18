@@ -1,4 +1,4 @@
-import { CREATE_COMMUNITY, SEARCH_COMMUNITIES, SEARCH_COMMUNITY} from "../utils/action_constants";
+import { CREATE_COMMUNITY, GET_ALL_COMMUNITIES, SEARCH_COMMUNITIES, SEARCH_COMMUNITY} from "../utils/action_constants";
 
 const reducer = (state={searchList:[], current:{}}, action) => {
 
@@ -19,6 +19,8 @@ const reducer = (state={searchList:[], current:{}}, action) => {
             return {...state, searchList:[...state.searchList, action.payload.data]};
         case SEARCH_COMMUNITY:
             return {...state, current:action.payload.data};
+        case GET_ALL_COMMUNITIES:
+            return {...state, searchList:action.payload.data};
         default:
             return state;
     }

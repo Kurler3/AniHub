@@ -1,5 +1,5 @@
 import * as api from "../api/";
-import { CREATE_COMMUNITY, SEARCH_COMMUNITIES, SEARCH_COMMUNITY  } from "../utils/action_constants";
+import { CREATE_COMMUNITY, GET_ALL_COMMUNITIES, SEARCH_COMMUNITIES, SEARCH_COMMUNITY  } from "../utils/action_constants";
 
 export const createCommunity = (inputData, history) => async (dispatch) => {
     try {
@@ -30,6 +30,17 @@ export const searchCommunity = (communityName) => async (dispatch) => {
         const {data} = await api.searchCommunity(communityName);
 
         dispatch({type:SEARCH_COMMUNITY, payload:data});
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getAllCommunities = () => async (dispatch) => {
+    try {
+        
+        const {data} = await api.getAllCommunities();
+
+        dispatch({type:GET_ALL_COMMUNITIES, payload:data});
     } catch (error) {
         console.log(error);
     }
