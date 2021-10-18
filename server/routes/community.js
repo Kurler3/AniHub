@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.post('/create', auth, createCommunity);
 router.get('/searchList', searchCommunities);
-router.get('/community/searchSingle', searchCommunity);
+router.post('/searchSingle', searchCommunity);
 
 export default router;

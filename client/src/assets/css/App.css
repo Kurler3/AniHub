@@ -940,3 +940,6 @@
       border-radius: 0.3rem; }
       .search-community .list-container .community-search-tab:hover {
         background: var(--media-hover-grey); }
+
+.search-communities-container {
+  min-height: 55vh; }

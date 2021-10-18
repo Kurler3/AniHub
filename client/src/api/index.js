@@ -50,4 +50,4 @@ export const createCommunity = (inputData) => API.post('/community/create', inpu
 
 export const searchCommunities = (text) => API.get('/community/searchList', text);
 
-export const searchCommunity = (communityName) => API.get('/community/searchSingle', communityName);
+export const searchCommunity = (communityName) => API.post('/community/searchSingle', {communityName});

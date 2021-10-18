@@ -36,8 +36,12 @@ app.use('/community', communityRoutes);
 
 
 // The port
-const PORT = process.env.PORT || 5000;
 
+// In production
+//const PORT = process.env.PORT || 5000;
+
+// Dev
+const PORT = 5000;
 
 // Connect to the database
 mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser:true, useUnifiedTopology:true })

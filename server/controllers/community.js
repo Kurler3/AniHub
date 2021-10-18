@@ -57,8 +57,8 @@ export const searchCommunities = async (req, res) => {
 }
 
 export const searchCommunity = async (req, res) => {
-    const communityName = req.body;
-    
+    const {communityName} = req.body;
+
     try {
         const communitySearched = await Community.findOne({title:communityName});
 
