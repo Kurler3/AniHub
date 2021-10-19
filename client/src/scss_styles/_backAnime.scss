@@ -5,10 +5,16 @@
     //width: 45%;
     //background-color: lightblue;
     background-color: #6699FF;
+    background-color: var(--media-light-grey);
     // font-family: var(--noto-sans-jp);
     font-family: var(--pt-sans);
     border: 2px solid var(--golden-orange);
     border-radius: 0.2rem;
+    color: white;
+
+    &:hover {
+        background: var(--media-hover-grey);
+    }
 
     .poster {
         height: 24.5vh;

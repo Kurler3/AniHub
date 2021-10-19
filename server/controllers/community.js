@@ -43,14 +43,15 @@ export const createCommunity = async (req, res) => {
 }
 
 export const searchCommunities = async (req, res) => {
-    const communityTitle = req.body;
+    const {communityName} = req.body;
 
     try {
-        // Search for communities that match this name
-        
-
+        // Search for communities that start this name
+        const communities = await Community
+                                    .find({'title': {$regex: '^' + communityName, $options: 'i' }})
+                                    .sort({created_at:-1});
         // Send the communities array
-        
+        res.status(200).json({data:communities});
     } catch (error) {
         res.status(500).json({message:"Server error..."});   
     }
@@ -71,7 +72,9 @@ export const searchCommunity = async (req, res) => {
 export const getAllCommunities = async (req, res) => {
     try {
         
-        const communities = await Community.find();
+        const communities = await Community.find()
+            .sort({created_at:-1})
+            .limit(20);
 
         res.status(200).json({data:communities});
     } catch (error) {

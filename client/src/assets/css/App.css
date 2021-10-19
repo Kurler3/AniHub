@@ -22,7 +22,8 @@
   margin: 0;
   height: 15vh;
   border-bottom: 5px solid var(--golden-orange);
-  font-family: var(--pt-sans); }
+  font-family: var(--pt-sans);
+  background-color: #3C3C3C; }
   .navbar-title {
     font-family: var(--noto-sans-jp);
     padding: 1em;
@@ -44,7 +45,7 @@
     align-items: center;
     transition: var(--default-transition);
     cursor: pointer;
-    color: black; }
+    color: white; }
     .navbar-link:hover {
       color: var(--golden-orange); }
   .navbar-form-container {
@@ -78,12 +79,13 @@
     cursor: pointer;
     transition: var(--default-transition); }
     .navbar-profile-container:hover {
-      background-color: var(--light-grey); }
+      background-color: var(--media-hover-grey); }
     .navbar-profile-container .profile-name-container {
       padding-left: 1em;
       display: flex;
       justify-content: flex-start;
-      align-items: center; }
+      align-items: center;
+      color: white; }
       .navbar-profile-container .profile-name-container .profile-name {
         padding-right: 0.3em; }
         .navbar-profile-container .profile-name-container .profile-name-span {
@@ -510,7 +512,9 @@
 .my-anime-list-container {
   min-height: 55vh;
   margin: 0 auto;
-  width: 90%; }
+  padding: 0 1.5em;
+  background-color: var(--media-grey);
+  border-bottom: 2px solid grey; }
   .my-anime-list-container .list-container {
     padding: 2em;
     display: grid;
@@ -537,9 +541,13 @@
   flex-direction: row;
   height: 25vh;
   background-color: #6699FF;
+  background-color: var(--media-light-grey);
   font-family: var(--pt-sans);
   border: 2px solid var(--golden-orange);
-  border-radius: 0.2rem; }
+  border-radius: 0.2rem;
+  color: white; }
+  .back-anime-container:hover {
+    background: var(--media-hover-grey); }
   .back-anime-container .poster {
     height: 24.5vh;
     width: 20vh; }
@@ -987,12 +995,17 @@
       border: solid 1px grey;
       cursor: pointer;
       align-items: center;
-      height: 30vh; }
+      height: 30vh;
+      transition: var(--default-transition); }
+      .search-communities-container .community-list .community-tab:hover {
+        border: solid 2px white;
+        background: var(--media-hover-grey); }
       .search-communities-container .community-list .community-tab .avatar {
+        border-radius: 0.3rem;
         height: 100px;
         width: 100px; }
       .search-communities-container .community-list .community-tab .title {
-        font-size: 1rem;
+        font-size: 1.1rem;
         font-weight: bold; }
   .search-communities-container .no-communities {
     display: flex;

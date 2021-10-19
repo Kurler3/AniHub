@@ -5,6 +5,7 @@
     height: 15vh;
     border-bottom: 5px solid var(--golden-orange);
     font-family: var(--pt-sans);
+    background-color: #3C3C3C;
 
     &-title {
         font-family: var(--noto-sans-jp);
@@ -31,7 +32,7 @@
         align-items: center;
         transition: var(--default-transition);
         cursor: pointer;
-        color: black;
+        color: white;
 
         &:hover {
             color: var(--golden-orange);
@@ -76,7 +77,7 @@
         transition: var(--default-transition);
 
         &:hover {
-            background-color: var(--light-grey);
+            background-color: var(--media-hover-grey);
         }
 
         .profile-name-container{
@@ -84,6 +85,7 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
+            color: white;
 
             .profile-name {
                 padding-right: 0.3em;

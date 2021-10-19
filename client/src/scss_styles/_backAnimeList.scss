@@ -1,8 +1,9 @@
 .my-anime-list-container {
     min-height: 55vh;
     margin: 0 auto;
-    width: 90%;
-    //background-color: lightblue;
+    padding: 0 1.5em;
+    background-color: var(--media-grey);
+    border-bottom: 2px solid grey;
 
     .list-container {
         padding: 2em;

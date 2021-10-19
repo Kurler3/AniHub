@@ -16,7 +16,7 @@ export const createCommunity = (inputData, history) => async (dispatch) => {
 
 export const searchCommunities = (text) => async (dispatch) => {
     try {
-        const data = await api.searchCommunities(text);
+        const {data} = await api.searchCommunities(text);
 
         dispatch({type:SEARCH_COMMUNITIES, payload:data});
     } catch (error) {

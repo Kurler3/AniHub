@@ -5,7 +5,7 @@ import auth from '../middleware/auth.js';
 const router = express.Router();
 
 router.post('/create', auth, createCommunity);
-router.get('/searchList', searchCommunities);
+router.post('/searchList', searchCommunities);
 router.post('/searchSingle', searchCommunity);
 router.get('/all', getAllCommunities);
 

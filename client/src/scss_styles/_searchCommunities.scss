@@ -34,39 +34,46 @@
     }
 
     .community-list {
-        margin: 0 auto;
-        margin-top: 1.5em;
-        width: 60%;
-        display: grid;
-        grid-gap: 60px;
-        grid-template-columns: repeat(3, 1fr);
-        justify-content: center;
-
+            margin: 0 auto;
+            margin-top: 1.5em;
+            width: 60%;
+            display: grid;
+            grid-gap: 60px;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: center;
+    
         .community-tab {
-            width: 90%;
-            background: var(--media-light-grey);
-            display: flex;
-            padding: 1em;
-            justify-content: space-between;
-            flex-direction: column;
-            border-radius: 0.5rem;
-            border: solid 1px grey;
-            cursor: pointer;
-            align-items: center;
-            height: 30vh;
-            
+                width: 90%;
+                background: var(--media-light-grey);
+                display: flex;
+                padding: 1em;
+                justify-content: space-between;
+                flex-direction: column;
+                border-radius: 0.5rem;
+                border: solid 1px grey;
+                cursor: pointer;
+                align-items: center;
+                height: 30vh;
+                transition: var(--default-transition);
+                
+                &:hover {
+                    border: solid 2px white;
+                    background: var(--media-hover-grey);
+                }
+
 
             .avatar {
-                height: 100px;
-                width: 100px;
-            }
-
+                    border-radius: 0.3rem;
+                    height: 100px;
+                    width: 100px;
+                }
+    
             .title {
-                font-size: 1rem;
-                font-weight: bold;
+                    font-size: 1.1rem;
+                    font-weight: bold;
+                }
             }
         }
-    }
 
     .no-communities {
         display: flex;

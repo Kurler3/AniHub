@@ -16,7 +16,7 @@ const reducer = (state={searchList:[], current:{}}, action) => {
 
             return {...state, current:action.payload.data};
         case SEARCH_COMMUNITIES:
-            return {...state, searchList:[...state.searchList, action.payload.data]};
+            return {...state, searchList:action.payload.data};
         case SEARCH_COMMUNITY:
             return {...state, current:action.payload.data};
         case GET_ALL_COMMUNITIES:

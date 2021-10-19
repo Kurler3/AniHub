@@ -3,58 +3,63 @@ import {useParams} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import {getAllCommunities} from '../actions/communityActions';
+import {getAllCommunities, searchCommunities} from '../actions/communityActions';
 import ReactLoading from 'react-loading';
+import {Link} from 'react-router-dom';
 
 const SearchCommunities = () => {
 
     const params = useParams();
     const dispatch = useDispatch();
 
-    const [gotAllCommunities, setGotAllCommunities] = useState(false);
+    const [gotCommunities, setGotCommunities] = useState(false);
     const [searchInput, setSearchInput] = useState(params.defaultSearchInput!==undefined ? params.defaultSearchInput : '');
 
     const searchedCommunityList = useSelector(state => state.community.searchList);
 
-    const onSearchInputChange = (e) => {
-        setSearchInput(e.target.value);
-    }
-
+    const onSearchInputChange = (e) => setSearchInput(e.target.value);
+    
     const onInputSubmit = (e) => {
         e.preventDefault();
-
-        // Dispatch
+        // Dispatch search communities with value inputted
+        if(searchInput.length > 0) dispatch(searchCommunities(searchInput));
+        else dispatch(getAllCommunities());
     }
 
     useEffect(() => {
         // Initially show all communities available
-        if(!gotAllCommunities){
+        if(!gotCommunities && searchInput.length===0){
             dispatch(getAllCommunities());
-            setGotAllCommunities(true);
-        } 
-    },[gotAllCommunities, dispatch]);
+            setGotCommunities(true);
+        } else if (!gotCommunities && searchInput.length > 0){
+            // Initially search communities that start with this input
+            dispatch(searchCommunities(searchInput));
+            setGotCommunities(true);
+        }
+    }, [dispatch, gotCommunities, searchInput]);
 
     return (
         <div className="search-communities-container">
             <form onSubmit={onInputSubmit} className="search-input-container">
-                <input type="text" className="search-input" defaultValue={params.defaultSearchInput!==undefined ? params.defaultSearchInput : ''} onChange={onSearchInputChange}/>
+                <input placeholder="Search for a community..." type="text" className="search-input" defaultValue={params.defaultSearchInput!==undefined ? params.defaultSearchInput : ''} onChange={onSearchInputChange}/>
                 <button type="submit" className="submit-btn">
                     <FontAwesomeIcon icon={faSearch}/>
                 </button>
             </form>
             
             {searchedCommunityList.length > 0 ? 
-            
-                <div className="community-list">
+                    <div className="community-list">
                     {searchedCommunityList.map((community) => (
-                        <div key={community.title} className="community-tab">
-                            <img className="avatar" src={community.avatar_img} alt="avatar" />
-                            <p className="title">{community.title}</p>
+                        <div key={community.title}>
+                            <Link to={`/media/r/${community.title}`} style={{textDecoration:'none', color:'white'}} className="community-tab">
+                                <img className="avatar" src={community.avatar_img} alt="avatar" />
+                                <p className="title">{community.title}</p>
+                            </Link>
                         </div>
                         )
                     )
                     }
-                </div>    
+                    </div>
 
                     :
 
