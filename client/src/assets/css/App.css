@@ -514,7 +514,9 @@
   margin: 0 auto;
   padding: 0 1.5em;
   background-color: var(--media-grey);
-  border-bottom: 2px solid grey; }
+  border-bottom: 2px solid grey;
+  color: white;
+  font-weight: bold; }
   .my-anime-list-container .list-container {
     padding: 2em;
     display: grid;
@@ -898,7 +900,47 @@
           background: #E8E8E8; }
 
 .community-container {
-  min-height: 55vh; }
+  min-height: 55vh;
+  background: var(--media-grey);
+  font-family: var(--noto-sans-jp); }
+  .community-container .upper-container {
+    background-color: var(--media-light-grey);
+    min-height: 50vh;
+    padding: 2em 10em;
+    display: flex;
+    align-items: flex-end;
+    color: white; }
+    .community-container .upper-container .content-container {
+      display: flex; }
+      .community-container .upper-container .content-container .avatar {
+        height: 100px;
+        width: 100px;
+        border-radius: 0.5rem; }
+      .community-container .upper-container .content-container .title-container {
+        padding: 1em;
+        margin-left: 1em; }
+        .community-container .upper-container .content-container .title-container .title {
+          font-size: 1.6rem;
+          font-weight: bold; }
+        .community-container .upper-container .content-container .title-container .secondary-title {
+          margin-top: 1em;
+          color: grey;
+          font-size: 0.8rem; }
+      .community-container .upper-container .content-container .subscribe-btn {
+        margin-left: 1em;
+        margin-top: 0.5em;
+        height: 100%;
+        padding: 0.8em 1em;
+        border-radius: 1rem;
+        border: 1px solid white;
+        background: var(--media-light-grey);
+        color: white;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: var(--default-transition);
+        font-weight: bold; }
+        .community-container .upper-container .content-container .subscribe-btn:hover {
+          background: var(--media-hover-grey); }
 
 .search-community {
   background: var(--media-grey);

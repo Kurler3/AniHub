@@ -19,7 +19,7 @@ export const UPDATE_EPISODE = "UPDATE_EPISODE";
 
 // Media 
 
-export const GET_MEDIA_HOME_POSTS = "GET_MEDIA_HOME_POSTS";
+export const GET_POSTS = "GET_POSTS";
 
 // Community
 

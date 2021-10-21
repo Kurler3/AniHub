@@ -1,3 +1,59 @@
 .community-container {
     min-height: 55vh;
+    background: var(--media-grey);
+    font-family: var(--noto-sans-jp);
+
+    .upper-container {
+        background-color: var(--media-light-grey);
+        min-height: 50vh;
+        padding: 2em 10em;
+        display: flex;
+        align-items: flex-end;
+        color: white;
+
+        .content-container {
+            display: flex;
+            
+            .avatar {
+                height: 100px;
+                width: 100px;
+                border-radius: 0.5rem;
+            }
+
+            .title-container {
+                padding: 1em;
+                margin-left: 1em;
+
+                .title {
+                    font-size: 1.6rem;
+                    font-weight: bold;
+                }
+
+                .secondary-title {
+                    margin-top: 1em;
+                    color: grey;
+                    font-size: 0.8rem;
+                }
+            }
+
+            .subscribe-btn {
+                margin-left: 1em;
+                margin-top: 0.5em;
+                height: 100%;
+                padding: 0.8em 1em;
+                border-radius: 1rem;
+                border: 1px solid white;
+                background: var(--media-light-grey);
+                color: white;
+                font-size: 0.9rem;
+                cursor: pointer;
+                transition: var(--default-transition);
+                font-weight: bold;
+
+                &:hover {
+                    background: var(--media-hover-grey);
+                }
+            }
+        }
+    }
 }

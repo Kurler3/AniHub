@@ -9,7 +9,7 @@ const PostList = () => {
 
     const location = useLocation();
 
-    const posts = useSelector(state => state.mediaHomePosts);
+    const posts = useSelector(state => state.posts);
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
