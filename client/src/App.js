@@ -25,7 +25,7 @@ function App() {
         <Route exact path="/list" component={MyList} />
         <Route exact path="/profile/:id" component={Profile} />
         <Route exact path="/media/submit/post" component={CreatePost} />
-        <Route exact path="/media/r/:communityName" component={Community} />
+        <Route exact path="/media/:communityName" component={Community} />
         <Route exact path="/media/search/:defaultSearchInput?" component={SearchCommunities} />
       </Switch>
       <Footer/>

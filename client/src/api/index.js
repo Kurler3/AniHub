@@ -55,5 +55,7 @@ export const searchCommunity = (communityName) => API.post('/community/searchSin
 
 export const getAllCommunities = () => API.get('/community/all');
 
+// Users
 
+export const getUserInfo = (id) => API.get('/user/getInfo', {params:{id}});
 

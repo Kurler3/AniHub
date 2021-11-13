@@ -13,7 +13,10 @@ const SearchCommunities = () => {
     const dispatch = useDispatch();
 
     const [gotCommunities, setGotCommunities] = useState(false);
+
     const [searchInput, setSearchInput] = useState(params.defaultSearchInput!==undefined ? params.defaultSearchInput : '');
+
+    //console.log(searchInput);
 
     const searchedCommunityList = useSelector(state => state.community.searchList);
 
@@ -51,7 +54,7 @@ const SearchCommunities = () => {
                     <div className="community-list">
                     {searchedCommunityList.map((community) => (
                         <div key={community.title}>
-                            <Link to={`/media/r/${community.title}`} style={{textDecoration:'none', color:'white'}} className="community-tab">
+                            <Link to={`/media/${community.title}`} style={{textDecoration:'none', color:'white'}} className="community-tab">
                                 <img className="avatar" src={community.avatar_img} alt="avatar" />
                                 <p className="title">{community.title}</p>
                             </Link>

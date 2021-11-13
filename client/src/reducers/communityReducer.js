@@ -14,6 +14,11 @@ const reducer = (state={searchList:[], current:{}}, action) => {
 
             localStorage.setItem('profile', JSON.stringify(user));
 
+            // Automatically make current to be this new community, since when the 
+            // back-end call is returned, the action redirects the user to this 
+            // community page and it is waiting for the current value using
+            // useSelector 
+            
             return {...state, current:action.payload.data};
         case SEARCH_COMMUNITIES:
             return {...state, searchList:action.payload.data};

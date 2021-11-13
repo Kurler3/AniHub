@@ -18,7 +18,7 @@ const SearchCommunity = () => {
         setInput(e.target.value);
 
         if(e.target.value !== '')
-            setFilteredCommunities(user.result.communities_subscribed.filter((communityName) => communityName.startsWith(e.target.value)));
+            setFilteredCommunities(user.result.communities_subscribed.filter((communityName) => communityName.toLowerCase().startsWith(e.target.value.toLowerCase())));
         else setFilteredCommunities([]); 
     }
     
@@ -29,9 +29,9 @@ const SearchCommunity = () => {
         }
     }
 
-    const onCommunitySearchTabClick = (communityName) => history.push(`/media/r/${communityName}`);
+    const onCommunitySearchTabClick = (communityName) => history.push(`/media/${communityName}`);
     
-    const onClickSearch = () => history.push(`/media/search${input!=='' ? `/${input}` : ''}`);
+    const onClickSearch = () => history.push(`/media/search${input.length>0 ? `/${input}` : ''}`);
 
     useEffect(() => {
         setUser(JSON.parse(localStorage.getItem('profile')));

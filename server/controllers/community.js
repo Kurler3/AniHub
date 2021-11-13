@@ -7,8 +7,7 @@ export const createCommunity = async (req, res) => {
     if(!req.userId) return res.status(400).json({message:"No User logged in."});
 
     try {
-        // Check if there exists any community with the same name as the data['title']
-
+        // Check if there exists any community with the same name
         const existingCommunity = await Community.findOne({title: title});
 
         if(existingCommunity) return res.status(400).json({message:"There exists a community with this name already."});
@@ -29,6 +28,9 @@ export const createCommunity = async (req, res) => {
         // Update user's subscribed communities list in database
         const currentUser = await User.findById(req.userId);
 
+        // Add the title in the array because its unique
+        // and won't need to search for community in back-end by id 
+        // when creating a post 
         const updatedUser = await User.updateOne(
             {_id:req.userId},
             {communities_subscribed:[...currentUser.communities_subscribed, newCommunity.title]}
@@ -72,6 +74,7 @@ export const searchCommunity = async (req, res) => {
 export const getAllCommunities = async (req, res) => {
     try {
         
+        // Have to limit otherwise they will be too many.
         const communities = await Community.find()
             .sort({created_at:-1})
             .limit(20);

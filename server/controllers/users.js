@@ -68,3 +68,22 @@ export const signUp = async (req, res) => {
         res.status(500).json({message:"Something went wrong with the server... :("});
     }
 }
+
+export const getUserInfo = async (req, res) => {
+    const {id} = req.query;
+    
+    try {
+        
+        const user = await User.findById(id);
+
+        res.status(200).json({data:{
+            _id:user._id,
+            first_name:user.first_name,
+            last_name:user.last_name,
+            avatar_img:user.avatar_img
+            }
+        });
+    } catch (error) {
+        res.status(500).json({message:"Something went wrong with the server..."});
+    }
+}

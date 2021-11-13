@@ -14,3 +14,9 @@ export const isObjectEmpty = (obj) => {
     }
     return true;
 }
+
+export const dateToString = (date) => {
+    const dateFormatOptions = { year: 'numeric', month: 'long'};
+
+    return new Date(date).toLocaleDateString('en-US', dateFormatOptions)
+}

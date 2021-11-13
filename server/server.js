@@ -21,6 +21,7 @@ app.use(express.json({limit:"30mb"}));
 app.use(express.urlencoded({limit: "30mb",extended: true}));
 
 // Use cors middleware
+// Protects against XSS attacks
 app.use(cors());
 
 // Greeting route
@@ -40,7 +41,7 @@ app.use('/community', communityRoutes);
 // In production
 //const PORT = process.env.PORT || 5000;
 
-// Dev
+// In Dev
 const PORT = 5000;
 
 // Connect to the database

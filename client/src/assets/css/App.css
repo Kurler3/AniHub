@@ -905,7 +905,8 @@
   font-family: var(--noto-sans-jp); }
   .community-container .upper-container {
     background-color: var(--media-light-grey);
-    min-height: 50vh;
+    background-color: #4B4B4B;
+    min-height: 30vh;
     padding: 2em 10em;
     display: flex;
     align-items: flex-end;
@@ -941,6 +942,59 @@
         font-weight: bold; }
         .community-container .upper-container .content-container .subscribe-btn:hover {
           background: var(--media-hover-grey); }
+  .community-container .lower-container {
+    padding: 1em 2em;
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; }
+    .community-container .lower-container .left-container {
+      width: 60%; }
+    .community-container .lower-container .right-container {
+      color: white;
+      width: 30%; }
+      .community-container .lower-container .right-container .about-container {
+        border: 0.1px solid white;
+        border-radius: 0.3rem;
+        max-height: 30vh;
+        padding: 0.5em 1em; }
+        .community-container .lower-container .right-container .about-container .title {
+          color: grey;
+          font-size: 0.8rem; }
+        .community-container .lower-container .right-container .about-container .description {
+          margin-top: 1.5em;
+          font-size: 0.9rem;
+          font-weight: bold;
+          max-height: 10vh;
+          overflow: hidden; }
+        .community-container .lower-container .right-container .about-container .total-members {
+          margin: 0 auto;
+          width: 100%;
+          align-items: center;
+          margin-top: 1em;
+          display: flex;
+          flex-direction: column; }
+          .community-container .lower-container .right-container .about-container .total-members .number {
+            font-weight: bold; }
+          .community-container .lower-container .right-container .about-container .total-members .members {
+            font-size: 0.7rem;
+            color: grey;
+            margin-top: 0.4em; }
+        .community-container .lower-container .right-container .about-container .created-at {
+          margin-top: 1.4em;
+          font-size: 0.8rem; }
+      .community-container .lower-container .right-container .moderators-container {
+        margin-top: 1em;
+        min-height: 20vh;
+        padding: 0.5em 1em;
+        border: 0.1px solid white;
+        border-radius: 0.3rem; }
+        .community-container .lower-container .right-container .moderators-container .title {
+          color: grey;
+          font-size: 0.8rem; }
+        .community-container .lower-container .right-container .moderators-container .moderator-list {
+          margin-top: 1em; }
 
 .search-community {
   background: var(--media-grey);

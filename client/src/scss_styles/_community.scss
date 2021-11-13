@@ -5,7 +5,8 @@
 
     .upper-container {
         background-color: var(--media-light-grey);
-        min-height: 50vh;
+        background-color: #4B4B4B;
+        min-height: 30vh;
         padding: 2em 10em;
         display: flex;
         align-items: flex-end;
@@ -52,6 +53,86 @@
 
                 &:hover {
                     background: var(--media-hover-grey);
+                }
+            }
+        }
+    }
+
+    .lower-container {
+        padding: 1em 2em;
+        margin: 0 auto;
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .left-container {
+            width: 60%;
+
+        }
+
+        .right-container {
+            color: white;
+            width: 30%;
+
+            .about-container {
+                border: 0.1px solid white;
+                border-radius: 0.3rem;
+                max-height: 30vh;
+                padding: 0.5em 1em;
+
+                .title {
+                    color: grey;
+                    font-size: 0.8rem;
+                }
+    
+                .description {
+                    margin-top: 1.5em;
+                    font-size: 0.9rem;
+                    font-weight: bold;
+                    max-height: 10vh;
+                    overflow: hidden;
+                }
+    
+                .total-members {
+                    margin: 0 auto;
+                    width: 100%;
+                    align-items: center;
+                    margin-top: 1em;
+                    display: flex;
+                    flex-direction: column;
+    
+                    .number {
+                        font-weight: bold;
+                    }
+    
+                    .members {
+                        font-size: 0.7rem;
+                        color: grey;
+                        margin-top: 0.4em;
+                    }
+                }
+    
+                .created-at {
+                    margin-top: 1.4em;
+                    font-size: 0.8rem;
+                }
+            }
+            
+            .moderators-container {
+                margin-top: 1em;
+                min-height: 20vh;
+                padding: 0.5em 1em;
+                border: 0.1px solid white;
+                border-radius: 0.3rem;
+
+                .title {
+                    color: grey;
+                    font-size: 0.8rem;
+                }
+
+                .moderator-list {
+                    margin-top: 1em;     
                 }
             }
         }

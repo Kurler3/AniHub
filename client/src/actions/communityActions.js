@@ -6,7 +6,7 @@ export const createCommunity = (inputData, history) => async (dispatch) => {
         
         const {data} = await api.createCommunity(inputData);
 
-        history.push(`/media/r/${inputData['title']}`);
+        history.push(`/media/${inputData['title']}`);
 
         dispatch({type:CREATE_COMMUNITY, payload:data});
     } catch (error) {

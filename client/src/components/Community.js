@@ -4,9 +4,10 @@ import {useParams} from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { searchCommunity } from '../actions/communityActions';
 import ReactLoading from 'react-loading';
-import {isObjectEmpty} from '../utils/helper_functions';
+import {dateToString, isObjectEmpty} from '../utils/helper_functions';
 import CreateMediaPost from './subcomponents/CreateMediaPost';
 import PostList from './PostList';
+import ModeratorTab from './subcomponents/ModeratorTab';
 
 const Community = () => {
 
@@ -24,6 +25,12 @@ const Community = () => {
         if(isObjectEmpty(community) || community.title !== params.communityName) dispatch(searchCommunity(params.communityName)); 
     }, [location])
 
+    // Send dispatch and update on localStorage users subscribed communities
+    const onSubscribe = () => {
+
+    }
+
+
     if(isObjectEmpty(community) || community.title !== params.communityName) {
         return (
             <ReactLoading type='bars' color='#FFBC1E' height={200} width={200} />
@@ -39,7 +46,7 @@ const Community = () => {
                                 <p className="title">{community.title}</p>
                                 <p className="secondary-title">{`r/${community.title}`}</p>
                             </div>
-                            <button className="subscribe-btn">
+                            <button onClick={onSubscribe} className="subscribe-btn">
                                 Subscribe
                             </button>
                         </div>
@@ -55,6 +62,31 @@ const Community = () => {
 
                         <div className="right-container">
 
+                                <div className="about-container">
+                                    <p className="title">About Community</p>
+                                    <p className="description">
+                                        {community.description}
+                                    </p>
+                                    <div className="total-members">
+                                        <p className="number">
+                                            {community.members.length}
+                                        </p>
+                                        <p className="members">
+                                            # Members
+                                        </p>
+                                    </div>
+                                    <p className="created-at">Created at {dateToString(community.created_at)}</p>
+                                </div>
+                                
+                                <div className="moderators-container">
+                                    <p className="title">Moderators</p>
+                                    <div className="moderator-list">
+                                        {
+                                            community.moderators.map((moderatorId) => <ModeratorTab key={moderatorId} id={moderatorId}
+                                            />)
+                                        }
+                                    </div>
+                                </div>
                         </div>
                     </div>
             </div> 
