@@ -9,7 +9,6 @@ const ModeratorTab = ({id}) => {
 
     useEffect(() => {
         if(!moderator) fetchModeratorInfo(id);
-        else console.log(moderator);
     }, [moderator]);
 
     const fetchModeratorInfo = async (id) => {

@@ -3,7 +3,6 @@ import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 export const signIn = async (req, res) => {
-    console.log(req.body);
 
     const {email, password} = req.body;
 
@@ -64,7 +63,6 @@ export const signUp = async (req, res) => {
         res.status(200).json({result:newUser, token:token});
 
     } catch (error) {
-        console.log(error);
         res.status(500).json({message:"Something went wrong with the server... :("});
     }
 }
@@ -83,6 +81,26 @@ export const getUserInfo = async (req, res) => {
             avatar_img:user.avatar_img
             }
         });
+    } catch (error) {
+        res.status(500).json({message:"Something went wrong with the server..."});
+    }
+}
+
+export const subUnSub = async (req, res) => {
+
+    console.log("BACK END SUB func");
+    console.log(req.body);
+    const {userId, communityTitle, isUnSub} = req.body;
+
+    try {
+        const user = await User.findById(userId);
+
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            {communities_subscribed: isUnSub ? user.communities_subscribed.filter((title) => title!==communityTitle) : [...user.communities_subscribed, communityTitle]}
+        );
+
+        res.status(200).json({data:updatedUser.communities_subscribed});
     } catch (error) {
         res.status(500).json({message:"Something went wrong with the server..."});
     }

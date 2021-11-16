@@ -1109,3 +1109,31 @@
     justify-content: center;
     font-size: 1.5rem;
     min-height: 30vh; }
+
+.moderator-tab-container {
+  padding: 0.3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.2em; }
+  .moderator-tab-container .moderator-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    background-color: grey;
+    padding: 0.2em;
+    align-items: center;
+    border-radius: 0.3rem;
+    border: 1px solid white;
+    transition: var(--default-transition); }
+    .moderator-tab-container .moderator-row .avatar {
+      height: 20px;
+      width: 30px;
+      border-radius: 0.2rem; }
+    .moderator-tab-container .moderator-row .name {
+      margin-left: 0.5em;
+      font-size: 0.8rem;
+      color: black; }
+    .moderator-tab-container .moderator-row:hover {
+      background: #656565; }

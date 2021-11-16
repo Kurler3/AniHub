@@ -17,8 +17,8 @@ const app = express();
 dotenv.config();
 
 // Allows for data to be passed in post requests in the body
-app.use(express.json({limit:"30mb"}));   
-app.use(express.urlencoded({limit: "30mb",extended: true}));
+app.use(express.json({limit:"100mb"}));   
+app.use(express.urlencoded({limit: "150mb",extended: true}));
 
 // Use cors middleware
 // Protects against XSS attacks

@@ -8,6 +8,7 @@ import {dateToString, isObjectEmpty} from '../utils/helper_functions';
 import CreateMediaPost from './subcomponents/CreateMediaPost';
 import PostList from './PostList';
 import ModeratorTab from './subcomponents/ModeratorTab';
+import {subUnSubCommunity} from '../actions/userActions';
 
 const Community = () => {
 
@@ -19,15 +20,35 @@ const Community = () => {
 
     const community = useSelector((state) => state.community['current']);
 
+    // BUG-------------------------------------------------
+    const [isSubscribed, setIsSubscribed] = useState(
+        user!==null ? user.result.communities_subscribed.includes(community.title) : false
+    );
+
+    console.log(user!==null ? user.result.communities_subscribed.includes(community.title) : false);
+    console.log("includes:");
+    console.log(user.result.communities_subscribed.includes(community.title));
+    console.log("isSubscribed:");
+    console.log(isSubscribed);
+
+    //-------------------------------------------------------
+
     useEffect(() => {
-        if(user===null) setUser(JSON.parse(localStorage.getItem('profile')));
+        if(user===null) { 
+            setUser(JSON.parse(localStorage.getItem('profile'))); 
+            setIsSubscribed(user!==null ? user.result.communities_subscribed.includes(community.title) : false)
+        }
 
         if(isObjectEmpty(community) || community.title !== params.communityName) dispatch(searchCommunity(params.communityName)); 
     }, [location])
 
     // Send dispatch and update on localStorage users subscribed communities
     const onSubscribe = () => {
+        if(user!==null) {
+            dispatch(subUnSubCommunity(user.result._id, community.title, isSubscribed));
 
+            setIsSubscribed(!isSubscribed);
+        }
     }
 
 
@@ -46,8 +67,8 @@ const Community = () => {
                                 <p className="title">{community.title}</p>
                                 <p className="secondary-title">{`r/${community.title}`}</p>
                             </div>
-                            <button onClick={onSubscribe} className="subscribe-btn">
-                                Subscribe
+                            <button disabled={user===null} onClick={onSubscribe} className="subscribe-btn">
+                                {!isSubscribed ? "Subscribe" : "Unsubscribe"}
                             </button>
                         </div>
                     </div>
