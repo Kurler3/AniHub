@@ -29,7 +29,8 @@ const CommunitySchema = mongoose.Schema({
     blocked_users:[
         {
             type:String
-        }
+        }, 
+        
     ],
     description:{
         type:String,

@@ -55,6 +55,8 @@ export const searchCommunity = (communityName) => API.post('/community/searchSin
 
 export const getAllCommunities = () => API.get('/community/all');
 
+export const updateSubUnsubCommunity = (userId, communityTitle, isUnSub) => API.post('/community/updateSubUnsub', {userId, communityTitle, isUnSub}); 
+
 // Users
 
 export const getUserInfo = (id) => API.get('/user/getInfo', {params:{id}});

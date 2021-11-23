@@ -1,5 +1,5 @@
 import * as api from "../api/";
-import { CREATE_COMMUNITY, GET_ALL_COMMUNITIES, SEARCH_COMMUNITIES, SEARCH_COMMUNITY  } from "../utils/action_constants";
+import { CREATE_COMMUNITY, GET_ALL_COMMUNITIES, SEARCH_COMMUNITIES, SEARCH_COMMUNITY, UPDATE_SUB_UNSUB_COMMUNITY  } from "../utils/action_constants";
 
 export const createCommunity = (inputData, history) => async (dispatch) => {
     try {
@@ -41,6 +41,17 @@ export const getAllCommunities = () => async (dispatch) => {
         const {data} = await api.getAllCommunities();
 
         dispatch({type:GET_ALL_COMMUNITIES, payload:data});
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const updateSubUnsubCommunity = (userId, communityTitle, isUnSub) => async (dispatch) => {
+    try {
+        
+        const {data} = await api.updateSubUnsubCommunity(userId, communityTitle, isUnSub);
+
+        dispatch({type:UPDATE_SUB_UNSUB_COMMUNITY, payload: data});
     } catch (error) {
         console.log(error);
     }

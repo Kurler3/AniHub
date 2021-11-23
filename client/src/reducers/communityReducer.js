@@ -1,4 +1,4 @@
-import { CREATE_COMMUNITY, GET_ALL_COMMUNITIES, SEARCH_COMMUNITIES, SEARCH_COMMUNITY, SUB_UNSUB_COMMUNITIES} from "../utils/action_constants";
+import { CREATE_COMMUNITY, GET_ALL_COMMUNITIES, SEARCH_COMMUNITIES, SEARCH_COMMUNITY, SUB_UNSUB_COMMUNITIES, UPDATE_SUB_UNSUB_COMMUNITY} from "../utils/action_constants";
 
 const reducer = (state={searchList:[], current:{}}, action) => {
 
@@ -37,6 +37,8 @@ const reducer = (state={searchList:[], current:{}}, action) => {
             localStorage.setItem('profile',JSON.stringify(user));
 
             return state;
+        case UPDATE_SUB_UNSUB_COMMUNITY:
+            return {...state, current:action.payload.data};
         default:
             return state;
     }

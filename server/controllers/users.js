@@ -87,9 +87,6 @@ export const getUserInfo = async (req, res) => {
 }
 
 export const subUnSub = async (req, res) => {
-
-    console.log("BACK END SUB func");
-    console.log(req.body);
     const {userId, communityTitle, isUnSub} = req.body;
 
     try {
@@ -99,6 +96,8 @@ export const subUnSub = async (req, res) => {
             userId,
             {communities_subscribed: isUnSub ? user.communities_subscribed.filter((title) => title!==communityTitle) : [...user.communities_subscribed, communityTitle]}
         );
+
+        
 
         res.status(200).json({data:updatedUser.communities_subscribed});
     } catch (error) {
