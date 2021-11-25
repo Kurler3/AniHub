@@ -10,6 +10,7 @@ import PostList from './PostList';
 import ModeratorTab from './subcomponents/ModeratorTab';
 import {subUnSubCommunity} from '../actions/userActions';
 import { updateSubUnsubCommunity } from '../actions/communityActions';
+import { Link } from 'react-router-dom';
 
 const Community = () => {
 
@@ -90,14 +91,14 @@ const Community = () => {
                                     <p className="description">
                                         {community.description}
                                     </p>
-                                    <div className="total-members">
-                                        <p className="number">
+                                    <Link to={`/members/${community.title}`} className="total-members" style={{textDecoration:'none'}}>
+                                        <p style={{color:'white'}} className="number">
                                             {community.members.length}
                                         </p>
                                         <p className="members">
                                             # Members
                                         </p>
-                                    </div>
+                                    </Link>
                                     <p className="created-at">Created at {dateToString(community.created_at)}</p>
                                 </div>
                                 

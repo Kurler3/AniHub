@@ -96,11 +96,15 @@
     
                 .total-members {
                     margin: 0 auto;
-                    width: 100%;
+                    width: 35%;
                     align-items: center;
+                    padding-top: 0.2em;
+                    padding-bottom: 0.2em;
                     margin-top: 1em;
                     display: flex;
                     flex-direction: column;
+                    transition: var(--default-transition);
+                    border-radius: 0.3em;
     
                     .number {
                         font-weight: bold;
@@ -110,6 +114,10 @@
                         font-size: 0.7rem;
                         color: grey;
                         margin-top: 0.4em;
+                    }
+
+                    &:hover {
+                        background: var(--media-light-grey);
                     }
                 }
     
