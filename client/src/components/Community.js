@@ -38,12 +38,16 @@ const Community = () => {
     const onSubscribe = () => {
         if(user!==null) {
             // Deal with subbing and unsubbing changes in user object
+            // If user has this community in his subscribed community array then needs to unsub
             dispatch(subUnSubCommunity(user.result._id, community.title, isSubscribed));
 
             // Deal with changes in community
             dispatch(updateSubUnsubCommunity(user.result._id, community.title, isSubscribed));
 
             setIsSubscribed(!isSubscribed);
+
+            // Update user again
+            setUser(JSON.parse(localStorage.getItem('profile'))); 
         }
     }
 

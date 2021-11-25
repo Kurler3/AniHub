@@ -91,54 +91,49 @@ export const updateSubUnsubCommunity = async (req, res) => {
     
     try {
         
-        const community = await Community.find({title:communityTitle});
+        const community = await Community.findOne({title:communityTitle});
+
         let updatedCommunity;
         // If is sub then just find community by title and add user id to members array
         // If unsub then check if user id is in the moderators array. If so, then remove it from there and 
         // also from the members array 
 
-        console.log(isUnSub);
-
         // If not unsubbing then add user to members.
         if(!isUnSub) {
-            console.log('here');
-            
-            //if(community.blocked_users.includes(userId)) res.status(401).json({message:"User is blocked from this community"});
 
+            if(community.blocked_users.includes(userId)) res.status(403).json({message:"This user is blocked from this community"});
 
-            updatedCommunity = await Community.updateOne(
+            updatedCommunity = await Community.findOneAndUpdate(
                 {title:communityTitle},
                 {members:[...community.members, userId]},
-                {returnOriginal:false},
+                {new:true},
             );
 
-            console.log(updatedCommunity.members);
         }
         else {
 
-            console.log('here');
-
-            console.log(community.moderators);
-            if(community.moderators.include(userId)){
-                updatedCommunity = await Community.updateOne(
+            // If this user is a moderator then remove it from the moderators list as well
+            if(community.moderators.includes(userId)){
+                updatedCommunity = await Community.findOneAndUpdate(
                     {title:communityTitle},
                     {
-                        members:community.filter((id) => id!==userId), 
-                        moderators: community.filter((id) => id!==userId),
-                    }
+                        members:community.members.filter((id) => id!==userId), 
+                        moderators: community.moderators.filter((id) => id!==userId),
+                    },
+                    {new:true},
                 );
             } 
             else {
-                updatedCommunity = await Community.updateOne(
+                updatedCommunity = await Community.findOneAndUpdate(
                     {title:communityTitle},
                     {
-                        members:community.filter((id) => id!==userId), 
-                    }
+                        members:community.members.filter((id) => id!==userId), 
+                    },
+                    {new:true}
                 );
             } 
         }
 
-        
         // Return updated community object
         res.status(200).json({data:updatedCommunity});
     } catch (error) {

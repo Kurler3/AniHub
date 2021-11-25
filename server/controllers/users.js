@@ -88,16 +88,20 @@ export const getUserInfo = async (req, res) => {
 
 export const subUnSub = async (req, res) => {
     const {userId, communityTitle, isUnSub} = req.body;
-
+    
     try {
         const user = await User.findById(userId);
 
         const updatedUser = await User.findByIdAndUpdate(
             userId,
-            {communities_subscribed: isUnSub ? user.communities_subscribed.filter((title) => title!==communityTitle) : [...user.communities_subscribed, communityTitle]}
-        );
+            {
+                communities_subscribed: isUnSub ? user.communities_subscribed.filter((title) => title!==communityTitle) 
+                    :
+                        [...user.communities_subscribed, communityTitle]
 
-        
+            },
+            {new:true},
+        );
 
         res.status(200).json({data:updatedUser.communities_subscribed});
     } catch (error) {

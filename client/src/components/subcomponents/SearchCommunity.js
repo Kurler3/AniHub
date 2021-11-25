@@ -25,13 +25,14 @@ const SearchCommunity = () => {
     const onInputClick = () => {
         if(user === null) {
             // redirect to search community page
-            history.push('/media/search');
+            history.push('/communities');
         }
     }
 
     const onCommunitySearchTabClick = (communityName) => history.push(`/media/${communityName}`);
     
-    const onClickSearch = () => history.push(`/media/search${input.length>0 ? `/${input}` : ''}`);
+    const onClickSearch = () => history.push(`/communities${input.length>0 ? `/${input}` : ''}`);
+    
 
     useEffect(() => {
         setUser(JSON.parse(localStorage.getItem('profile')));

@@ -7,16 +7,22 @@ import {getAllCommunities, searchCommunities} from '../actions/communityActions'
 import ReactLoading from 'react-loading';
 import {Link} from 'react-router-dom';
 
-const SearchCommunities = () => {
+const SearchCommunities = ({match}) => {
+
+    const {defaultSearchInput} = match.params;
 
     const params = useParams();
     const dispatch = useDispatch();
 
     const [gotCommunities, setGotCommunities] = useState(false);
 
-    const [searchInput, setSearchInput] = useState(params.defaultSearchInput!==undefined ? params.defaultSearchInput : '');
+    console.log("Search Input from params:");
+    console.log(defaultSearchInput);
 
-    //console.log(searchInput);
+    const [searchInput, setSearchInput] = useState(defaultSearchInput!==undefined ? defaultSearchInput : '');
+
+
+    console.log(searchInput);
 
     const searchedCommunityList = useSelector(state => state.community.searchList);
 

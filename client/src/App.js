@@ -26,7 +26,7 @@ function App() {
         <Route exact path="/profile/:id" component={Profile} />
         <Route exact path="/media/submit/post" component={CreatePost} />
         <Route exact path="/media/:communityName" component={Community} />
-        <Route exact path="/media/search/:defaultSearchInput?" component={SearchCommunities} />
+        <Route exact path="/communities/:defaultSearchInput?" component={SearchCommunities} />
       </Switch>
       <Footer/>
     </Router>
