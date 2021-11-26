@@ -21,7 +21,7 @@ const CommunityMembers = () => {
        if(isObjectEmpty(community) || community.title !== params.communityName){
             dispatch(searchCommunity(params.communityName)); 
        } 
-    }, []);
+    }, [community]);
 
     
     

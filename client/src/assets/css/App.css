@@ -9,6 +9,11 @@
   --light-grey: #E9E9E9;
   --blue: #15AFED;
   --dark-blue: #0063CF;
+  --dark-green: #41C327;
+  --hover-green: #48DE2A;
+  --faint-green:#9AFF86;
+  --remove-red: #E21F09;
+  --remove-red-hover: #FF341E;
   --media-grey: #212121;
   --media-light-grey:#373737;
   --media-hover-grey:#292929;
@@ -1168,27 +1173,67 @@
   border: solid 1px white;
   color: white;
   height: 75%;
-  justify-content: space-between; }
+  justify-content: space-between;
+  align-items: center; }
   .member-tab-container .left-container {
-    margin-left: 1em; }
+    margin-left: 1em;
+    cursor: pointer;
+    padding: 1em;
+    border-radius: 0.5rem; }
+    .member-tab-container .left-container:hover {
+      background: var(--media-grey); }
     .member-tab-container .left-container .avatar-img {
       height: 120px;
       width: 120px;
       border-radius: 0.8rem; }
     .member-tab-container .left-container .username {
-      margin-top: 0.4em;
+      margin-top: 0.2em;
       font-size: 1.4rem; }
   .member-tab-container .privileged-features-container {
-    background: red;
     margin-right: 1em;
     width: 60%;
     display: flex;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+    margin-bottom: 1em; }
     .member-tab-container .privileged-features-container .btns-container {
-      background: yellow;
-      display: grid;
-      grid-gap: 20px;
-      grid-template-columns: repeat(2, 1fr); }
+      width: 80%; }
       .member-tab-container .privileged-features-container .btns-container .btn {
-        padding: 1.5em; }
+        padding: 1.5em;
+        border-radius: 0.7rem;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 1em;
+        margin-left: 1em;
+        width: 40%;
+        font-size: 0.9rem;
+        border: 1px solid white; }
+      .member-tab-container .privileged-features-container .btns-container .admin-btns-container {
+        display: flex;
+        transition: var(--default-transition); }
+        .member-tab-container .privileged-features-container .btns-container .admin-btns-container .admin-btn, .member-tab-container .privileged-features-container .btns-container .admin-btns-container .mod-btn {
+          background: var(--dark-green); }
+          .member-tab-container .privileged-features-container .btns-container .admin-btns-container .admin-btn:hover, .member-tab-container .privileged-features-container .btns-container .admin-btns-container .mod-btn:hover {
+            background: var(--hover-green); }
+        .member-tab-container .privileged-features-container .btns-container .admin-btns-container .disabled-admin-btn {
+          background: var(--faint-green);
+          cursor: auto; }
+        .member-tab-container .privileged-features-container .btns-container .admin-btns-container .remove-mod-btn {
+          background: var(--remove-red);
+          transition: var(--default-transition);
+          font-weight: bold; }
+          .member-tab-container .privileged-features-container .btns-container .admin-btns-container .remove-mod-btn:hover {
+            background: var(--remove-red-hover); }
+      .member-tab-container .privileged-features-container .btns-container .remove-btn {
+        background: var(--remove-red);
+        transition: var(--default-transition);
+        font-weight: bold; }
+        .member-tab-container .privileged-features-container .btns-container .remove-btn:hover {
+          background: var(--remove-red-hover); }
+      .member-tab-container .privileged-features-container .btns-container .block-btn {
+        background: var(--remove-red);
+        transition: var(--default-transition);
+        font-weight: bold; }
+        .member-tab-container .privileged-features-container .btns-container .block-btn:hover {
+          background: var(--remove-red-hover); }

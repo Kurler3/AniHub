@@ -9,9 +9,18 @@
     color: white;
     height: 75%;
     justify-content: space-between;
+    align-items: center;
 
     .left-container {
+
         margin-left: 1em;
+        cursor: pointer;
+        padding: 1em;
+        border-radius: 0.5rem;
+
+        &:hover {
+            background: var(--media-grey);
+        }
 
         .avatar-img {
             height: 120px;
@@ -20,34 +29,84 @@
         }
 
         .username {
-            margin-top: 0.4em;
+            margin-top: 0.2em;
             font-size: 1.4rem;
-
         }
     }
 
     .privileged-features-container {
-        background: red;
+        // background: red;
         margin-right: 1em;
         width: 60%;
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 1em;
 
         .btns-container {
-            background: yellow;
-            
-            display: grid;
-            grid-gap: 20px;
-            grid-template-columns: repeat(2, 1fr);
-
+            // display: grid;
+            // grid-gap: 20px;
+            // grid-template-columns: repeat(2, 1fr);
+            width: 80%;
 
             .btn {
                 padding: 1.5em;
-            }            
+                border-radius: 0.7rem;
+                border: none;
+                font-weight: 600;
+                cursor: pointer;
+                margin-top: 1em;
+                margin-left: 1em;
+                width: 40%;
+                font-size: 0.9rem;
+                border: 1px solid white;
+            }   
             
-            .admin-btn {
-                
+            .admin-btns-container {
+                display: flex;
+                transition: var(--default-transition);
+
+
+                .admin-btn, .mod-btn {
+                    background: var(--dark-green);
+
+                    &:hover {
+                        background: var(--hover-green);
+                    }
+                }
+
+                .disabled-admin-btn {
+                    background: var(--faint-green);
+                    cursor: auto;
+                }
+
+                .remove-mod-btn {
+                    background: var(--remove-red);
+                    transition: var(--default-transition);
+                    font-weight: bold;
+
+                    &:hover {
+                        background: var(--remove-red-hover);
+                    }
+                }
+            }        
+            
+            .remove-btn {
+                background: var(--remove-red);
+                transition: var(--default-transition);
+                font-weight: bold;
+                &:hover {
+                    background: var(--remove-red-hover);
+                }
+            }
+
+            .block-btn {
+                background: var(--remove-red);
+                transition: var(--default-transition);
+                font-weight: bold;
+                &:hover {
+                    background: var(--remove-red-hover);
+                }
             }
         }
     }

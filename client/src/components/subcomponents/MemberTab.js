@@ -28,10 +28,14 @@ const MemberTab = ({id, currentCommunity,currentUserId}) => {
     }, [member]);
 
     const onRemoveMember = () => {
+        // When this gets called, it means user is either admin and this member is not an admin, or
+        // user is a mod and this member is just a member
+        // Dispatch removing member action, checking in the back-end if user is also moderator or not. 
 
     }
 
     const onBlockMember = () => {
+        // Same thing as in onRemoveMember, but this time also include this member's id to the blocked_users list
 
     }
 
@@ -40,8 +44,10 @@ const MemberTab = ({id, currentCommunity,currentUserId}) => {
     }
 
     const onAddRemoveMod = () => {
-        
-        
+        // Here need to use an if statement with the memberIsMod local state
+        // If he is a mod, then user is trying to remove his privileges
+        // Else user is trying to add member as mod.
+            
     }
 
     return (
@@ -66,7 +72,7 @@ const MemberTab = ({id, currentCommunity,currentUserId}) => {
                     
                     <div className="privileged-features-container">
                         {
-                            // If current user is an admin or if he is a mod and this member is not
+                            // If current user is an admin and member is not an admin, or if he is a mod and this member is not
                             // a moderator or an admin, then the current user can remove or block this member
                             // from the community
                         }
@@ -74,7 +80,7 @@ const MemberTab = ({id, currentCommunity,currentUserId}) => {
                             
                             (
                                 (
-                                    isAdmin || 
+                                    (isAdmin && !currentCommunity.admins.includes(id))  || 
                                     (isMod && !currentCommunity.admins.includes(id) && !currentCommunity.moderators.includes(id))
                                 ) 
                                     && id!==currentUserId
@@ -84,23 +90,23 @@ const MemberTab = ({id, currentCommunity,currentUserId}) => {
                                         {
                                             // If logged user is admin then he can add other users as admin or as moderators, 
                                             // as well as remove moderators from being moderators.
-
                                         }
                                         {
-                                            isAdmin && 
-                                            
-                                                <button onClick={onAddAdmin} className="btn admin-btn" 
-                                                disabled={memberIsAdmin}
-                                                >
-                                                    Add Admin
-                                                </button>
+                                            isAdmin 
                                                 &&
-                                                <button onClick={onAddRemoveMod} className="btn mod-btn">
-                                                    {memberIsMod ? 'Remove Mod' : 'Add Mod'}
-                                                </button>
-                                            
+                                                <div className="admin-btns-container">
+                                                    <button onClick={onAddAdmin} className={`btn ${memberIsAdmin ? "disabled-admin-btn" : "admin-btn"}`}
+                                                    disabled={memberIsAdmin}
+                                                    > 
+                                                        {`${memberIsAdmin ? "Already Admin" : "Add Admin"}`}
+                                                    </button>
+                                                
+                                                    <button onClick={onAddRemoveMod} className={`btn ${memberIsMod ? 'remove-mod-btn' : 'mod-btn'}`}>
+                                                        {memberIsMod ? 'Remove Mod' : 'Add Mod'}
+                                                    </button>
+                                                </div>                                            
                                         }
-            
+
                                         <button onClick={onRemoveMember} className="btn remove-btn">
                                             Remove
                                         </button>
