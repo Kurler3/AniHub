@@ -1,0 +1,54 @@
+.member-tab-container {
+    display: flex;
+    flex-direction: row;
+    background: var(--media-hover-grey);
+    margin-top: 1em;
+    padding: 1em;
+    border-radius: 1.4rem;
+    border: solid 1px white;
+    color: white;
+    height: 75%;
+    justify-content: space-between;
+
+    .left-container {
+        margin-left: 1em;
+
+        .avatar-img {
+            height: 120px;
+            width: 120px;
+            border-radius: 0.8rem;
+        }
+
+        .username {
+            margin-top: 0.4em;
+            font-size: 1.4rem;
+
+        }
+    }
+
+    .privileged-features-container {
+        background: red;
+        margin-right: 1em;
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .btns-container {
+            background: yellow;
+            
+            display: grid;
+            grid-gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+
+
+            .btn {
+                padding: 1.5em;
+            }            
+            
+            .admin-btn {
+                
+            }
+        }
+    }
+}

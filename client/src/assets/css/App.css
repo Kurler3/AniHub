@@ -1154,5 +1154,41 @@
   min-height: 55vh;
   background: var(--media-light-grey);
   padding: 2.5em;
+  display: grid;
+  grid-gap: 40px;
+  grid-template-columns: repeat(2, 1fr); }
+
+.member-tab-container {
   display: flex;
-  flex-direction: column; }
+  flex-direction: row;
+  background: var(--media-hover-grey);
+  margin-top: 1em;
+  padding: 1em;
+  border-radius: 1.4rem;
+  border: solid 1px white;
+  color: white;
+  height: 75%;
+  justify-content: space-between; }
+  .member-tab-container .left-container {
+    margin-left: 1em; }
+    .member-tab-container .left-container .avatar-img {
+      height: 120px;
+      width: 120px;
+      border-radius: 0.8rem; }
+    .member-tab-container .left-container .username {
+      margin-top: 0.4em;
+      font-size: 1.4rem; }
+  .member-tab-container .privileged-features-container {
+    background: red;
+    margin-right: 1em;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .member-tab-container .privileged-features-container .btns-container {
+      background: yellow;
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: repeat(2, 1fr); }
+      .member-tab-container .privileged-features-container .btns-container .btn {
+        padding: 1.5em; }

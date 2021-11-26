@@ -19,7 +19,7 @@ export const createCommunity = async (req, res) => {
             description:description,
             avatar_img:avatar_img,
             admins:[req.userId],
-            moderators:[req.userId],
+            moderators:[],
             members:[req.userId],
             blocked_users:[],
             discord_link:'',
