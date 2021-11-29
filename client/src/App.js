@@ -25,7 +25,7 @@ function App() {
         <Route exact path="/media" component={Media} />
         <Route exact path="/list" component={MyList} />
         <Route exact path="/profile/:id" component={Profile} />
-        <Route exact path="/media/submit/post" component={CreatePost} />
+        <Route exact path="/media/submit/:communityName?" component={CreatePost} />
         <Route exact path="/media/:communityName" component={Community} />
         <Route exact path="/communities/:defaultSearchInput?" component={SearchCommunities} />
         <Route exact path="/members/:communityName" component={CommunityMembers} />

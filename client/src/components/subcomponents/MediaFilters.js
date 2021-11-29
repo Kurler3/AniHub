@@ -9,17 +9,17 @@ const MediaFilters = () => {
     const [selectedFilter, setSelectedFilter] = useState(MEDIA_POST_FILTERS[0]);
 
     const onPopularFilterClick = () => {
-        if(selectedFilter !== MEDIA_POST_FILTERS[0]){
+        if(selectedFilter !== MEDIA_POST_FILTERS[1]){
             // Set the current filter
-            setSelectedFilter(MEDIA_POST_FILTERS[0])
+            setSelectedFilter(MEDIA_POST_FILTERS[1])
             // Dispatch action to reducer
             // Changing the data in the store
         }
     }
 
     const onNewestFilterClick = () => {
-        if(selectedFilter !== MEDIA_POST_FILTERS[1]){
-            setSelectedFilter(MEDIA_POST_FILTERS[1]);
+        if(selectedFilter !== MEDIA_POST_FILTERS[0]){
+            setSelectedFilter(MEDIA_POST_FILTERS[0]);
         }
     }
 
@@ -30,14 +30,14 @@ const MediaFilters = () => {
     }
 
     return (
-        <div className="filters-container">
-                <div onClick={onPopularFilterClick} className={`filter-container ${selectedFilter===MEDIA_POST_FILTERS[0] ? 'selected-filter' : ''}`}>
-                    <FontAwesomeIcon className="icon" icon={faRocket} />
-                    <p className="text">Most Popular</p>
-                </div>
-                <div onClick={onNewestFilterClick}  className={`filter-container ${selectedFilter===MEDIA_POST_FILTERS[1] ? 'selected-filter' : ''}`}>
+        <div className="filters-container"> 
+                <div onClick={onNewestFilterClick}  className={`filter-container ${selectedFilter===MEDIA_POST_FILTERS[0] ? 'selected-filter' : ''}`}>
                     <FontAwesomeIcon className="icon" icon={faCertificate} />
                     <p className="text">Newest </p>
+                </div>
+                <div onClick={onPopularFilterClick} className={`filter-container ${selectedFilter===MEDIA_POST_FILTERS[1] ? 'selected-filter' : ''}`}>
+                    <FontAwesomeIcon className="icon" icon={faRocket} />
+                    <p className="text">Most Popular</p>
                 </div>
                 <div onClick={onMostUpvotedFilterClick} className={`filter-container ${selectedFilter===MEDIA_POST_FILTERS[2] ? 'selected-filter' : ''}`}>
                     <FontAwesomeIcon className="icon" icon={faArrowUp} />

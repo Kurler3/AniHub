@@ -140,3 +140,75 @@ export const updateSubUnsubCommunity = async (req, res) => {
         res.status(500).json({message:"Server error..."});
     }
 }
+
+export const removeMember = async (req, res) => {
+
+    const {communityTitle, memberId} = req.body;
+
+    try {
+        
+        // Find community in db
+        // Check if this user is also moderator
+        // Remove him entirely from this object's array
+
+        const community = await Community.findOne({title:communityTitle});
+
+        const updatedCommunity = await Community.findOneAndUpdate(
+            {title:communityTitle},
+            {
+                members:community.members.filter((id) => id!==memberId),
+                moderators: community.moderators.includes(memberId) ? community.moderators.filter((id) => id!==memberId) : community.moderators,
+            },
+            {new:true}
+        );
+        
+        res.status(200).json({data:updatedCommunity});
+    } catch (error) {
+        res.status(500).json({message:"Server error..."});
+    }
+}
+
+export const blockMember = async (req, res) => {
+    
+    const {communityTitle, memberId} = req.body;
+    
+    try {
+        
+        const community = await Community.findOne({title:communityTitle});
+
+        const updatedCommunity = await Community.findOneAndUpdate(
+            {title:communityTitle},
+            {
+                members:community.members.filter((id) => id!==memberId),
+                moderators:community.moderators.includes(memberId) ? community.moderators.filter((id) => id!==memberId) : community.moderators,
+                blocked_users: [...community.blocked_users, memberId]
+            },
+            {new:true}
+        );
+
+        res.status(200).json({data:updatedCommunity});
+    } catch (error) {
+        res.status(500).json({message:"Server error..."});
+    }   
+}
+
+export const addAdmin = async (req, res) => {
+
+    const {communityTitle, memberId} = req.body;
+
+    try {
+        
+        const community = await Community.findOne({title:communityTitle});
+
+        const updatedCommunity = await Community.findOneAndUpdate(
+            {title:communityTitle},
+            {admins:[...community.admins, memberId]},
+            {new:true}
+        );
+
+
+        res.status(200).json({data:updatedCommunity});
+    } catch (error) {
+        res.status(500).json({message:"Server error..."});   
+    }
+}

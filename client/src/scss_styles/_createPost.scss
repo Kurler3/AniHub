@@ -1,0 +1,103 @@
+.create-post-page-container {
+    background: var(--media-light-grey);
+    min-height: 55vh;
+    color: white;
+    font-family: var(--pt-sans);
+
+    .create-post-container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 1.5em;
+        display: flex;
+        flex-direction: column;
+
+        .title {
+            font-size: 1.5rem;
+            padding:0.4em 0;
+            border-bottom: solid 1px lightgrey;
+        }
+        
+        .create-post-form {
+            background: var(--media-grey);
+            padding: 1em;
+            border-radius: 0.5rem;
+            border: 1px solid grey;
+            margin-top: 1em;
+            display: flex;
+            flex-direction: column;
+
+            .select-community-input {
+                width: 20%;
+                padding: 0.5em;
+                border-radius: 0.3em;
+                background: var(--media-light-grey);
+                color: white;
+                cursor: pointer;
+                border: none;
+            }
+
+            .title-input {
+                //width: 70%;
+                padding: 0.5em;
+                font-size: 1rem;
+                margin-top: 1em;
+                background: var(--media-light-grey);
+                color: white;
+                border: none;
+                border-radius: 0.3rem;
+            }
+
+            .content-input {
+                padding: 0.5em;
+                //width: 70%;
+                margin-top: 1em;
+                font-size: 1rem;
+                background: var(--media-light-grey);
+                color: lightgrey;
+            }
+
+            .img-input-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 1em;
+                padding-bottom: 1em;
+
+                .title {
+                    font-size: 1rem;
+                    color: lightgrey;
+                    margin-right: 1em;
+                    border: none;
+                }
+            }
+
+            .post-btn-container {
+                display: flex;
+                justify-content: flex-end;
+                padding: 1em;
+                border-top: solid 1px grey;
+
+                .post-btn {
+                    padding: 1em;
+                    width: 15%;
+                    background: var(--media-light-grey);
+                    color: white;
+                    border: 1px solid white;
+                    border-radius: 0.5rem;
+                    cursor: pointer;
+                    transition: var(--default-transition);
+                    font-size: 0.9rem;
+
+                    &:hover {
+                        background: lightgrey;
+                        color: black;
+                        border: 1px solid grey;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+
+
+    }
+}

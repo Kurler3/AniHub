@@ -18,13 +18,9 @@ const SearchCommunities = ({match}) => {
 
     const [gotCommunities, setGotCommunities] = useState(false);
 
-    console.log("Search Input from params:");
-    console.log(defaultSearchInput);
 
     const [searchInput, setSearchInput] = useState(defaultSearchInput!==undefined ? defaultSearchInput : '');
 
-
-    console.log(searchInput);
 
     const searchedCommunityList = useSelector(state => state.community.searchList);
 

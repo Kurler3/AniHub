@@ -57,6 +57,14 @@ export const getAllCommunities = () => API.get('/community/all');
 
 export const updateSubUnsubCommunity = (userId, communityTitle, isUnSub) => API.post('/community/updateSubUnsub', {userId, communityTitle, isUnSub}); 
 
+export const removeMember = (communityTitle, memberId) => API.post('/community/removeMember', {communityTitle, memberId});
+
+export const blockMember = (communityTitle, memberId) => API.post('/community/block', {communityTitle, memberId});
+
+export const addAdmin = (communityTitle, memberId) => API.post('/community/addAdmin', {communityTitle, memberId});
+
+export const addRemoveMod = (communityTitle, memberId, isRemove) => API.post('/community/addRemoveMod', {communityTitle, memberId, isRemove});
+
 // Users
 
 export const getUserInfo = (id) => API.get('/user/getInfo', {params:{id}});

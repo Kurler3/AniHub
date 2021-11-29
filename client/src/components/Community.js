@@ -79,7 +79,10 @@ const Community = () => {
                     <div className="lower-container">
                         
                         <div className="left-container">
-                            {user!==null && <CreateMediaPost user={user.result}/>}
+                            {
+                                // Only allow the user to make a post in this community if he is logged in and if he is subscribed to this community
+                            }
+                            {user!==null && user.result.communities_subscribed.includes(community.title) && <CreateMediaPost user={user.result}/>}
 
                             <PostList />
                         </div>

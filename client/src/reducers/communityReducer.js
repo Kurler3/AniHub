@@ -1,4 +1,4 @@
-import { CREATE_COMMUNITY, GET_ALL_COMMUNITIES, SEARCH_COMMUNITIES, SEARCH_COMMUNITY, SUB_UNSUB_COMMUNITIES, UPDATE_SUB_UNSUB_COMMUNITY} from "../utils/action_constants";
+import { ADD_ADMIN_TO_COMMUNITY, BLOCK_MEMBER_FROM_COMMUNITY, CREATE_COMMUNITY, GET_ALL_COMMUNITIES, REMOVE_MEMBER_FROM_COMMUNITY, SEARCH_COMMUNITIES, SEARCH_COMMUNITY, SUB_UNSUB_COMMUNITIES, UPDATE_SUB_UNSUB_COMMUNITY} from "../utils/action_constants";
 
 const reducer = (state={searchList:[], current:{}}, action) => {
 
@@ -38,6 +38,12 @@ const reducer = (state={searchList:[], current:{}}, action) => {
 
             return state;
         case UPDATE_SUB_UNSUB_COMMUNITY:
+            return {...state, current:action.payload.data};
+        case REMOVE_MEMBER_FROM_COMMUNITY:
+            return {...state, current:action.payload.data};
+        case BLOCK_MEMBER_FROM_COMMUNITY:
+            return {...state, current:action.payload.data};
+        case ADD_ADMIN_TO_COMMUNITY:
             return {...state, current:action.payload.data};
         default:
             return state;

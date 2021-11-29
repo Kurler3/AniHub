@@ -13,3 +13,7 @@
     grid-gap: 40px;
     grid-template-columns: repeat(2, 1fr);
 }
+
+.blur {
+    backdrop-filter:blur(5px);
+}

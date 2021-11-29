@@ -10,6 +10,9 @@
     height: 75%;
     justify-content: space-between;
     align-items: center;
+    transition: var(--default-transition);
+
+    
 
     .left-container {
 
@@ -110,4 +113,80 @@
             }
         }
     }
+
+    
+    .add-admin-pop-up-container {
+        color: black;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: 100%;
+        transition: var(--default-transition);
+        background: rgba($color: #000000, $alpha: 0.7);
+
+
+        .add-admin-pop-up{
+            background: #F3F3F3;
+            padding: 1.5em 2em;
+            text-align: center;
+            border: solid 7px var(--blue);
+            border-radius: 1rem;
+            width: 400px;
+            opacity: 1;
+    
+            .alert-text {
+                font-size: 1.3rem;
+                font-weight: bold;
+            }
+    
+            .alert-text-secondary {
+                font-size: 0.9rem;
+                margin-top: 1em;
+            }
+    
+            .btns-container {
+                
+                width: 70%;
+                margin: 0 auto;
+                margin-top: 1em;
+                padding: 0.5em;
+                display: flex;
+                justify-content: space-between;
+    
+                .btn {
+                    padding: 1.3em;
+                    cursor: pointer;
+                    transition: var(--default-transition);
+                    border-radius: 0.5rem;
+                    border: none;
+                }
+    
+                .cancel-btn {
+                    background: red;
+                    color: black;
+                    font-weight: 600;
+                    border: none;
+    
+                    &:hover {
+                        background: var(--remove-red);
+                    }
+                }
+    
+                .confirm-btn {
+                    background: var(--dark-green);
+                    font-weight: 600;
+    
+                    &:hover {
+                        background: var(--hover-green);
+                    }
+                }
+            }
+        }
+    }  
 }

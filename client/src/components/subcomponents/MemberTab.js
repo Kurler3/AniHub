@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import * as api from '../../api';
 import ReactLoading from 'react-loading';
+import {useDispatch} from 'react-redux';
+import { addAdmin, addRemoveMod, blockMember, removeMember } from '../../actions/communityActions';
 
 
 // currentCommunity is an object with the community's title, mod list and admin list.
@@ -8,8 +10,11 @@ import ReactLoading from 'react-loading';
 
 const MemberTab = ({id, currentCommunity,currentUserId}) => {
 
+    const dispatch = useDispatch();
+
     const [member, setMember] = useState(null);
     
+    const [showAddAdminPopUp, setShowAddAdminPopUp] = useState(false);
     const [memberIsAdmin, setMemberIsAdmin] = useState(currentCommunity.admins.includes(id));
     const [memberIsMod, setMemberIsMod] = useState(currentCommunity.moderators.includes(id));
 
@@ -31,23 +36,31 @@ const MemberTab = ({id, currentCommunity,currentUserId}) => {
         // When this gets called, it means user is either admin and this member is not an admin, or
         // user is a mod and this member is just a member
         // Dispatch removing member action, checking in the back-end if user is also moderator or not. 
-
+        dispatch(removeMember(currentCommunity.title, id));
     }
 
     const onBlockMember = () => {
         // Same thing as in onRemoveMember, but this time also include this member's id to the blocked_users list
-
+        dispatch(blockMember(currentCommunity.title, id));
     }
 
-    const onAddAdmin = () => {
-        // Show a pop up asking if user is sure to add admin, since once added it cannot be removed.
-    }
+    // Show a pop up asking if user is sure to add admin, since once added it cannot be removed.
+    const onAddAdmin = () => setShowAddAdminPopUp(true);
 
-    const onAddRemoveMod = () => {
-        // Here need to use an if statement with the memberIsMod local state
-        // If he is a mod, then user is trying to remove his privileges
-        // Else user is trying to add member as mod.
-            
+
+    // Here need to use an if statement with the memberIsMod local state
+    // If he is a mod, then user is trying to remove his privileges
+    // Else user is trying to add member as mod.
+    const onAddRemoveMod = () => dispatch(addRemoveMod(currentCommunity.title, id, memberIsMod));
+
+    // Simply hide the pop-up
+    const onCancelAddAdminClick = () => setShowAddAdminPopUp(false); 
+
+    // Dispatch action to add this member as an admin and then hide the pop-up
+    const onConfirmAddAdminClick = () => {
+        dispatch(addAdmin(currentCommunity.title, id));
+
+        setShowAddAdminPopUp(false);
     }
 
     return (
@@ -57,7 +70,7 @@ const MemberTab = ({id, currentCommunity,currentUserId}) => {
 
                :
 
-            <div className="member-tab-container">
+            <div className='member-tab-container'>
                 <div className="left-container">
                     <img className="avatar-img" src={member.avatar_img} alt="profile_img"/>
                     <p className="username">{`${member.first_name} ${member.last_name}`}</p>
@@ -121,7 +134,32 @@ const MemberTab = ({id, currentCommunity,currentUserId}) => {
 
                     </div>
                 }
+                
 
+                {
+                    // Show if admin wants to add this member as admin
+                }
+
+                {
+                    showAddAdminPopUp && 
+                    
+                    <div className="add-admin-pop-up-container">
+                        <div className="add-admin-pop-up">
+                            <p className="alert-text">Are you sure you want to add this member as admin?</p>
+                            <p className="alert-text-secondary">Once done can't be undone</p>
+
+                            <div className="btns-container">
+                                <button onClick={onCancelAddAdminClick} className="btn cancel-btn">
+                                    Cancel
+                                </button>
+
+                                <button onClick={onConfirmAddAdminClick} className="btn confirm-btn">
+                                    Confirm
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
     )
 }

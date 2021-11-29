@@ -13,6 +13,8 @@ const CommunityMembers = () => {
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
+    // const [isBlurOn, setIsBlurOn] = useState(false);
+
     const community = useSelector(state => state.community['current']);
 
     useEffect(() => {
@@ -23,7 +25,7 @@ const CommunityMembers = () => {
        } 
     }, [community]);
 
-    
+    // const changeBlur = (isSetOn) => setIsBlurOn(isSetOn);
     
     if(isObjectEmpty(community) || community.title !== params.communityName) {
         return (
@@ -33,7 +35,7 @@ const CommunityMembers = () => {
         );
     }else {
         return (
-            <div className="community-members-container">
+            <div className='community-members-container'>
                 {
                     // No need to check for array to be empty
                     // bcz it will always have at least 1 member
@@ -46,6 +48,7 @@ const CommunityMembers = () => {
                                 title:community.title,
                                 moderators:community.moderators,
                                 admins:community.admins,
+                                // setIsBlurOn:changeBlur(),
                             }
                         } 
                         currentUserId={user!==null? user.result._id : null} />
