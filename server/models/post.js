@@ -52,7 +52,7 @@ const PostSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    community_id: {
+    community_title: {
         type:String,
         required:true,
     },
@@ -72,9 +72,6 @@ const PostSchema = mongoose.Schema({
             type:String
         }
     ],
-    total_votes: {
-        type:Number
-    },
     comments:[
         {
             type:CommentSchema,

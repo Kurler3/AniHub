@@ -1,10 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router';
 import FileBase64 from 'react-file-base64';
+import {useDispatch} from 'react-redux';
+import { createPost } from '../actions/mediaActions';
+import { useHistory } from 'react-router';
 
 const CreatePost = () => {
 
     const params = useParams();
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const communityName = params.communityName !== undefined ? params.communityName : null;
 
@@ -23,6 +28,22 @@ const CreatePost = () => {
 
     const onInputDataChange = (e) => setInputData({...inputData,[e.target.name]:e.target.value});
 
+    const onInputDataSubmit = (e) => {
+        e.preventDefault();
+
+        // data validation and then send dispatch to back-end
+        if(
+            inputData.selected_community!=='Choose a community' && inputData.selected_community!=='' && 
+            inputData.title!=='' && 
+            inputData.content!== '' 
+        ) {
+
+            console.log('passed data val');
+           dispatch(createPost(inputData, user.result._id, history));   
+           // Redirect user to media home page inside the action
+        }
+    }
+
     return (
         <div className="create-post-page-container">
 
@@ -30,9 +51,9 @@ const CreatePost = () => {
 
                 <p className="title">Create a post</p>
 
-                <form className="create-post-form">
+                <form onSubmit={onInputDataSubmit} className="create-post-form">
                     <select name="selected_community" className="select-community-input" onChange={onInputDataChange} value={inputData.selected_community}>
-                            {user.result.communities_subscribed.map((title) => <option className="select-option" value={title}>{title}</option>)}
+                            {user.result.communities_subscribed.map((title) => <option key={title} className="select-option" value={title}>{title}</option>)}
                     </select>
                     <input className="title-input" placeholder="Title..." onChange={onInputDataChange} name="title" maxLength="300"/>
                     <textarea className="content-input" placeholder="Content..." onChange={onInputDataChange} name="content"/>
@@ -45,7 +66,7 @@ const CreatePost = () => {
                         />
                     </div>
                     <div className="post-btn-container">
-                        <button className="post-btn">
+                        <button type="submit" className="post-btn">
                             POST
                         </button>
                     </div>

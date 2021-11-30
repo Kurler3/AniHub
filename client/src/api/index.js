@@ -42,7 +42,9 @@ export const updateAnimeEpisode = (id, episode) => API.put('/anime/updateEpisode
 
 // Media
 
-export const getMediaHomePosts = (filter) => API.get('/media/posts', filter);
+export const getPosts = (communityTitle, communities_subscribed) => API.get('/media/posts', {communityTitle, communities_subscribed});
+
+export const createPost = (inputData, userId) => API.post('/media/createPost', {inputData, userId}); 
 
 // Community
 
