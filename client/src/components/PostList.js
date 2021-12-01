@@ -14,8 +14,6 @@ const PostList = () => {
     const params = useParams();
     const location = useLocation();
 
-    const [didInitialFetch, setDidInitialFetch] = useState(false);
-
     const communityTitle = params.communityName === undefined ? null : params.communityName;
 
     const posts = useSelector(state => state.posts);
@@ -26,12 +24,8 @@ const PostList = () => {
     useEffect(() => {
         if(user===null) setUser(JSON.parse(localStorage.getItem('profile')));
 
-        // Going to handle the null values in the back-end
-        if(!didInitialFetch) {
-            dispatch(getPosts(communityTitle, user !==null ? user.result.communities_subscribed : null));
-            setDidInitialFetch(true);
-        }
-    }, [location, posts]);
+        if(posts.length === 0) dispatch(getPosts(communityTitle, user !==null ? user.result.communities_subscribed : null));
+    }, [location]);
 
     return (
         <div className="posts-list-container">

@@ -1,19 +1,20 @@
 import React, {useState, useEffect} from 'react';
 import CreateMediaPost from './subcomponents/CreateMediaPost';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import PostList from './PostList';
 import {Link} from 'react-router-dom';
 import CreateCommunityPopUp from './subcomponents/CreateCommunityPopUp';
 import SearchCommunity from './subcomponents/SearchCommunity';
+import { useDispatch } from 'react-redux';
+
 
 const Media = () => {
 
     const location = useLocation();
-
+    
     const [createCommunityVisible, setCreateCommunityVisible] = useState(false);
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-
 
     // Everytime location is changed look for a user login
     useEffect(() => {

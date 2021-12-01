@@ -3,23 +3,22 @@ import Posts from '../models/post.js';
 // import {MEDIA_POST_FILTERS} from '../constants.js';
 
 export const getPosts = async (req, res) => {
-    const {communityTitle, communities_subscribed} = req.body;
+    let {communityTitle, communities_subscribed} = req.body;
 
     try {
         let posts;
 
-        if(communityTitle!==null) {
+        if(communityTitle!==undefined) {
             posts = await Posts.find({community_title:communityTitle}).sort({'created_at': -1});
         }
 
         // Media Home Page but there is an user logged in
-        if(communities_subscribed!==null) {
+        if(communities_subscribed!==undefined) {
             posts = await Posts.find().where('community_title').in(user.communities_subscribed).sort({'created_at':-1});
         }else {
             posts = await Posts.find().sort({'created_at':-1});
         }
 
-        console.log(posts);
 
         res.status(200).json({data:posts});
     } catch (error) {

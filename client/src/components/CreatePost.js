@@ -16,7 +16,7 @@ const CreatePost = () => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
     const [inputData, setInputData] = useState({
-        selected_community: communityName!==null ? communityName :'Choose a community',
+        selected_community: communityName!==null ? communityName : user!==null && user.result.communities_subscribed.length > 0 ? user.result.communities_subscribed[0] : '',
         title:"",
         content:"",
         img:"",
@@ -33,12 +33,12 @@ const CreatePost = () => {
 
         // data validation and then send dispatch to back-end
         if(
-            inputData.selected_community!=='Choose a community' && inputData.selected_community!=='' && 
+            inputData.selected_community!=='' && 
             inputData.title!=='' && 
             inputData.content!== '' 
         ) {
 
-            console.log('passed data val');
+           console.log('passed data val');
            dispatch(createPost(inputData, user.result._id, history));   
            // Redirect user to media home page inside the action
         }
