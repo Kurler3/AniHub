@@ -1,8 +1,18 @@
 .post-tab-container {
     display: flex;
     flex-direction: row;
-    cursor: pointer;
-    border-bottom: solid 1px grey;
+    border: solid 1px grey;
+    transition: 0.3s all ease-in-out;
+    border-radius: 0.5rem;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    margin-top: 1em;
+    text-decoration: none;
+    color: white;
+
+    &:hover {
+        background: var(--media-hover-grey);
+    }
     
     .voting-container {
         display: flex;
@@ -28,10 +38,18 @@
             }
         }
 
+        .upvoted {
+            color: red;
+        }
+
         .down {
             &:hover {
                 color: lightskyblue;
             }
+        }
+
+        .downvoted {
+            color: lightskyblue;
         }
     }
 
@@ -48,6 +66,11 @@
             .community {
                 color: lightgrey;
                 font-size: 0.85rem;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
             }
 
             .posted-by, .time-created {
@@ -58,6 +81,11 @@
 
             .posted-by {
                 cursor: pointer;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
             }
         }
 
@@ -70,11 +98,12 @@
             width: 95%;
             background: yellow;
             margin-top: 1em;
-
+            border-radius: 0.3rem;
+            overflow: hidden;
             img {
                 width: 100%;
                 height: 100%;
-                border-radius: 0.3rem;
+                // border-radius: 0.3rem;
             }
         }
 
@@ -95,7 +124,9 @@
                 color: grey;
 
                 &:hover {
-                    background: var(--media-hover-grey);
+                    background: var(--media-light-grey);
+                    background: lightgray;
+                    color: black;
                 }
 
                 .comment-icon {
@@ -105,6 +136,108 @@
                 .total-comments {
                     margin-left: 0.5em;
                     font-size: 0.9rem; 
+                }
+            }
+        }
+    }
+
+    .permissions-container {
+        padding: 0.5em;
+
+        .delete-btn {
+            padding: 1em;
+            background: var(--remove-red);
+            color: white;
+            border: none;
+            border-radius: 0.4rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--default-transition);
+            max-width: 6vw;
+
+            &:hover {
+                background: var(--remove-red-hover);
+                color: black;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .delete-pop-up-container {
+        position: fixed;
+        width: 46%;
+        margin: 0 auto;
+        background: var(--media-light-grey);
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        padding: 2em;
+        top: 250px;
+        border: white solid 1px;
+        border-radius: 0.5rem;
+        transition: var(--default-transition);
+
+        &:hover {
+            background: var(--media-hover-grey);
+        }
+        
+        .close-icon-btn-container {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            font-size: 1.7rem;
+            padding: 0.2em 0.3em;
+            cursor: pointer;
+            border-radius: 0.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--default-transition);
+
+            &:hover {
+                background: lightgrey;
+                color: black;
+            }
+        }
+
+        .title {
+            margin-top: 0.3em;
+            padding: 1em;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .btns-container {
+            margin-top: 1em;
+            width: 80%;
+            display: flex;           
+            justify-content: space-between;
+
+            .btn {
+                cursor: pointer;
+                padding: 1em;
+                font-size: 1rem;
+                border-radius: 0.5rem;
+                border: none;
+                transition: var(--default-transition);
+            }
+
+            .cancel-btn {
+                background: var(--remove-red);
+                color: white;
+
+                &:hover {
+                    background: var(--remove-red-hover);
+                }
+            }
+
+            .confirm-btn {
+                background: var(--dark-green);
+                font-weight: bold;
+
+                &:hover {
+                    background: var(--hover-green);
                 }
             }
         }

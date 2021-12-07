@@ -24,7 +24,7 @@ const PostList = () => {
     useEffect(() => {
         if(user===null) setUser(JSON.parse(localStorage.getItem('profile')));
 
-        if(posts.length === 0) dispatch(getPosts(communityTitle, user !==null ? user.result.communities_subscribed : null));
+        if(posts.length === 0) dispatch(getPosts(communityTitle, user !== null ? user.result.communities_subscribed : null));
     }, [location]);
 
     return (

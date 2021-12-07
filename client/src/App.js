@@ -13,6 +13,7 @@ import CreatePost from './components/CreatePost';
 import Community from './components/Community';
 import SearchCommunities from './components/SearchCommunities';
 import CommunityMembers from './components/CommunityMembers';
+import Post from './components/Post';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route exact path="/media/:communityName" component={Community} />
         <Route exact path="/communities/:defaultSearchInput?" component={SearchCommunities} />
         <Route exact path="/members/:communityName" component={CommunityMembers} />
+        <Route exact path="/posts/:postId" component={Post} />
       </Switch>
       <Footer/>
     </Router>

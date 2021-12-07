@@ -1373,11 +1373,168 @@
             font-weight: bold; }
 
 .post-tab-container {
-  background: red;
   display: flex;
-  flex-direction: row; }
+  flex-direction: row;
+  border: solid 1px grey;
+  transition: 0.3s all ease-in-out;
+  border-radius: 0.5rem;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+  margin-top: 1em;
+  text-decoration: none;
+  color: white; }
+  .post-tab-container:hover {
+    background: var(--media-hover-grey); }
   .post-tab-container .voting-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0em 0.5em; }
+    .post-tab-container .voting-container .vote-icon {
+      padding: 0.1em 0.2em;
+      border-radius: 0.3rem;
+      transition: var(--default-transition);
+      cursor: pointer;
+      font-size: 1.1rem; }
+      .post-tab-container .voting-container .vote-icon:hover {
+        background: var(--media-hover-grey); }
+    .post-tab-container .voting-container .up:hover {
+      color: red; }
+    .post-tab-container .voting-container .upvoted {
+      color: red; }
+    .post-tab-container .voting-container .down:hover {
+      color: lightskyblue; }
+    .post-tab-container .voting-container .downvoted {
+      color: lightskyblue; }
+  .post-tab-container .right-container {
+    display: flex;
+    flex-direction: column;
+    width: 95%; }
+    .post-tab-container .right-container .created-by-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center; }
+      .post-tab-container .right-container .created-by-container .community {
+        color: lightgrey;
+        font-size: 0.85rem;
+        text-decoration: none; }
+        .post-tab-container .right-container .created-by-container .community:hover {
+          text-decoration: underline; }
+      .post-tab-container .right-container .created-by-container .posted-by, .post-tab-container .right-container .created-by-container .time-created {
+        margin-left: 0.5em;
+        color: grey;
+        font-size: 0.8rem; }
+      .post-tab-container .right-container .created-by-container .posted-by {
+        cursor: pointer;
+        text-decoration: none; }
+        .post-tab-container .right-container .created-by-container .posted-by:hover {
+          text-decoration: underline; }
+    .post-tab-container .right-container .title {
+      font-size: 1.2rem;
+      padding-top: 0.5em; }
+    .post-tab-container .right-container .img-container {
+      width: 95%;
+      background: yellow;
+      margin-top: 1em;
+      border-radius: 0.3rem;
+      overflow: hidden; }
+      .post-tab-container .right-container .img-container img {
+        width: 100%;
+        height: 100%; }
+    .post-tab-container .right-container .comments-container {
+      margin-top: 0.5em;
+      display: flex;
+      flex-direction: row;
+      width: 95%; }
+      .post-tab-container .right-container .comments-container .comments-tab {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0.5em;
+        border-radius: 0.3rem;
+        cursor: pointer;
+        transition: var(--default-transition);
+        color: grey; }
+        .post-tab-container .right-container .comments-container .comments-tab:hover {
+          background: var(--media-light-grey);
+          background: lightgray;
+          color: black; }
+        .post-tab-container .right-container .comments-container .comments-tab .comment-icon {
+          font-size: 1.2rem; }
+        .post-tab-container .right-container .comments-container .comments-tab .total-comments {
+          margin-left: 0.5em;
+          font-size: 0.9rem; }
+  .post-tab-container .permissions-container {
+    padding: 0.5em; }
+    .post-tab-container .permissions-container .delete-btn {
+      padding: 1em;
+      background: var(--remove-red);
+      color: white;
+      border: none;
+      border-radius: 0.4rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--default-transition);
+      max-width: 6vw; }
+      .post-tab-container .permissions-container .delete-btn:hover {
+        background: var(--remove-red-hover);
+        color: black;
+        font-weight: bold; }
+  .post-tab-container .delete-pop-up-container {
+    position: fixed;
+    width: 46%;
+    margin: 0 auto;
+    background: var(--media-light-grey);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+    top: 250px;
+    border: white solid 1px;
+    border-radius: 0.5rem;
+    transition: var(--default-transition); }
+    .post-tab-container .delete-pop-up-container:hover {
+      background: var(--media-hover-grey); }
+    .post-tab-container .delete-pop-up-container .close-icon-btn-container {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      font-size: 1.7rem;
+      padding: 0.2em 0.3em;
+      cursor: pointer;
+      border-radius: 0.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--default-transition); }
+      .post-tab-container .delete-pop-up-container .close-icon-btn-container:hover {
+        background: lightgrey;
+        color: black; }
+    .post-tab-container .delete-pop-up-container .title {
+      margin-top: 0.3em;
+      padding: 1em;
+      font-size: 1.3rem;
+      font-weight: bold; }
+    .post-tab-container .delete-pop-up-container .btns-container {
+      margin-top: 1em;
+      width: 80%;
+      display: flex;
+      justify-content: space-between; }
+      .post-tab-container .delete-pop-up-container .btns-container .btn {
+        cursor: pointer;
+        padding: 1em;
+        font-size: 1rem;
+        border-radius: 0.5rem;
+        border: none;
+        transition: var(--default-transition); }
+      .post-tab-container .delete-pop-up-container .btns-container .cancel-btn {
+        background: var(--remove-red);
+        color: white; }
+        .post-tab-container .delete-pop-up-container .btns-container .cancel-btn:hover {
+          background: var(--remove-red-hover); }
+      .post-tab-container .delete-pop-up-container .btns-container .confirm-btn {
+        background: var(--dark-green);
+        font-weight: bold; }
+        .post-tab-container .delete-pop-up-container .btns-container .confirm-btn:hover {
+          background: var(--hover-green); }

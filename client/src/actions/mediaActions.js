@@ -1,5 +1,5 @@
 import * as api from "../api/";
-import { GET_POSTS, CREATE_POST, FILTER_POSTS } from "../utils/action_constants";
+import { GET_POSTS, CREATE_POST, FILTER_POSTS, VOTE_POST } from "../utils/action_constants";
 
 export const getPosts = (communityTitle, subscribed_communities) => async (dispatch) => {
     try {
@@ -29,6 +29,22 @@ export const filterPosts = (filter) => async (dispatch) => {
         
         dispatch({type:FILTER_POSTS, payload:filter});
 
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const votePost = (postId, userId, isUpVote) => async (dispatch) => {
+    try {
+        
+        const {data} = await api.votePost(postId, userId, isUpVote);
+
+        // Payload is going to be the new object
+        // Will substitute new for old in the state reducer
+        // Which will make PostList.js re-render this PostCard.js
+        // Making it dynamic
+        
+        dispatch({type:VOTE_POST, payload:data});
     } catch (error) {
         console.log(error);
     }

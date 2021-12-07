@@ -22,6 +22,7 @@ export const UPDATE_EPISODE = "UPDATE_EPISODE";
 export const GET_POSTS = "GET_POSTS";
 export const CREATE_POST = "CREATE_POST";
 export const FILTER_POSTS = "FILTER_POSTS";
+export const VOTE_POST = "VOTE_POST";
 
 // Community
 

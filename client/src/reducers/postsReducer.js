@@ -1,4 +1,4 @@
-import { GET_POSTS, CREATE_POST, FILTER_POSTS } from "../utils/action_constants";
+import { GET_POSTS, CREATE_POST, FILTER_POSTS, VOTE_POST } from "../utils/action_constants";
 import { MEDIA_POST_FILTERS } from "../utils/constants";
 
 const postsReducer = (state=[], action) => {
@@ -22,6 +22,19 @@ const postsReducer = (state=[], action) => {
                 case MEDIA_POST_FILTERS[2]:
                     return state.sort((a,b) => b.upvoted_by.length - a.upvoted_by.length);
             }
+            break;
+        case VOTE_POST:
+            // action.payload.data will be new post object
+            
+            const stateArray = state;
+            // Here need to substitute old object in the array for new one
+            // use the id to find its index in the array 
+            const index = stateArray.findIndex((post) => post._id === action.payload.data._id);
+
+            stateArray[index] = action.payload.data;
+
+            // Needs to change to new array
+            return stateArray;
         default:
             return state;
     }

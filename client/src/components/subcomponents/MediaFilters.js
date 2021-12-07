@@ -12,56 +12,30 @@ const MediaFilters = () => {
 
     const [selectedFilter, setSelectedFilter] = useState(MEDIA_POST_FILTERS[0]);
 
-    const onFilterClick = (e) => {
-        const filterClicked = MEDIA_POST_FILTERS[parseInt(e.target.id)];
+    const onPopularFilterClick = () => filterLogic(1);
 
-        // If the new selected filter wasn't the one selected before this click
-        if(selectedFilter !== filterClicked){
-            setSelectedFilter(filterClicked);
+    const onNewestFilterClick = () => filterLogic(0);
 
-            // Dispatch action
-            dispatch(filterPosts(filterClicked));
+    const onMostUpvotedFilterClick = () => filterLogic(2);
+
+    const filterLogic = (index) => {
+        if(selectedFilter !== MEDIA_POST_FILTERS[index]){
+            setSelectedFilter(MEDIA_POST_FILTERS[index]);
+            dispatch(filterPosts(MEDIA_POST_FILTERS[index]));
         }
     }
 
-    // const onPopularFilterClick = () => {
-    //     if(selectedFilter !== MEDIA_POST_FILTERS[1]){
-    //         // Set the current filter
-    //         setSelectedFilter(MEDIA_POST_FILTERS[1])
-    //         // Dispatch action to reducer
-    //         // Changing the data in the store
-    //         dispatch(filterPosts)
-    //     }
-    // }
-
-    // const onNewestFilterClick = () => {
-    //     if(selectedFilter !== MEDIA_POST_FILTERS[0]){
-    //         setSelectedFilter(MEDIA_POST_FILTERS[0]);
-
-
-    //     }
-    // }
-
-    // const onMostUpvotedFilterClick = () => {
-    //     if(selectedFilter !== MEDIA_POST_FILTERS[2]){
-    //         setSelectedFilter(MEDIA_POST_FILTERS[2]);
-
-
-
-    //     }
-    // }
-
     return (
         <div className="filters-container"> 
-                <div id="0" onClick={onFilterClick}  className={`filter-container ${selectedFilter===MEDIA_POST_FILTERS[0] ? 'selected-filter' : ''}`}>
+                <div id="0" onClick={onNewestFilterClick}  className={`filter-container ${selectedFilter===MEDIA_POST_FILTERS[0] ? 'selected-filter' : ''}`}>
                     <FontAwesomeIcon className="icon" icon={faCertificate} />
                     <p className="text">Newest </p>
                 </div>
-                <div id="1" onClick={onFilterClick} className={`filter-container ${selectedFilter===MEDIA_POST_FILTERS[1] ? 'selected-filter' : ''}`}>
+                <div id="1" onClick={onPopularFilterClick} className={`filter-container ${selectedFilter===MEDIA_POST_FILTERS[1] ? 'selected-filter' : ''}`}>
                     <FontAwesomeIcon className="icon" icon={faRocket} />
                     <p className="text">Most Popular</p>
                 </div>
-                <div id="2" onClick={onFilterClick} className={`filter-container ${selectedFilter===MEDIA_POST_FILTERS[2] ? 'selected-filter' : ''}`}>
+                <div id="2" onClick={onMostUpvotedFilterClick} className={`filter-container ${selectedFilter===MEDIA_POST_FILTERS[2] ? 'selected-filter' : ''}`}>
                     <FontAwesomeIcon className="icon" icon={faArrowUp} />
                     <p className="text">Most Upvoted</p>
                 </div>

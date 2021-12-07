@@ -46,6 +46,8 @@ export const getPosts = (communityTitle, communities_subscribed) => API.get('/me
 
 export const createPost = (inputData, userId) => API.post('/media/createPost', {inputData, userId}); 
 
+export const votePost = (postId, userId, isUpVote) => API.post('/media/votePost', {postId, userId, isUpVote});
+
 // Community
 
 export const createCommunity = (inputData) => API.post('/community/create', inputData);
