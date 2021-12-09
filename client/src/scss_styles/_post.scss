@@ -1,0 +1,96 @@
+.post-container {
+    min-height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: #0A0A0A;
+    font-family: var(--pt-sans);
+
+    .post-card-container {
+        width: 70%;
+        max-height: 80vh;
+    }
+
+    .comment-section-container {
+        padding: 1em;
+        margin-top: 1em;
+        width: 70%;
+        color:white;
+        border: solid 1px grey;
+        border-radius: 0.4rem;
+
+        .input-container {
+            padding: 1em;
+            display: flex;
+            flex-direction: column;
+            // width: 50%;
+
+            .comment-as-title {
+                font-size: 0.9rem;
+                padding-bottom: 1em;
+                font-weight: bold;
+
+                .name-span {
+                    color: var(--blue);
+                    cursor: pointer;
+                    text-decoration: none;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            .form {
+
+                .textarea {
+                    resize: none;
+                    background: none;
+                    color: white;
+                    font-size: 1rem;
+                    padding:0.5em;
+                    width: 100%;
+                }
+
+                .btn-container {
+                    display: flex;
+                    justify-content: flex-end;
+                    padding: 1em;
+                    align-items: center;
+    
+                    .comment-btn {
+                        font-size: 1rem;
+                        padding: 0.5em;
+                        width: 10%;
+                        background: var(--media-light-grey);
+                        color: white;
+                        // border: solid 2px grey;
+                        border: none;
+                        border-radius: 0.5rem;
+                        cursor: pointer;
+                        transition: var(--default-transition);
+                        font-weight: bold;
+                        
+                        &:hover {
+                            background: lightgrey;
+                            color: black;
+                        }
+                    }
+                }
+            }
+
+            
+        }
+    }
+
+    .comment-list-container {
+        width: 70%;
+    }
+
+}
+
+.loading-container {
+    min-height: 55vh;
+}

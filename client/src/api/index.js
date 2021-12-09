@@ -48,6 +48,8 @@ export const createPost = (inputData, userId) => API.post('/media/createPost', {
 
 export const votePost = (postId, userId, isUpVote) => API.post('/media/votePost', {postId, userId, isUpVote});
 
+export const deletePost = (postId) => API.post('/media/deletePost', {postId});
+
 // Community
 
 export const createCommunity = (inputData) => API.post('/community/create', inputData);
@@ -74,4 +76,8 @@ export const addRemoveMod = (communityTitle, memberId, isRemove) => API.post('/c
 export const getUserInfo = (id) => API.get('/user/getInfo', {params:{id}});
 
 export const subUnSubCommunity = (userId, communityTitle, isUnSub) => API.post('/user/sub', {userId, communityTitle, isUnSub}); 
+
+// Comments
+
+export const getComments = (postId) => API.get('/media/comments', {postId});
 

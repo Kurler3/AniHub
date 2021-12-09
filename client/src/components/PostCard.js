@@ -5,7 +5,7 @@ import { getUserInfo, searchCommunity } from '../api';
 import ReactLoading from 'react-loading';
 import { timeAgo } from '../utils/helper_functions';
 import {useDispatch} from 'react-redux';
-import { votePost } from '../actions/mediaActions';
+import { deletePost, votePost } from '../actions/mediaActions';
 import {Link} from 'react-router-dom';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -19,14 +19,14 @@ const PostCard = ({post}) => {
 
     const [postCommunity, setPostCommunity] = useState(null);
 
-    const [totalVotes, setTotalVotes] = useState(post.upvoted_by.length - post.downvoted_by.length);
+    const [totalVotes, setTotalVotes] = useState(post.upvoted_by !== undefined ? post.upvoted_by.length - post.downvoted_by.length : 0);
 
     const [isShowDelPopUp, setIsShowDelPopUp] = useState(false);
 
     const dispatch = useDispatch();
 
     const checkVoteState = () => {
-        if(loggedUser!==null) {
+        if(loggedUser!==null && post.upvoted_by !== undefined) {
             if(post.upvoted_by.includes(loggedUser.result._id)) return VOTE_STATES[0];
             else if(post.downvoted_by.includes(loggedUser.result._id)) return VOTE_STATES[1];
             else return VOTE_STATES[2];
@@ -113,7 +113,12 @@ const PostCard = ({post}) => {
     }
 
     // Delete post action 
-    const onDeleteBtnClicked = () => dispatch();
+    const onDeleteBtnClicked = () => {
+        dispatch(deletePost(post._id));
+        
+        // Close pop-up
+        setIsShowDelPopUp(false);
+    }
 
     return (
 

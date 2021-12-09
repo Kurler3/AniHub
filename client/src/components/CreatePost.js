@@ -14,7 +14,7 @@ const CreatePost = () => {
     const communityName = params.communityName !== undefined ? params.communityName : null;
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-
+    
     const [inputData, setInputData] = useState({
         selected_community: communityName!==null ? communityName : user!==null && user.result.communities_subscribed.length > 0 ? user.result.communities_subscribed[0] : '',
         title:"",
@@ -23,7 +23,7 @@ const CreatePost = () => {
     });
 
     useEffect(() => {
-       if(user===null) setUser(JSON.parse(localStorage.getItem('profile')));
+        if(user===null) setUser(JSON.parse(localStorage.getItem('profile')));
     },[]);
 
     const onInputDataChange = (e) => setInputData({...inputData,[e.target.name]:e.target.value});
@@ -38,8 +38,8 @@ const CreatePost = () => {
             inputData.content!== '' 
         ) {
 
-           console.log('passed data val');
-           dispatch(createPost(inputData, user.result._id, history));   
+            console.log('passed data val');
+            dispatch(createPost(inputData, user.result._id, history));   
            // Redirect user to media home page inside the action
         }
     }

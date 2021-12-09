@@ -1538,3 +1538,68 @@
         font-weight: bold; }
         .post-tab-container .delete-pop-up-container .btns-container .confirm-btn:hover {
           background: var(--hover-green); }
+
+.post-container {
+  min-height: 55vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: #0A0A0A;
+  font-family: var(--pt-sans); }
+  .post-container .post-card-container {
+    width: 70%;
+    max-height: 80vh; }
+  .post-container .comment-section-container {
+    padding: 1em;
+    margin-top: 1em;
+    width: 70%;
+    color: white;
+    border: solid 1px grey;
+    border-radius: 0.4rem; }
+    .post-container .comment-section-container .input-container {
+      padding: 1em;
+      display: flex;
+      flex-direction: column; }
+      .post-container .comment-section-container .input-container .comment-as-title {
+        font-size: 0.9rem;
+        padding-bottom: 1em;
+        font-weight: bold; }
+        .post-container .comment-section-container .input-container .comment-as-title .name-span {
+          color: var(--blue);
+          cursor: pointer;
+          text-decoration: none; }
+          .post-container .comment-section-container .input-container .comment-as-title .name-span:hover {
+            text-decoration: underline; }
+      .post-container .comment-section-container .input-container .form .textarea {
+        resize: none;
+        background: none;
+        color: white;
+        font-size: 1rem;
+        padding: 0.5em;
+        width: 100%; }
+      .post-container .comment-section-container .input-container .form .btn-container {
+        display: flex;
+        justify-content: flex-end;
+        padding: 1em;
+        align-items: center; }
+        .post-container .comment-section-container .input-container .form .btn-container .comment-btn {
+          font-size: 1rem;
+          padding: 0.5em;
+          width: 10%;
+          background: var(--media-light-grey);
+          color: white;
+          border: none;
+          border-radius: 0.5rem;
+          cursor: pointer;
+          transition: var(--default-transition);
+          font-weight: bold; }
+          .post-container .comment-section-container .input-container .form .btn-container .comment-btn:hover {
+            background: lightgrey;
+            color: black; }
+  .post-container .comment-list-container {
+    width: 70%; }
+
+.loading-container {
+  min-height: 55vh; }

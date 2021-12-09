@@ -1,5 +1,5 @@
 import * as api from "../api/";
-import { GET_POSTS, CREATE_POST, FILTER_POSTS, VOTE_POST } from "../utils/action_constants";
+import { GET_POSTS, CREATE_POST, FILTER_POSTS, VOTE_POST, DELETE_POST } from "../utils/action_constants";
 
 export const getPosts = (communityTitle, subscribed_communities) => async (dispatch) => {
     try {
@@ -45,6 +45,16 @@ export const votePost = (postId, userId, isUpVote) => async (dispatch) => {
         // Making it dynamic
         
         dispatch({type:VOTE_POST, payload:data});
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const deletePost = (postId) => async (dispatch) => {
+    try {
+        const {data} = await api.deletePost(postId);
+
+        dispatch({type:DELETE_POST, payload:data});
     } catch (error) {
         console.log(error);
     }

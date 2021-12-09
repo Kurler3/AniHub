@@ -1,28 +1,31 @@
-import { GET_POSTS, CREATE_POST, FILTER_POSTS, VOTE_POST } from "../utils/action_constants";
+import { GET_POSTS, CREATE_POST, FILTER_POSTS, VOTE_POST, DELETE_POST } from "../utils/action_constants";
 import { MEDIA_POST_FILTERS } from "../utils/constants";
 
-const postsReducer = (state=[], action) => {
+const postsReducer = (state={posts:[], filter:MEDIA_POST_FILTERS[0]}, action) => {
     switch(action.type) {
         case GET_POSTS:
-            return action.payload.data;
+
+            let sortFunction;
+
+            switch(state.filter) {
+                case MEDIA_POST_FILTERS[0]:
+                    sortFunction = (a,b) => a.created_at - b.created_at;
+                    break;
+                case MEDIA_POST_FILTERS[1]:
+                    sortFunction = (a,b) => b.viewed_by.length - a.viewed_by.length;
+                    break;
+                case MEDIA_POST_FILTERS[2]:
+                    sortFunction = (a,b) => b.upvoted_by.length - a.upvoted_by.length;
+                    break;
+            }
+
+            return {...state, posts:action.payload.data.sort(sortFunction)};
         case CREATE_POST:
             return [...state, action.payload];
         case FILTER_POSTS:
-            // get the filter
-            // sort the current state by the filter (switch statement) 
-            // return new sorted posts array
-            
-            const filter = action.payload;
-
-            switch(filter) {
-                case MEDIA_POST_FILTERS[0]:
-                    return state.sort((a,b) => a.created_at - b.created_at);
-                case MEDIA_POST_FILTERS[1]:
-                    return state.sort((a,b) => b.viewed_by.length - a.viewed_by.length);
-                case MEDIA_POST_FILTERS[2]:
-                    return state.sort((a,b) => b.upvoted_by.length - a.upvoted_by.length);
-            }
-            break;
+            // Since PostList.js is listening to state.filter changes, then each time this data changes, the component will
+            // Fetch the array again, sorted by the new filter.
+            return {...state, filter:action.payload};
         case VOTE_POST:
             // action.payload.data will be new post object
             
@@ -35,6 +38,11 @@ const postsReducer = (state=[], action) => {
 
             // Needs to change to new array
             return stateArray;
+        case DELETE_POST:
+
+            console.log(action.payload);
+
+            return state.filter((post) => post._id!==action.payload._id);
         default:
             return state;
     }

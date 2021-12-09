@@ -23,6 +23,7 @@ export const GET_POSTS = "GET_POSTS";
 export const CREATE_POST = "CREATE_POST";
 export const FILTER_POSTS = "FILTER_POSTS";
 export const VOTE_POST = "VOTE_POST";
+export const DELETE_POST = "DELETE_POST";
 
 // Community
 
@@ -36,3 +37,7 @@ export const REMOVE_MEMBER_FROM_COMMUNITY = "REMOVE_MEMBER_FROM_COMMUNITY";
 export const BLOCK_MEMBER_FROM_COMMUNITY = "BLOCK_MEMBER_FROM_COMMUNITY";
 export const ADD_ADMIN_TO_COMMUNITY = "ADD_ADMIN_TO_COMMUNITY";
 export const ADD_REMOVE_MOD = "ADD_REMOVE_MOD";
+
+// Comments
+
+export const GET_COMMENTS = "GET_COMMENTS";

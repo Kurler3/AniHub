@@ -1,3 +1,4 @@
+import Post from '../models/post.js';
 import Posts from '../models/post.js';
 // import User from '../models/user.js';
 // import {MEDIA_POST_FILTERS} from '../constants.js';
@@ -107,6 +108,26 @@ export const votePost = async (req, res) => {
         // Send it in the res object 
         res.status(200).json({data:updatedPost});
 
+    } catch (error) {
+        res.status(500).json({message:"Server error..."});
+    }
+}
+
+export const deletePost = async (req, res) => {
+
+    const {postId} = req.body;
+
+    try {
+        
+        // Find the post
+
+        const post = await Post.findById(postId);
+
+        // Remove it from the posts db
+        await Post.findByIdAndRemove(postId);
+        
+        // Return removed post.
+        res.status(200).json({data:post});
     } catch (error) {
         res.status(500).json({message:"Server error..."});
     }

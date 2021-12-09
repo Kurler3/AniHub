@@ -16,7 +16,9 @@ const PostList = () => {
 
     const communityTitle = params.communityName === undefined ? null : params.communityName;
 
-    const posts = useSelector(state => state.posts);
+    const posts = useSelector(state => state.posts.posts);
+
+    const currentFilter = useSelector(state => state.posts.filter);
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
@@ -24,8 +26,8 @@ const PostList = () => {
     useEffect(() => {
         if(user===null) setUser(JSON.parse(localStorage.getItem('profile')));
 
-        if(posts.length === 0) dispatch(getPosts(communityTitle, user !== null ? user.result.communities_subscribed : null));
-    }, [location]);
+        dispatch(getPosts(communityTitle, user !== null ? user.result.communities_subscribed : null));
+    }, [location, posts, currentFilter]);
 
     return (
         <div className="posts-list-container">
