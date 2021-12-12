@@ -27,7 +27,9 @@ const PostList = () => {
         if(user===null) setUser(JSON.parse(localStorage.getItem('profile')));
 
         dispatch(getPosts(communityTitle, user !== null ? user.result.communities_subscribed : null));
-    }, [location, posts, currentFilter]);
+    }, [location
+        //, posts, currentFilter
+    ]);
 
     return (
         <div className="posts-list-container">

@@ -42,7 +42,7 @@ export const updateAnimeEpisode = (id, episode) => API.put('/anime/updateEpisode
 
 // Media
 
-export const getPosts = (communityTitle, communities_subscribed) => API.get('/media/posts', {communityTitle, communities_subscribed});
+export const getPosts = (communityTitle, communities_subscribed) => API.post('/media/posts', {communityTitle, communities_subscribed});
 
 export const createPost = (inputData, userId) => API.post('/media/createPost', {inputData, userId}); 
 
@@ -79,5 +79,9 @@ export const subUnSubCommunity = (userId, communityTitle, isUnSub) => API.post('
 
 // Comments
 
-export const getComments = (postId) => API.get('/media/comments', {postId});
+export const getComments = (postId) => API.post('/comments', {postId});
+
+export const createComment = (createdBy, postId, content) => API.post('/comments/create', {createdBy, postId, content});
+
+
 

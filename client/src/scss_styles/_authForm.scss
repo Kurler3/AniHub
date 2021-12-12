@@ -4,7 +4,9 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    min-height: 55vh;
 
     .auth-form {
         //background: blue;

@@ -2,6 +2,7 @@ import * as api from "../api/";
 import { GET_POSTS, CREATE_POST, FILTER_POSTS, VOTE_POST, DELETE_POST } from "../utils/action_constants";
 
 export const getPosts = (communityTitle, subscribed_communities) => async (dispatch) => {
+
     try {
         const {data} = await api.getPosts(communityTitle, subscribed_communities);
 

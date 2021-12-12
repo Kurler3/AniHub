@@ -9,17 +9,19 @@ export const getPosts = async (req, res) => {
     try {
         let posts;
 
-        if(communityTitle!==undefined) {
+        if(communityTitle!==null) {
             posts = await Posts.find({community_title:communityTitle}).sort({'created_at': -1});
+
+            return res.status(200).json({data:posts});
         }
 
         // Media Home Page but there is an user logged in
-        if(communities_subscribed!==undefined) {
-            posts = await Posts.find().where('community_title').in(user.communities_subscribed).sort({'created_at':-1});
+        if(communities_subscribed!==null) {
+            if(communities_subscribed.length > 0) posts = await Posts.find().where('community_title').in(user.communities_subscribed).sort({'created_at':-1});
+            else posts = await Posts.find().sort({'created_at':-1});
         }else {
             posts = await Posts.find().sort({'created_at':-1});
         }
-
 
         res.status(200).json({data:posts});
     } catch (error) {
@@ -42,7 +44,6 @@ export const createPost = async (req, res) => {
             upvoted_by:[],
             downvoted_by:[],
             viewed_by:[userId],
-            comments:[],
         });
 
 

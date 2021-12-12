@@ -5,6 +5,10 @@ const CommentSchema = mongoose.Schema({
         type:String,
         required:true,
     },
+    post_id: {
+        type:String,
+        required:true,
+    },
     text:{
         type:String,
         required:true,
@@ -19,9 +23,10 @@ const CommentSchema = mongoose.Schema({
             type:String,
         }
     ],
+    is_sub_comment:Boolean,
     sub_comments:[
         {
-            type:String,
+            type:String
         }
     ],
     created_at:{

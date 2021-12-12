@@ -10,6 +10,7 @@ import userRoutes from './routes/users.js';
 import animeRoutes from './routes/animes.js';
 import mediaRoutes from './routes/media.js';
 import communityRoutes from './routes/community.js';
+import commentsRoutes from './routes/comments.js';
 
 const app = express();
 
@@ -34,6 +35,7 @@ app.use('/user', userRoutes);
 app.use('/anime', animeRoutes);
 app.use('/media', mediaRoutes);
 app.use('/community', communityRoutes);
+app.use('/comments', commentsRoutes);
 
 
 // The port

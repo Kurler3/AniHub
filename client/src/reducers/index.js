@@ -12,5 +12,5 @@ export default combineReducers({
     backAnimes: backAnimeReducer,
     posts:postsReducer,
     community:communityReducer,
-    comments:commentsReducer,
+    comments: commentsReducer,
 });

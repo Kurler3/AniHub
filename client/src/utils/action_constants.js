@@ -41,3 +41,4 @@ export const ADD_REMOVE_MOD = "ADD_REMOVE_MOD";
 // Comments
 
 export const GET_COMMENTS = "GET_COMMENTS";
+export const CREATE_COMMENT = "CREATE_COMMENT";
