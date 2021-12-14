@@ -15,7 +15,7 @@ export const getComments = async (req, res) => {
 
 export const createComment = async (req, res) => {
     
-    const {createdBy, postId, content} = req.body;
+    const {createdBy, postId, content, isSubComment} = req.body;
     
     try {
         
@@ -25,7 +25,7 @@ export const createComment = async (req, res) => {
             text:content,
             upvoted_by:[],
             downvoted_by:[],
-            is_sub_comment:false,
+            is_sub_comment:isSubComment,
             sub_comments:[]
         });
 
@@ -35,10 +35,3 @@ export const createComment = async (req, res) => {
     }
 }
 
-export const createSubComment = async (req, res) => {
-    try {
-        
-    } catch (error) {
-        
-    }
-}

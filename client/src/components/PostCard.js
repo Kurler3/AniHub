@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUp, faArrowDown, faCommentAlt } from '@fortawesome/free-solid-svg-icons';
+import {faCommentAlt } from '@fortawesome/free-solid-svg-icons';
 import { getUserInfo, searchCommunity } from '../api';
 import ReactLoading from 'react-loading';
 import { timeAgo } from '../utils/helper_functions';
@@ -8,8 +8,10 @@ import {useDispatch} from 'react-redux';
 import { deletePost, votePost } from '../actions/mediaActions';
 import {Link} from 'react-router-dom';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { VOTE_STATES } from '../utils/constants';
+import VotingContainer from './subcomponents/VotingContainer';
 
-const VOTE_STATES = ['upvoted', 'downvoted', 'nothing'];
+
 
 const PostCard = ({post}) => {
 
@@ -19,23 +21,9 @@ const PostCard = ({post}) => {
 
     const [postCommunity, setPostCommunity] = useState(null);
 
-    const [totalVotes, setTotalVotes] = useState(post.upvoted_by !== undefined ? post.upvoted_by.length - post.downvoted_by.length : 0);
-
     const [isShowDelPopUp, setIsShowDelPopUp] = useState(false);
 
     const dispatch = useDispatch();
-
-    const checkVoteState = () => {
-        if(loggedUser!==null && post.upvoted_by !== undefined) {
-            if(post.upvoted_by.includes(loggedUser.result._id)) return VOTE_STATES[0];
-            else if(post.downvoted_by.includes(loggedUser.result._id)) return VOTE_STATES[1];
-            else return VOTE_STATES[2];
-        }
-        return VOTE_STATES[2];
-    }
-
-    const [voteState, setVoteState] = useState(checkVoteState());
-    // const voteState = checkVoteState();
 
     useEffect(() => {
         if(loggedUser===null) setLoggedUser(JSON.parse(localStorage.getItem('profile')));
@@ -56,52 +44,18 @@ const PostCard = ({post}) => {
         setPostCommunity(communityInfo.data.data);
     }
 
-    // const onVoteClick = (e) => {
-    //     if(loggedUser!==null) {
-    //         dispatch(votePost(post._id, loggedUser.result._id, e.target.id=='up-vote' ? true : false));
-    //     }
-    // }
-
     const onUpVoteClick = () => {
         if(loggedUser!==null){
             dispatch(votePost(post._id, loggedUser.result._id, true));
         }
-
-        setNewVoteState(true);
     }
 
     const onDownVoteClick = () => {
         if(loggedUser!==null){
             dispatch(votePost(post._id, loggedUser.result._id, false));
         }
-
-        setNewVoteState(false);
     }
 
-    const setNewVoteState = (isUpVoting) => {
-        let newState;
-        let newVoteCount;
-
-        switch(voteState) {
-            // If current state is upvoted and user clicked in upvote again then he wants to remove his upvote
-            case VOTE_STATES[0]:
-                newState = isUpVoting ? VOTE_STATES[2] : VOTE_STATES[1];
-                newVoteCount = isUpVoting ? totalVotes - 1 : totalVotes - 2;
-                break;
-            case VOTE_STATES[1]:
-                newState = isUpVoting ? VOTE_STATES[0] : VOTE_STATES[2];
-                newVoteCount = isUpVoting ? totalVotes + 2 : totalVotes - 1;
-                break;
-            case VOTE_STATES[2]:
-                newState = isUpVoting ? VOTE_STATES[0] : VOTE_STATES[1];
-                newVoteCount = isUpVoting ? totalVotes + 1 : totalVotes - 1;
-                break;
-        }
-
-        setVoteState(newState);
-
-        setTotalVotes(newVoteCount);
-    }
 
     // Check if logged user has permission to delete post
     const hasPermissions = () => {
@@ -125,15 +79,8 @@ const PostCard = ({post}) => {
         postUser!==null ? 
 
         <div className="post-tab-container">
-            <div className="voting-container">
-                <div id="up-vote" onClick={onUpVoteClick} className={`vote-icon up ${voteState===VOTE_STATES[0] ? 'upvoted' : ''}`}>
-                    <FontAwesomeIcon icon={faArrowUp} />
-                </div>
-                <p className="total-votes">{totalVotes}</p>
-                <div id="down-vote" onClick={onDownVoteClick} className={`vote-icon down ${voteState===VOTE_STATES[1] ? 'downvoted' : ''}`}>
-                    <FontAwesomeIcon icon={faArrowDown} />
-                </div>
-            </div>
+
+            <VotingContainer item={post} onDownVoteClicked={onDownVoteClick} onUpVoteClicked={onUpVoteClick} />
 
             <div className="right-container">
                 <div className="created-by-container">

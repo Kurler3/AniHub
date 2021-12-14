@@ -35,7 +35,7 @@ const Post = () => {
         e.preventDefault();
 
         // Check if input is not empty and dispatch action for creating comment.
-        if(commentInput!=='') dispatch(createComment(loggedUser.result._id, fullPost._id, commentInput));
+        if(commentInput!=='') dispatch(createComment(loggedUser.result._id, fullPost._id, commentInput, false));
     }
 
     return (

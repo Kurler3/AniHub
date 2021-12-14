@@ -11,10 +11,10 @@ export const getComments = (postId) => async (dispatch) => {
     }
 }
 
-export const createComment = (createdBy, postId, content) => async (dispatch) => {
+export const createComment = (createdBy, postId, content, isSubComment) => async (dispatch) => {
     try {
         
-        const {data} = await api.createComment(createdBy,postId,content);
+        const {data} = await api.createComment(createdBy,postId,content, isSubComment);
 
         dispatch({type:CREATE_COMMENT, payload:data});
     } catch (error) {

@@ -1605,7 +1605,8 @@
   min-height: 55vh; }
 
 .comment-list-container {
-  width: 70%;
+  margin-top: 1em;
+  width: 70vw;
   border: 1px solid grey;
   border-radius: 0.3rem;
   margin-bottom: 0.5em; }
@@ -1624,3 +1625,54 @@
   display: flex;
   align-items: center;
   justify-content: center; }
+
+.comment-container {
+  width: 100%;
+  padding: 1em; }
+  .comment-container .upper-container {
+    background: yellow;
+    display: flex;
+    flex-direction: row; }
+    .comment-container .upper-container .left-container {
+      background: green;
+      padding: 1em; }
+      .comment-container .upper-container .left-container .profile-pic {
+        width: 50px;
+        height: 50px;
+        border-radius: 0.5rem; }
+    .comment-container .upper-container .right-container {
+      padding: 0.3em 1em;
+      flex-direction: column; }
+      .comment-container .upper-container .right-container .poster-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center; }
+        .comment-container .upper-container .right-container .poster-container .created-at {
+          margin-left: 0.3em; }
+  .comment-container .voting-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0em 0.5em; }
+    .comment-container .voting-container .vote-icon {
+      padding: 0.1em 0.2em;
+      border-radius: 0.3rem;
+      transition: var(--default-transition);
+      cursor: pointer;
+      font-size: 1.1rem; }
+      .comment-container .voting-container .vote-icon:hover {
+        background: var(--media-hover-grey); }
+    .comment-container .voting-container .up:hover {
+      color: red; }
+    .comment-container .voting-container .upvoted {
+      color: red; }
+    .comment-container .voting-container .down:hover {
+      color: lightskyblue; }
+    .comment-container .voting-container .downvoted {
+      color: lightskyblue; }
+
+.loading-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center; }

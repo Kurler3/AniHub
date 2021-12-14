@@ -25,7 +25,7 @@ const CommentList = ({postId}) => {
                     <div className="comment-list-container">
                     
                         { 
-                            comments.map((commentId) => <Comment key={commentId} commentId={commentId}/>)                
+                            comments.map((comment) => <Comment key={comment._id} comment={comment}/>)                
                         }
 
                     </div>

@@ -81,7 +81,7 @@ export const subUnSubCommunity = (userId, communityTitle, isUnSub) => API.post('
 
 export const getComments = (postId) => API.post('/comments', {postId});
 
-export const createComment = (createdBy, postId, content) => API.post('/comments/create', {createdBy, postId, content});
+export const createComment = (createdBy, postId, content, isSubComment) => API.post('/comments/create', {createdBy, postId, content, isSubComment});
 
 
 
