@@ -6,6 +6,7 @@ import {faCommentAlt } from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
 import {getUserInfo} from '../api/index';
 import ReactLoading from 'react-loading';
+import ReplyCommentInput from './subcomponents/ReplyCommentInput';
 
 const Comment = ({comment}) => {
 
@@ -14,6 +15,8 @@ const Comment = ({comment}) => {
     const [loggedUser, setLoggedUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
     const [commentingUser, setCommentingUser] = useState(null); 
+
+    const [showCommentInput, setShowCommentInput] = useState(false);
 
     useEffect(() => {
         if(loggedUser===null) setLoggedUser(JSON.parse(localStorage.getItem('profile')));
@@ -44,12 +47,12 @@ const Comment = ({comment}) => {
         commentingUser!==null ?
 
         <div className='comment-container'>
-            <div className="upper-container">
-                <div className="left-container">
-                    <img src={commentingUser.avatar_img} alt="profile-pic" className="profile-pic" />
-                </div>
 
-                <div className="right-container">
+            <div className="left-container">
+                <img src={commentingUser.avatar_img} alt="profile-pic" className="profile-pic" />
+            </div>
+
+            <div className="right-container">
                     <div className="poster-container">
                         <div className="poster-name">{`${commentingUser.first_name} ${commentingUser.last_name}`}</div>
                         <div className="created-at">{timeAgo(comment.created_at)}</div>
@@ -61,7 +64,7 @@ const Comment = ({comment}) => {
 
                         <VotingContainer item={comment} onDownVoteClicked={onDownVoteClicked} onUpVoteClicked={onUpVoteClicked}/>
 
-                        <button className="comment-btn">
+                        <button className="comment-btn" onClick={() => setShowCommentInput(!showCommentInput)}>
                             <div className="icon">
                                 <FontAwesomeIcon icon={faCommentAlt} />
                             </div>
@@ -69,10 +72,21 @@ const Comment = ({comment}) => {
                         </button>
 
                     </div> 
-                </div>
+
+                    {
+                    // Display comment input if user is logged
+                    }
+
+                    {
+                        showCommentInput && loggedUser!==null && 
+                        <ReplyCommentInput commentId={comment._id} loggedUser={loggedUser.result} postId={comment.post_id} />
+                    }
+
+                    {
+                        // Fetch subcomments if this comment's sub_comments array is not empty
+                        // Each displayed sub_comment will be rendered as a Comment
+                    }
             </div>
-            
-            
         </div> 
 
             :

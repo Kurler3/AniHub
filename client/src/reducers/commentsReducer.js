@@ -6,7 +6,7 @@ const commentsReducer = (state=[], action) => {
         case GET_COMMENTS:
             return action.payload.data;
         case CREATE_COMMENT:
-            return [...state, action.payload.data];
+            return [action.payload.data, ...state];
         default:
             return state; 
     }
