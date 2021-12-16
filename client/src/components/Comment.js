@@ -58,17 +58,18 @@ const Comment = ({comment}) => {
                     <div className="content-container">{comment.text}</div>
 
                     <div className="voting-comment-container">
+
+                        <VotingContainer item={comment} onDownVoteClicked={onDownVoteClicked} onUpVoteClicked={onUpVoteClicked}/>
+
                         <button className="comment-btn">
-                            <FontAwesomeIcon icon={faCommentAlt} />
+                            <div className="icon">
+                                <FontAwesomeIcon icon={faCommentAlt} />
+                            </div>
                             <p className="btn-text">Reply</p>
                         </button>
-                        
 
-                        
-                        <VotingContainer item={comment} onDownVoteClicked={onDownVoteClicked} onUpVoteClicked={onUpVoteClicked}/>
                     </div> 
                 </div>
-                
             </div>
             
             

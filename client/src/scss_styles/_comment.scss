@@ -1,16 +1,17 @@
 .comment-container {
     width: 100%;
     padding: 1em;
+    color: white;
+    font-family: var(--pt-sans);
 
     .upper-container {
-        background: yellow;
         display: flex;
         flex-direction: row;
 
         .left-container {
             display: flex;
             justify-content: center;
-            align-items: center;
+            // align-items: center;
             padding: 1em;
 
             .profile-pic {
@@ -31,53 +32,109 @@
                 align-items: center;
     
                 .poster-name {
-                    
+                    font-size: 1rem;
+                    font-weight: bold;
+                    cursor: pointer;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
                 }
     
                 .created-at {
-                    margin-left: 0.3em;
+                    font-size: 0.8rem;
+                    margin-left: 0.5em;
+                    color: grey;
+                }
+            }
+
+            .content-container {
+                padding: 1em 0;
+                max-height: 20vh;
+                width: 60vw;
+                overflow: hidden;
+            }
+
+            .voting-comment-container {
+                display: flex;
+                flex-direction: row;
+                padding: 0.3em;
+
+                .comment-btn {
+                    display: flex;
+                    flex-direction: row;
+                    cursor: pointer;
+                    padding: 0.7em 1em;
+                    background: none;
+                    color: grey;
+                    border: none;
+                    border-radius: 0.3rem;
+        
+                    .icon {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 1rem;
+                    }
+
+                    .btn-text {
+                        font-size: 1rem;
+                        margin-left: 0.4em;
+                    }
+
+                    &:hover {
+                        background: var(--media-hover-grey);
+                        color: lightgrey;
+                    }
+                }
+
+                .voting-container {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    padding: 0em 0.5em;
+                    width: 4vw;
+                    justify-content: space-between;
+                    color: grey;
+                    margin-left: -0.5em;
+            
+                    .vote-icon {
+                        padding: 0.1em 0.2em;
+                        border-radius: 0.3rem;
+                        transition: var(--default-transition);
+                        cursor: pointer;
+                        font-size: 1.1rem;
+            
+                        &:hover {
+                            background: var(--media-hover-grey);
+                        }
+                    }
+            
+                    .up {
+                        &:hover {
+                            color: red;
+                        }
+                    }
+            
+                    .upvoted {
+                        color: red;
+                    }
+            
+                    .down {
+                        &:hover {
+                            color: lightskyblue;
+                        }
+                    }
+            
+                    .downvoted {
+                        color: lightskyblue;
+                    }
                 }
             }
         }
     }
-    .voting-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 0em 0.5em;
 
-        .vote-icon {
-            padding: 0.1em 0.2em;
-            border-radius: 0.3rem;
-            transition: var(--default-transition);
-            cursor: pointer;
-            font-size: 1.1rem;
-
-            &:hover {
-                background: var(--media-hover-grey);
-            }
-        }
-
-        .up {
-            &:hover {
-                color: red;
-            }
-        }
-
-        .upvoted {
-            color: red;
-        }
-
-        .down {
-            &:hover {
-                color: lightskyblue;
-            }
-        }
-
-        .downvoted {
-            color: lightskyblue;
-        }
-    }
+    
 }
 
 .loading-container {
