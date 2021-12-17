@@ -4,7 +4,7 @@ import { timeAgo } from '../utils/helper_functions';
 import VotingContainer from './subcomponents/VotingContainer';
 import {faCommentAlt } from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
-import {getUserInfo} from '../api/index';
+import {getUserInfo, getSubComments} from '../api/index';
 import ReactLoading from 'react-loading';
 import ReplyCommentInput from './subcomponents/ReplyCommentInput';
 
@@ -18,12 +18,26 @@ const Comment = ({comment}) => {
 
     const [showCommentInput, setShowCommentInput] = useState(false);
 
+    const [subComments, setSubComments] = useState([]);
+
     useEffect(() => {
         if(loggedUser===null) setLoggedUser(JSON.parse(localStorage.getItem('profile')));
 
         if(commentingUser===null) getCommentingUserInfo();
+
+        // get comment's sub_comments
+
+        if(comment.sub_comments.length > 0) getSubComments();
     }, [location]);
     
+    const getSubComments = async () => {
+        const subCommentsData = await getSubComments(comment.sub_comments);
+
+        console.log(subCommentsData);
+
+        setSubComments(subCommentsData.data.data);
+    }
+
     const getCommentingUserInfo = async () => {
         const info = await getUserInfo(comment.created_by);
 
@@ -74,10 +88,6 @@ const Comment = ({comment}) => {
                     </div> 
 
                     {
-                    // Display comment input if user is logged
-                    }
-
-                    {
                         showCommentInput && loggedUser!==null && 
                         <ReplyCommentInput commentId={comment._id} loggedUser={loggedUser.result} postId={comment.post_id} />
                     }
@@ -85,7 +95,18 @@ const Comment = ({comment}) => {
                     {
                         // Fetch subcomments if this comment's sub_comments array is not empty
                         // Each displayed sub_comment will be rendered as a Comment
+
+
+                        subComments.length > 0 && 
+
+                        <div className='sub-comment-list-container'>
+                            {
+                                subComments.map((subComment) => <Comment comment={subComment}/>)
+                            }
+                        </div>
                     }
+
+                    
             </div>
         </div> 
 

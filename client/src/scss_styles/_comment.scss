@@ -27,6 +27,10 @@
         flex-direction: column;
         transition: var(--default-transition);
 
+        .sub-comment-list-container {
+            background: red;
+        }
+
         .poster-container {
             display: flex;
             flex-direction: row;
@@ -70,6 +74,7 @@
                 color: grey;
                 border: none;
                 border-radius: 0.3rem;
+                margin-left: 1em;
         
                 .icon {
                     display: flex;
@@ -151,32 +156,40 @@
             }
 
             .input {
-                margin-left: 0.5em;
+                margin-left: 1em;
                 padding: 0.5em;
                 height: 80%;
                 width: 60%;
                 background: none;
                 font-size: 1rem;
+                border:solid 1px grey;
+                color: white;
+                border-radius: 0.3rem;
             }
 
-            .reply-btn-container {
-                margin-left: 1em;
-                background: yellow;
+            
+                
+            .reply-btn {
+                margin-left: 0.5em;
+                padding: 0.3em 1em;
+                font-size:0.9rem;
+                border-radius: 0.3rem;
+                font-weight: bold;
+                color: lightgrey;
+                border: solid 2px grey;
+                background: none;   
+                    
 
-                .reply-btn {
-                    padding: 0.3em;
-                    font-size:1rem;
-                    font-weight: bold;
-                    width: 5vw;
-                    cursor: pointer;
-                    background: var(--media-grey);
-                    transition: var(--default-transition);
+                cursor: pointer;
+                background: var(--media-grey);
+                transition: var(--default-transition);
 
-                    &:hover {
-                        background: var(--media-hover-grey);
-                    }
+                &:hover {
+                    background: var(--media-light-grey);
+
                 }
             }
+            
         }
     }
 }

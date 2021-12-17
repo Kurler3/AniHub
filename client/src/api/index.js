@@ -83,5 +83,9 @@ export const getComments = (postId) => API.post('/comments', {postId});
 
 export const createComment = (createdBy, postId, content, isSubComment) => API.post('/comments/create', {createdBy, postId, content, isSubComment});
 
+export const getSubComments = (subCommentsIds) => API.post('/comments/sub', {subCommentsIds});
+
+export const replyComment = (commentId, userId, postId, input) => API.post('/comments/reply', {commentId, userId, postId, input});
+
 
 
