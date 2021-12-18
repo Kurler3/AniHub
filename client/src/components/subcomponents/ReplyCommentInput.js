@@ -12,7 +12,11 @@ const ReplyCommentInput = ({commentId, loggedUser, postId}) => {
         e.preventDefault();
 
         // Dispatch action that adds new sub_comment to this comments object in db
-        if(inputData!=='') dispatch(replyComment(commentId, loggedUser._id, postId, inputData));
+        if(inputData!==''){
+            dispatch(replyComment(commentId, loggedUser._id, postId, inputData));
+            setInputData('');
+        } 
+
     }
 
     return (

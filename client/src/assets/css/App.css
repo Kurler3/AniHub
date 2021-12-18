@@ -1606,7 +1606,7 @@
 
 .comment-list-container {
   margin-top: 1em;
-  width: 100%;
+  width: 69vw;
   border: 1px solid grey;
   border-radius: 0.3rem;
   margin-bottom: 0.5em;
@@ -1630,7 +1630,6 @@
 
 .comment-container {
   width: 100%;
-  padding: 1em;
   color: white;
   font-family: var(--pt-sans);
   display: flex;
@@ -1638,19 +1637,41 @@
   transition: var(--default-transition); }
   .comment-container .left-container {
     display: flex;
-    justify-content: center;
-    padding: 1em; }
+    align-items: center;
+    padding: 1em;
+    flex-direction: column; }
     .comment-container .left-container .profile-pic {
       width: 50px;
-      height: 50px;
+      height: 20%;
+      min-height: 50px;
+      max-height: 50px;
       border-radius: 0.5rem;
       cursor: pointer; }
+    .comment-container .left-container .line-container {
+      cursor: pointer;
+      padding: 0 1em;
+      height: 90%;
+      width: 3px;
+      margin-top: 0.3em; }
+      .comment-container .left-container .line-container .line {
+        background: grey;
+        width: 3px;
+        height: 100%; }
+    .comment-container .left-container .show-content-icon-container {
+      margin-top: 0.3em;
+      cursor: pointer;
+      padding: 0.2em;
+      font-size: 1.3rem;
+      color: grey;
+      transition: var(--default-transition); }
+      .comment-container .left-container .show-content-icon-container:hover {
+        color: white; }
   .comment-container .right-container {
     padding: 0.3em 1em;
     flex-direction: column;
     transition: var(--default-transition); }
     .comment-container .right-container .sub-comment-list-container {
-      background: red; }
+      margin-top: 0.3em; }
     .comment-container .right-container .poster-container {
       display: flex;
       flex-direction: row;
@@ -1724,6 +1745,7 @@
       border-radius: 0.3rem;
       border: solid 1px grey;
       margin-top: 0.3em;
+      width: 80%;
       padding: 0.3em;
       display: flex;
       flex-direction: row;
@@ -1759,7 +1781,8 @@
           background: var(--media-light-grey); }
 
 .loading-container {
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
+  width: 10vw;
+  height: 5vh;
+  display: flex; }
+  .loading-container .loading {
+    max-height: 5vh; }

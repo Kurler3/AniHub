@@ -5,7 +5,7 @@ export const getComments = async (req, res) => {
     const {postId} = req.body;
 
     try {
-        const comments = await Comment.find({post_id: postId, isSubComment:false})
+        const comments = await Comment.find({post_id: postId, is_sub_comment:false})
             .sort({created_at:-1});
 
         res.status(200).json({data:comments});

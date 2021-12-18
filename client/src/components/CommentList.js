@@ -8,6 +8,8 @@ const CommentList = ({postId}) => {
 
     const dispatch = useDispatch();
 
+    const [gotComments, setGotComments] = useState(false);
+
     const [loggedUser, setLoggedUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
     const comments = useSelector(state => state.comments);
@@ -15,7 +17,10 @@ const CommentList = ({postId}) => {
     useEffect(() => {
         if(loggedUser===null) setLoggedUser(JSON.parse(localStorage.getItem('profile')));
 
-        dispatch(getComments(postId));
+        if(!gotComments) {
+            dispatch(getComments(postId));
+            setGotComments(true);
+        }
     });
 
     return (

@@ -1,6 +1,6 @@
 .comment-container {
     width: 100%;
-    padding: 1em;
+    //padding: 0.3em;
     color: white;
     font-family: var(--pt-sans);
     display: flex;
@@ -10,15 +10,45 @@
 
     .left-container {
         display: flex;
-        justify-content: center;
-        // align-items: center;
+        // justify-content: center;
+        align-items: center;
         padding: 1em;
+        flex-direction: column;
 
         .profile-pic {
             width: 50px;
-            height: 50px;
+            height: 20%;
+            min-height: 50px;
+            max-height: 50px;
             border-radius: 0.5rem;
             cursor: pointer;
+        }
+
+        .line-container {
+            cursor: pointer;
+            padding: 0 1em;
+            height: 90%;
+            width: 3px;
+            margin-top: 0.3em;
+
+            .line {
+                background: grey;
+                width: 3px;
+                height: 100%;
+            }
+        }
+
+        .show-content-icon-container {
+            margin-top: 0.3em;
+            cursor: pointer;
+            padding: 0.2em;
+            font-size: 1.3rem;
+            color: grey;
+            transition: var(--default-transition);
+
+            &:hover {
+                color: white;
+            }
         }
     }
 
@@ -28,7 +58,8 @@
         transition: var(--default-transition);
 
         .sub-comment-list-container {
-            background: red;
+            // background: red;
+            margin-top: 0.3em;
         }
 
         .poster-container {
@@ -142,7 +173,7 @@
             border-radius: 0.3rem;
             border:solid 1px grey;
             margin-top: 0.3em;
-
+            width: 80%;
             padding: 0.3em;
             display: flex;
             flex-direction: row;
@@ -195,8 +226,13 @@
 }
 
 .loading-container {
-    margin: 0 auto;
+    // margin: 0 auto;
+    // background: red;
+     width: 10vw;
+    height: 5vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+
+    .loading {
+        max-height: 5vh;
+    }
 }

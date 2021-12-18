@@ -2,8 +2,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, {useEffect, useState} from 'react';
 import { timeAgo } from '../utils/helper_functions';
 import VotingContainer from './subcomponents/VotingContainer';
-import {faCommentAlt } from '@fortawesome/free-solid-svg-icons';
+import {faCommentAlt, faExpandArrowsAlt } from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import {getUserInfo, getSubComments} from '../api/index';
 import ReactLoading from 'react-loading';
 import ReplyCommentInput from './subcomponents/ReplyCommentInput';
@@ -11,6 +12,17 @@ import ReplyCommentInput from './subcomponents/ReplyCommentInput';
 const Comment = ({comment}) => {
 
     const location = useLocation();
+
+    // const subCommentsState = useSelector(state => state.comments.find((commentItem) => commentItem._id===comment._id).sub_comments);
+
+    // console.log("SubComments");
+    // console.log(subCommentsState);
+
+    // const commentFromState = useSelector(state => state.comments.find((commentItem) => commentItem._id===comment._id));
+
+    // console.log(commentFromState);
+
+    const [showingContent, setShowingContent] = useState(true);
 
     const [loggedUser, setLoggedUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
@@ -25,16 +37,11 @@ const Comment = ({comment}) => {
 
         if(commentingUser===null) getCommentingUserInfo();
 
-        // get comment's sub_comments
-
-        if(comment.sub_comments.length > 0) getSubComments();
+        if(comment.sub_comments.length > 0) getSubCommentsInfo();
     }, [location]);
     
-    const getSubComments = async () => {
+    const getSubCommentsInfo = async () => {
         const subCommentsData = await getSubComments(comment.sub_comments);
-
-        console.log(subCommentsData);
-
         setSubComments(subCommentsData.data.data);
     }
 
@@ -64,6 +71,14 @@ const Comment = ({comment}) => {
 
             <div className="left-container">
                 <img src={commentingUser.avatar_img} alt="profile-pic" className="profile-pic" />
+                {
+                    showingContent ? 
+                    <div onClick={() => setShowingContent(false)} className="line-container"><div className="line"></div></div>
+                        :
+                    <div onClick={() => setShowingContent(true)} className='show-content-icon-container'>
+                        <FontAwesomeIcon icon={faExpandArrowsAlt}/>
+                    </div>
+                }
             </div>
 
             <div className="right-container">
@@ -71,7 +86,11 @@ const Comment = ({comment}) => {
                         <div className="poster-name">{`${commentingUser.first_name} ${commentingUser.last_name}`}</div>
                         <div className="created-at">{timeAgo(comment.created_at)}</div>
                     </div>
-                        
+
+                    {
+                        showingContent ?
+
+                        <div>    
                     <div className="content-container">{comment.text}</div>
 
                     <div className="voting-comment-container">
@@ -106,14 +125,18 @@ const Comment = ({comment}) => {
                         </div>
                     }
 
+                    </div>
                     
+                        :
+                        <div></div>
+                    }
             </div>
         </div> 
 
             :
 
         <div className="loading-container">
-            <ReactLoading type='bars' color='#FFBC1E' height={200} width={200} />
+            <ReactLoading className='loading' type='bars' color='#FFBC1E' height={50} width={50} />
         </div>
     )
 }
