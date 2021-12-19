@@ -1650,7 +1650,7 @@
     .comment-container .left-container .line-container {
       cursor: pointer;
       padding: 0 1em;
-      height: 90%;
+      height: 100%;
       width: 3px;
       margin-top: 0.3em; }
       .comment-container .left-container .line-container .line {

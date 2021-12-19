@@ -1,5 +1,5 @@
 import * as api from '../api';
-import { CREATE_COMMENT, GET_COMMENTS, REPLY_COMMENT } from '../utils/action_constants';
+import { CREATE_COMMENT, GET_COMMENTS, REPLY_COMMENT, UPDATE_POST} from '../utils/action_constants';
 
 export const getComments = (postId) => async (dispatch) => {
     try {
@@ -16,7 +16,11 @@ export const createComment = (createdBy, postId, content, isSubComment) => async
         
         const {data} = await api.createComment(createdBy,postId,content, isSubComment);
 
-        dispatch({type:CREATE_COMMENT, payload:data});
+        const {newComment, updatedPost} = data;
+        
+        dispatch({type:CREATE_COMMENT, payload:newComment});
+
+        dispatch({type:UPDATE_POST, payload:updatedPost});
     } catch (error) {
         console.log(error);
     }

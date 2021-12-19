@@ -31,7 +31,7 @@ const PostCard = ({post}) => {
         if(postUser===null) fetchUserInfo();
 
         if(postCommunity===null) fetchCommunityInfo();
-    },[postUser]);
+    },[]);
 
     const fetchUserInfo = async () => {
         const userInfo = await getUserInfo(post.created_by);

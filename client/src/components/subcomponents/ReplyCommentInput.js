@@ -16,7 +16,6 @@ const ReplyCommentInput = ({commentId, loggedUser, postId}) => {
             dispatch(replyComment(commentId, loggedUser._id, postId, inputData));
             setInputData('');
         } 
-
     }
 
     return (

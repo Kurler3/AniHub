@@ -70,7 +70,7 @@ const Post = () => {
                     </div>
                 }
                 
-                <CommentList postId={fullPost._id}/>
+                <CommentList post={fullPost}/>
             </div> 
             : 
             <div className="loading-container">

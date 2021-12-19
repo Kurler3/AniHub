@@ -1,4 +1,4 @@
-import { GET_POSTS, CREATE_POST, FILTER_POSTS, VOTE_POST, DELETE_POST } from "../utils/action_constants";
+import { GET_POSTS, CREATE_POST, FILTER_POSTS, VOTE_POST, DELETE_POST, UPDATE_POST } from "../utils/action_constants";
 import { MEDIA_POST_FILTERS } from "../utils/constants";
 
 const postsReducer = (state={posts:[], filter:MEDIA_POST_FILTERS[0]}, action) => {
@@ -42,7 +42,15 @@ const postsReducer = (state={posts:[], filter:MEDIA_POST_FILTERS[0]}, action) =>
 
             console.log(action.payload);
 
-            return state.filter((post) => post._id!==action.payload._id);
+            return state.posts.filter((post) => post._id!==action.payload._id);
+        case UPDATE_POST:
+            // Find post index in current state
+            const updateIndex = state.posts.findIndex((post) => post._id === action.payload._id);
+            // Update post object in that index
+            const newPosts = state.posts;
+            newPosts[updateIndex] = action.payload;
+            // return new updated array as the state.posts
+            return {...state, posts:newPosts};
         default:
             return state;
     }

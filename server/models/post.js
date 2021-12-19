@@ -36,6 +36,9 @@ const PostSchema = mongoose.Schema({
             type:String
         }
     ],
+    comments:[
+        {type:String}
+    ],
     created_at:{
         type:Date,
         default:Date.now(),

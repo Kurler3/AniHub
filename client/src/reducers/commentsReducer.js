@@ -1,21 +1,25 @@
-import { CREATE_COMMENT, GET_COMMENTS, REPLY_COMMENT } from "../utils/action_constants";
+import { CREATE_COMMENT, GET_COMMENTS, REPLY_COMMENT} from "../utils/action_constants";
 
 
 const commentsReducer = (state=[], action) => {
     switch(action.type) {
         case GET_COMMENTS:
+            console.log(action.payload.data);
             return action.payload.data;
         case CREATE_COMMENT:
-            return [action.payload.data, ...state];
+            return [action.payload, ...state];
         case REPLY_COMMENT:
-            // Get new updated Comment with new sub_comment array.  
-            // Substitute for old comment in state
-            const index = state.findIndex((comment) => comment._id === action.payload.data._id);
 
-            const newState = state;
+            console.log(action.payload.data);
 
-            newState[index] = action.payload.data;
-    
+
+            const newState = [...state,action.payload.data.reply];
+            // Change the parent comment of this sub comment
+            const index = state.findIndex((comment) => comment._id === action.payload.data.updatedPost._id);
+
+            newState[index] = action.payload.data.updatedPost;
+
+
             return newState;
         default:
             return state; 

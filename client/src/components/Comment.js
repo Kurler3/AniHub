@@ -3,24 +3,14 @@ import React, {useEffect, useState} from 'react';
 import { timeAgo } from '../utils/helper_functions';
 import VotingContainer from './subcomponents/VotingContainer';
 import {faCommentAlt, faExpandArrowsAlt } from '@fortawesome/free-solid-svg-icons';
-import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import {getUserInfo, getSubComments} from '../api/index';
+import {getUserInfo} from '../api/index';
 import ReactLoading from 'react-loading';
 import ReplyCommentInput from './subcomponents/ReplyCommentInput';
 
-const Comment = ({comment}) => {
+const Comment = ({commentId}) => {
 
-    const location = useLocation();
-
-    // const subCommentsState = useSelector(state => state.comments.find((commentItem) => commentItem._id===comment._id).sub_comments);
-
-    // console.log("SubComments");
-    // console.log(subCommentsState);
-
-    // const commentFromState = useSelector(state => state.comments.find((commentItem) => commentItem._id===comment._id));
-
-    // console.log(commentFromState);
+    const comment = useSelector(state => state.comments.find((commentItem) => commentItem._id === commentId));;
 
     const [showingContent, setShowingContent] = useState(true);
 
@@ -30,20 +20,11 @@ const Comment = ({comment}) => {
 
     const [showCommentInput, setShowCommentInput] = useState(false);
 
-    const [subComments, setSubComments] = useState([]);
-
     useEffect(() => {
         if(loggedUser===null) setLoggedUser(JSON.parse(localStorage.getItem('profile')));
 
         if(commentingUser===null) getCommentingUserInfo();
-
-        if(comment.sub_comments.length > 0) getSubCommentsInfo();
-    }, [location]);
-    
-    const getSubCommentsInfo = async () => {
-        const subCommentsData = await getSubComments(comment.sub_comments);
-        setSubComments(subCommentsData.data.data);
-    }
+    }, []);
 
     const getCommentingUserInfo = async () => {
         const info = await getUserInfo(comment.created_by);
@@ -116,11 +97,11 @@ const Comment = ({comment}) => {
                         // Each displayed sub_comment will be rendered as a Comment
 
 
-                        subComments.length > 0 && 
+                        comment.sub_comments.length > 0 && 
 
                         <div className='sub-comment-list-container'>
                             {
-                                subComments.map((subComment) => <Comment comment={subComment}/>)
+                                comment.sub_comments.map((subCommentId) => <Comment key={subCommentId.toString()} commentId={subCommentId}/>)
                             }
                         </div>
                     }
