@@ -17,7 +17,7 @@ export const getPosts = async (req, res) => {
 
         // Media Home Page but there is an user logged in
         if(communities_subscribed!==null) {
-            if(communities_subscribed.length > 0) posts = await Posts.find().where('community_title').in(user.communities_subscribed).sort({'created_at':-1});
+            if(communities_subscribed.length > 0) posts = await Posts.find().where('community_title').in(communities_subscribed).sort({'created_at':-1});
             else posts = await Posts.find().sort({'created_at':-1});
         }else {
             posts = await Posts.find().sort({'created_at':-1});

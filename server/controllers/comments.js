@@ -92,8 +92,77 @@ export const replyComment = async (req, res) => {
         );
 
         // No need to return update posts state. 
-        res.status(200).json({data:{reply, updatedPost}});
+        res.status(200).json({data:{reply, updatedComment}});
     } catch (error) {
         res.status(500).json({message:"Server error..."});
+    }
+}
+
+export const voteComment = async (req, res) => {
+    const {isUpVoting, userId, commentId} = req.body;
+    
+    try {
+        let updatedComment;
+        // Find Comment
+        const comment = await Comment.findById(commentId);
+        // Check if user is already in either array
+
+        // If upvoting and user is in array then remove him from it.
+        // If not in array then check if he is in down_voted array. 
+
+        if(isUpVoting) {
+            if(comment.upvoted_by.includes(userId)) {
+                updatedComment = await Comment.findOneAndUpdate(
+                    {_id:commentId},
+                    {upvoted_by:comment.upvoted_by.filter((id) => id!==userId)},
+                    {new:true}
+                );
+            }
+            else if(comment.downvoted_by.includes(userId)) {
+                // Add to upvoted_by and remove from downvoted_by
+                updatedComment = await Comment.findOneAndUpdate(
+                    {_id:commentId},
+                    {
+                        upvoted_by: [...comment.upvoted_by, userId],
+                        downvoted_by:comment.downvoted_by.filter((id) => id!==userId),
+                    },
+                    {new:true},
+                );
+            }else {
+                // Just add to upvoted_by
+                updatedComment = await Comment.findOneAndUpdate(
+                    {_id:commentId},
+                    {upvoted_by:[...comment.upvoted_by, userId]},
+                    {new:true}
+                );
+            }
+        }else {
+            if(comment.downvoted_by.includes(userId)){
+                updatedComment = await Comment.findOneAndUpdate(
+                    {_id:commentId},
+                    {downvoted_by:comment.downvoted_by.filter((id) => id!==userId)},
+                    {new:true}
+                );
+            }else if (comment.upvoted_by.includes(userId)){
+                updatedComment = await Comment.findOneAndUpdate(
+                    {_id:commentId},
+                    {
+                        downvoted_by: [...comment.downvoted_by, userId],
+                        upvoted_by:comment.upvoted_by.filter((id) => id!==userId),
+                    },
+                    {new:true},
+                );
+            }else {
+                updatedComment = await Comment.findOneAndUpdate(
+                    {_id:commentId},
+                    {downvoted_by:[...comment.downvoted_by, userId]},
+                    {new:true}
+                );
+            }
+        }
+
+        res.status(200).json({data:updatedComment});
+    } catch (error) {
+        res.status(500).json({message:'Server error...'});
     }
 }

@@ -18,6 +18,7 @@ const PostList = () => {
 
     const posts = useSelector(state => state.posts.posts);
 
+    // Declared just to listen to changes in the filter
     const currentFilter = useSelector(state => state.posts.filter);
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));

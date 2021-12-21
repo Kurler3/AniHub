@@ -3,12 +3,15 @@ import React, {useEffect, useState} from 'react';
 import { timeAgo } from '../utils/helper_functions';
 import VotingContainer from './subcomponents/VotingContainer';
 import {faCommentAlt, faExpandArrowsAlt } from '@fortawesome/free-solid-svg-icons';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch} from 'react-redux';
 import {getUserInfo} from '../api/index';
 import ReactLoading from 'react-loading';
 import ReplyCommentInput from './subcomponents/ReplyCommentInput';
+import { voteComment } from '../actions/commentActions';
 
 const Comment = ({commentId}) => {
+
+    const dispatch = useDispatch();
 
     const comment = useSelector(state => state.comments.find((commentItem) => commentItem._id === commentId));;
 
@@ -34,13 +37,13 @@ const Comment = ({commentId}) => {
 
     const onDownVoteClicked = () => {
         if(loggedUser!==null) {
-            // Dispatch for liking comment :))))
+            dispatch(voteComment(false, loggedUser.result._id, comment._id));
         }
     }
 
     const onUpVoteClicked = () => {
         if(loggedUser!==null) {
-
+            dispatch(voteComment(true, loggedUser.result._id, comment._id));
         }
     }
 

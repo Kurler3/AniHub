@@ -17,8 +17,6 @@ const CommentList = ({post}) => {
 
         // if(post.comments.length > 0 && comments.length===0) dispatch(getComments(post._id));
         dispatch(getComments(post._id));
-        
-        console.log(comments);
     },[]);
 
     return (

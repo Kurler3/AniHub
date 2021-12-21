@@ -87,5 +87,6 @@ export const getSubComments = (subCommentsIds) => API.post('/comments/sub', {sub
 
 export const replyComment = (commentId, userId, postId, input) => API.post('/comments/reply', {commentId, userId, postId, input});
 
+export const voteComment = (isUpVoting, userId, commentId) => API.post('/comments/vote', {isUpVoting, userId, commentId});
 
 

@@ -33,7 +33,7 @@ const Community = () => {
         }
 
         if(isObjectEmpty(community) || community.title !== params.communityName) dispatch(searchCommunity(params.communityName)); 
-    }, [location, isSubscribed, community])
+    }, [location, isSubscribed])
 
     // Send dispatch and update on localStorage users subscribed communities
     const onSubscribe = () => {
