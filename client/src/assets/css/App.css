@@ -1786,3 +1786,51 @@
   display: flex; }
   .loading-container .loading {
     max-height: 5vh; }
+
+.profile-container {
+  min-height: 55vh;
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }
+  .profile-container .upper-container {
+    background: var(--media-light-grey);
+    padding: 1em 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 40vh;
+    border-bottom: solid 1px grey; }
+    .profile-container .upper-container .user-info-container {
+      display: flex;
+      flex-direction: row;
+      padding: 1em;
+      align-items: center;
+      margin-top: 1em; }
+      .profile-container .upper-container .user-info-container .profile-avatar {
+        height: 150px;
+        width: 150px;
+        border-radius: 0.5rem; }
+      .profile-container .upper-container .user-info-container .user-info {
+        margin-left: 1em;
+        padding: 1em;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end; }
+        .profile-container .upper-container .user-info-container .user-info .user-name {
+          font-weight: bold; }
+        .profile-container .upper-container .user-info-container .user-info .created-at {
+          margin-top: 0.5em;
+          font-size: 0.8rem;
+          color: lightgrey; }
+    .profile-container .upper-container .settings-icon-container {
+      background: red;
+      display: flex;
+      align-items: flex-end;
+      font-size: 2rem;
+      margin-right: 1em; }
+
+.no-user-container {
+  min-height: 55vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; }

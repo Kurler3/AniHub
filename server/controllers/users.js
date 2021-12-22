@@ -75,10 +75,14 @@ export const getUserInfo = async (req, res) => {
         const user = await User.findById(id);
 
         res.status(200).json({data:{
-            _id:user._id,
-            first_name:user.first_name,
-            last_name:user.last_name,
-            avatar_img:user.avatar_img
+            id:user._id,
+            firstName:user.first_name,
+            lastName:user.last_name,
+            avatarImg:user.avatar_img,
+            email:user.email,
+            createdAt:user.created_at,
+            savedAnimes:user.saved_animes,
+            communitiesSubscribed:user.communities_subscribed,
             }
         });
     } catch (error) {
