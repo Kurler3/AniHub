@@ -45,3 +45,7 @@ export const GET_COMMENTS = "GET_COMMENTS";
 export const CREATE_COMMENT = "CREATE_COMMENT";
 export const REPLY_COMMENT = "REPLY_COMMENT";
 export const VOTE_COMMENT = "VOTE_COMMENT";
+
+// Profile
+
+export const UPDATE_STATE = "UPDATE_STATE";

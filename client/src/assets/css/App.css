@@ -1798,12 +1798,13 @@
     flex-direction: row;
     justify-content: space-between;
     min-height: 40vh;
-    border-bottom: solid 1px grey; }
+    border-bottom: solid 1px grey;
+    align-items: flex-end; }
     .profile-container .upper-container .user-info-container {
       display: flex;
       flex-direction: row;
       padding: 1em;
-      align-items: center;
+      align-items: flex-end;
       margin-top: 1em; }
       .profile-container .upper-container .user-info-container .profile-avatar {
         height: 150px;
@@ -1819,15 +1820,24 @@
         .profile-container .upper-container .user-info-container .user-info .user-name {
           font-weight: bold; }
         .profile-container .upper-container .user-info-container .user-info .created-at {
-          margin-top: 0.5em;
-          font-size: 0.8rem;
+          margin-top: 1em;
+          font-size: 0.7rem;
           color: lightgrey; }
     .profile-container .upper-container .settings-icon-container {
-      background: red;
       display: flex;
       align-items: flex-end;
       font-size: 2rem;
-      margin-right: 1em; }
+      padding: 0.3em;
+      border-radius: 0.7rem;
+      margin-right: 1em;
+      transition: var(--default-transition); }
+      .profile-container .upper-container .settings-icon-container .settings-icon {
+        cursor: pointer; }
+      .profile-container .upper-container .settings-icon-container:hover {
+        background: var(--media-hover-grey); }
+  .profile-container .lower-container {
+    min-height: 40vh;
+    background: var(--media-grey); }
 
 .no-user-container {
   min-height: 55vh;

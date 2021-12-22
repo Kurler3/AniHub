@@ -11,13 +11,15 @@
         justify-content: space-between;
         min-height: 40vh;
         border-bottom: solid 1px grey;
+        align-items: flex-end;
 
         .user-info-container{
             display: flex;
             flex-direction: row;
             padding: 1em;
-            align-items: center;
+            align-items: flex-end;
             margin-top: 1em;
+            
 
             .profile-avatar {
                 height: 150px;
@@ -26,7 +28,6 @@
             }
 
             .user-info {
-                
                 margin-left: 1em;
                 padding: 1em;
                 height: 100%;
@@ -39,8 +40,8 @@
                 }
 
                 .created-at {
-                    margin-top: 0.5em;
-                    font-size: 0.8rem;
+                    margin-top: 1em;
+                    font-size: 0.7rem;
                     color: lightgrey;
                 }
             }
@@ -48,12 +49,27 @@
         }
 
         .settings-icon-container {
-            background:red;
             display: flex;
             align-items: flex-end;
             font-size: 2rem;
+            padding: 0.3em;
+            border-radius: 0.7rem;
             margin-right: 1em;
+            transition: var(--default-transition);
+
+            .settings-icon {
+                cursor:pointer;
+            }
+
+            &:hover {
+                background: var(--media-hover-grey);
+            }
         }
+    }
+
+    .lower-container {
+        min-height: 40vh;
+        background: var(--media-grey);
     }
 }
 

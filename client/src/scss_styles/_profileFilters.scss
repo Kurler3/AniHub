@@ -1,0 +1,29 @@
+.profile-filters-container {
+    padding: 1em;
+    min-height: 20vh;
+    margin: 0 auto;
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .filter {
+        padding: 1em;
+        border-radius: 0.3rem;
+        border: 1px solid white;
+        background: var(--media-light-grey);
+        cursor: pointer;
+        transition: var(--default-transition);
+
+        &:hover {
+            color: var(--golden-orange);
+            border-color: var(--golden-orange);
+        }
+    }
+
+    .highlighted {
+        color: var(--golden-orange);
+        border-color: var(--golden-orange);
+    }
+}

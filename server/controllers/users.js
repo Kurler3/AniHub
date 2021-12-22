@@ -80,7 +80,7 @@ export const getUserInfo = async (req, res) => {
             lastName:user.last_name,
             avatarImg:user.avatar_img,
             email:user.email,
-            createdAt:user.created_at,
+            createdAt:user.createdAt,
             savedAnimes:user.saved_animes,
             communitiesSubscribed:user.communities_subscribed,
             }

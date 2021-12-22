@@ -5,6 +5,8 @@ import {getUserInfo} from '../api/index';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { dateToString} from '../utils/helper_functions';
+import ProfileList from './subcomponents/ProfileList';
+import ProfileFilters from './subcomponents/ProfileFilters';
 
 const Profile = () => {
     const location = useLocation();
@@ -36,16 +38,17 @@ const Profile = () => {
                         <img src={userInfo.avatarImg} alt="avatar" className='profile-avatar'/>
                         <div className="user-info">
                             <p className='user-name'>{`${userInfo.firstName} ${userInfo.lastName}`}</p>
-                            <p className="created-at">{dateToString(userInfo.createdAt)}</p>
+                            <p className="created-at">Joined in {dateToString(userInfo.createdAt)}</p>
                         </div>
                     </div>
                     <div className="settings-icon-container">
-                        <FontAwesomeIcon icon={faCog} />
+                        <FontAwesomeIcon icon={faCog} className='settings-icon'/>
                     </div>
                 </div>
 
                 <div className="lower-container">
-
+                    <ProfileFilters />
+                    <ProfileList />
                 </div>
                 
             </div>

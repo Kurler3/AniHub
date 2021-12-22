@@ -5,6 +5,7 @@ import backAnimeReducer from "./backAnimeReducer";
 import postsReducer from "./postsReducer";
 import communityReducer from "./communityReducer";
 import commentsReducer from "./commentsReducer";
+import profileReducer from "./profileReducer";
 
 export default combineReducers({
     frontAnimes: frontAnimeReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
     posts:postsReducer,
     community:communityReducer,
     comments: commentsReducer,
+    profile: profileReducer,
 });
