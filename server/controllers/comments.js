@@ -166,3 +166,20 @@ export const voteComment = async (req, res) => {
         res.status(500).json({message:'Server error...'});
     }
 }
+
+export const getProfileComments = async (req, res) => {
+    const {userId} = req.query;
+
+    try {
+        // Get all comments such that created_by is equal to userId
+        const comments = await Comment.find(
+            {
+                created_by:userId
+            }
+        ).sort({created_at:-1});
+
+        res.status(200).json({data:comments});
+    } catch (error) {
+        res.status(500).json({message:'Server error...'});
+    }
+}

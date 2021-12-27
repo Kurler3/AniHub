@@ -11,10 +11,15 @@ const SearchCommunities = ({match}) => {
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
-    const {defaultSearchInput} = match.params;
+    //const {defaultSearchInput} = match.params;
 
     const params = useParams();
     const dispatch = useDispatch();
+
+    const defaultSearchInput = params.defaultSearchInput;
+
+    // If in profile page
+    const userId = params.id;
 
     const [gotCommunities, setGotCommunities] = useState(false);
 
@@ -29,8 +34,10 @@ const SearchCommunities = ({match}) => {
     const onInputSubmit = (e) => {
         e.preventDefault();
         // Dispatch search communities with value inputted
-        if(searchInput.length > 0) dispatch(searchCommunities(searchInput));
-        else dispatch(getAllCommunities());
+        if(searchInput.length > 0) {
+            dispatch(searchCommunities(searchInput, userId));
+        }
+        else dispatch(getAllCommunities(userId));
     }
 
     useEffect(() => {
@@ -40,11 +47,11 @@ const SearchCommunities = ({match}) => {
 
         // Initially show all communities available
         if(!gotCommunities && searchInput.length===0){
-            dispatch(getAllCommunities());
+            dispatch(getAllCommunities(userId));
             setGotCommunities(true);
         } else if (!gotCommunities && searchInput.length > 0){
             // Initially search communities that start with this input
-            dispatch(searchCommunities(searchInput));
+            dispatch(searchCommunities(searchInput, userId));
             setGotCommunities(true);
         }
     }, [dispatch, gotCommunities, searchInput]);

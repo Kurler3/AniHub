@@ -1,0 +1,19 @@
+.profile-list-container {
+
+    .list-container, .comment-list-container {
+        width: 70%;
+        margin: 0 auto;
+        padding: 0.5em;
+    }
+
+    .comment-list-container {
+        border: 1px solid grey;
+    }
+
+    .no-data-container {
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -133,3 +133,41 @@ export const deletePost = async (req, res) => {
         res.status(500).json({message:"Server error..."});
     }
 }
+
+export const getProfilePosts = async (req, res) => {
+
+    const {userId} = req.query;
+
+    try {
+        // Find all posts such that their creator id is the userId
+        const posts = await Post.find(
+            {created_by:userId}   
+        ).sort({created_at:-1});
+
+        res.status(200).json({data:posts});
+    } catch (error) {
+        res.status(500).json({message:'Server error....'});
+    }
+}
+
+export const getVotedPosts = async (req, res) => {
+    const {userId, getUpVoted} = req.query;
+
+    console.log(getUpVoted);
+
+    try {
+        let posts;
+
+        if(getUpVoted===true) {
+            posts = await Post.find({upvoted_by:userId})
+            .sort({created_at:-1});
+        }else {
+            posts = await Post.find({downvoted_by:userId})
+            .sort({created_at:-1});
+        }
+      
+        res.status(200).json({data:posts});
+    } catch (error) {
+        res.status(500).json({message:'Server error...'});
+    }
+}

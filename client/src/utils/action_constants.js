@@ -49,3 +49,5 @@ export const VOTE_COMMENT = "VOTE_COMMENT";
 // Profile
 
 export const UPDATE_STATE = "UPDATE_STATE";
+export const CHANGE_FILTER = "CHANGE_FILTER";
+export const CHANGE_DATA = "CHANGE_DATA";

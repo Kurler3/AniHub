@@ -45,13 +45,26 @@ export const createCommunity = async (req, res) => {
 }
 
 export const searchCommunities = async (req, res) => {
-    const {communityName} = req.body;
+    const {communityName, userId} = req.body;
 
     try {
         // Search for communities that start this name
-        const communities = await Community
+        
+        let communities;
+        
+        if(userId) {
+            communities = await Community.find(
+                                {
+                                    'title': {$regex: '^' + communityName, $options: 'i' },
+                                    admins:{userId},
+                                }
+                                )
+                                .sort({created_at:-1});
+        }else {
+            communities = await Community
                                     .find({'title': {$regex: '^' + communityName, $options: 'i' }})
                                     .sort({created_at:-1});
+        }
         // Send the communities array
         res.status(200).json({data:communities});
     } catch (error) {
@@ -72,12 +85,24 @@ export const searchCommunity = async (req, res) => {
 }
 
 export const getAllCommunities = async (req, res) => {
+    const {userId} = req.query;
+
     try {
         
+        let communities;
         // Have to limit otherwise they will be too many.
-        const communities = await Community.find()
+        if(userId) {
+            communities = await Community.find(
+                {admins: userId}
+            )
             .sort({created_at:-1})
             .limit(20);
+        }
+        else {
+            communities = await Community.find()
+            .sort({created_at:-1})
+            .limit(20);
+        }
 
         res.status(200).json({data:communities});
     } catch (error) {

@@ -50,16 +50,21 @@ export const votePost = (postId, userId, isUpVote) => API.post('/media/votePost'
 
 export const deletePost = (postId) => API.post('/media/deletePost', {postId});
 
+export const getProfilePosts = (userId) => API.get('/media/profilePosts', {params:{userId}});
+
+export const getVotedPosts = (userId, getUpVoted) => API.get('/media/voted', {params:{userId, getUpVoted}});
+
+
 // Community
 
 export const createCommunity = (inputData) => API.post('/community/create', inputData);
 
 // Change to POST request because GET requests shouldn't have a body
-export const searchCommunities = (communityName) => API.post('/community/searchList', {communityName});
+export const searchCommunities = (communityName, userId) => API.post('/community/searchList', {communityName, userId});
 
 export const searchCommunity = (communityName) => API.post('/community/searchSingle', {communityName});
 
-export const getAllCommunities = () => API.get('/community/all');
+export const getAllCommunities = (userId) => API.get('/community/all', {params:{userId}});
 
 export const updateSubUnsubCommunity = (userId, communityTitle, isUnSub) => API.post('/community/updateSubUnsub', {userId, communityTitle, isUnSub}); 
 
@@ -89,4 +94,4 @@ export const replyComment = (commentId, userId, postId, input) => API.post('/com
 
 export const voteComment = (isUpVoting, userId, commentId) => API.post('/comments/vote', {isUpVoting, userId, commentId});
 
-
+export const getProfileComments = (userId) => API.get('/comments/profile', {params:{userId}});

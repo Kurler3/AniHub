@@ -14,9 +14,9 @@ export const createCommunity = (inputData, history) => async (dispatch) => {
     }
 }
 
-export const searchCommunities = (text) => async (dispatch) => {
+export const searchCommunities = (text, userId) => async (dispatch) => {
     try {
-        const {data} = await api.searchCommunities(text);
+        const {data} = await api.searchCommunities(text, userId);
 
         dispatch({type:SEARCH_COMMUNITIES, payload:data});
     } catch (error) {
@@ -35,10 +35,10 @@ export const searchCommunity = (communityName) => async (dispatch) => {
     }
 }
 
-export const getAllCommunities = () => async (dispatch) => {
+export const getAllCommunities = (userId) => async (dispatch) => {
     try {
         
-        const {data} = await api.getAllCommunities();
+        const {data} = await api.getAllCommunities(userId);
 
         dispatch({type:GET_ALL_COMMUNITIES, payload:data});
     } catch (error) {

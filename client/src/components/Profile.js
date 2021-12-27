@@ -47,8 +47,8 @@ const Profile = () => {
                 </div>
 
                 <div className="lower-container">
-                    <ProfileFilters />
-                    <ProfileList />
+                    <ProfileFilters userId={userInfo.id} />
+                    <ProfileList userInfo={userInfo} />
                 </div>
                 
             </div>
